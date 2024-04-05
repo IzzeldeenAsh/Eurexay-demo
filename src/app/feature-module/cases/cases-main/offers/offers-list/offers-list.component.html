@@ -1,0 +1,259 @@
+<div class="accordion position-relative z-3" id="accordionExample" *ngIf="!loading">
+  <ng-container *ngFor="let case of combinedCaseList; let i = index">
+    <ng-container *ngIf="case.offers.length > 0">
+      <div class="accordion-item mb-2">
+        <h2 class="accordion-header" [id]="'heading' + i">
+          <button
+            class="accordion-button text-dark fw-bolder text-hover-primary mb-1 fs-6"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#collapse' + i"
+            aria-expanded="false"
+            [attr.aria-controls]="'collapse' + i"
+          >
+            {{ case.caseName }} ({{ case.offers.length }})
+            <span class="badge badge-light-danger ms-2" *ngIf="i === 0"
+              >{{ case.offers.length }} new offer</span
+            >
+          </button>
+        </h2>
+        <div
+          [id]="'collapse' + i"
+          class="accordion-collapse collapse show"
+          [attr.aria-labelledby]="'heading' + i"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <div class="table-responsive">
+             
+              <table class="table align-middle gs-0 gy-4">
+                <thead>
+                  <tr class="fw-bolder text-muted bg-light">
+                    <th class="ps-4 min-w-100px rounded-start text-uppercase fs-7">
+                      Participant
+                    </th>
+                    <th class="min-w-125px text-uppercase fs-7">
+                      Submitted to Case
+                    </th>
+                    <th class="min-w-125px text-uppercase fs-7">
+                      Submission Date
+                    </th>
+                    <th class="min-w-150px text-uppercase fs-7" >Contract</th>                  
+                    <th class="min-w-60px text-center rounded-end text-uppercase fs-7">
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let offer of case.offers">
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center pl-10">
+                          <div class="symbol symbol-60px me-5">
+                            <ng-container
+                              *ngIf="
+                                offer.participantInfo.profilePicBase64;
+                                else noImage
+                              "
+                            >
+                              <img
+                                [src]="
+                                  'data:image/jpeg;base64,' +
+                                  offer.participantInfo.profilePicBase64
+                                "
+                                class=""
+                                alt=""
+                              />
+                            </ng-container>
+                            <ng-template #noImage>
+                              <img
+                                src="https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/image%20project.png?alt=media&token=19555bcf-e269-47b4-a33a-2df0b6f9e8f6"
+                                class=""
+                                alt=""
+                              />
+                            </ng-template>
+                          </div>
+                          <div class="d-flex justify-content-start flex-column">
+                            <a
+                              class="text-dark fw-bolder text-hover-primary mb-1 fs-6 cursor-pointer"
+                              (click)="
+                              viewProfile($event, offer.participantInfo.username)
+                            "
+                            >
+                              {{ offer.participantInfo.instituteName }}
+                            </a>
+                            <span
+                              class="text-muted fw-bold text-muted d-block fs-7"
+                              
+                            >
+                              {{ offer.participantInfo.participantType }}
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <a
+                          class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+                        >
+                          <span class="text-primary">
+                            {{ offer.caseInfo.name }}</span
+                          >
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+                        >
+                          {{ offer.submissionDate | date : "dd MMM yyyy" }}
+                        </a>
+                      </td>
+                      <td class="text-start" >
+                        <ng-container *ngIf="offer.offerStatus==='CONTRACT_GENERATED' else noViewContract">
+                          <a 
+                          (click)="
+                            viewContract($event, offer.contractUUID)
+                          "
+                          class="btn bg-light-primary  btn-color-muted btn-active-color-primary btn-sm px-4 me-2 "
+                        >
+                          View
+                        </a>
+                      </ng-container>
+                      <ng-template #noViewContract>
+                        N/A
+                      </ng-template>
+                     
+                      </td>
+                      <td class="text-center">
+                        <ng-container
+                          *ngIf="
+                            offer.offerStatus === 'SUBMITTED';
+                          "
+                        >
+                          <a
+                            class="btn btn-sm px-4 me-2 "
+                            [class.btn-light]="!isApproved"
+                            [class.btn-success]="isApproved"
+                            (click)="generateContract($event, offer)"
+                          >
+                            <span
+                              *ngIf="isApproved"
+                              class="svg-icon svg-icon-3"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                              >
+                                <path
+                                  opacity="0.3"
+                                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                                  fill="black"
+                                />
+                                <path
+                                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                                  fill="black"
+                                />
+                              </svg>
+                            </span>
+
+                            <span *ngIf="!offer.isProcessing">{{
+                              buttonText
+                            }}</span>
+                            <span *ngIf="offer.isProcessing"
+                              >Please wait...
+                              <span
+                                class="spinner-border spinner-border-sm align-middle ms-2"
+                              ></span>
+                            </span>
+                          </a>
+                          <a
+                          class="btn btn-danger btn-sm font-weight-bold"
+                         (click)="rejectOffer($event,offer)"
+                        >
+                          <span
+                            *ngIf="isApproved"
+                            class="svg-icon svg-icon-3"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <path
+                                opacity="0.3"
+                                d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                                fill="black"
+                              />
+                              <path
+                                d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                                fill="black"
+                              />
+                            </svg>
+                          </span>
+
+                          <span *ngIf="!offer.isProcessing">{{
+                            rejectButtonText
+                          }}</span>
+                          <span *ngIf="offer.isProcessing"
+                            >Please wait...
+                            <span
+                              class="spinner-border spinner-border-sm align-middle ms-2"
+                            ></span>
+                          </span>
+                        </a>
+                        </ng-container>
+                        <ng-container *ngIf="offer.offerStatus==='CONTRACT_GENERATED'">
+                          <a class="btn btn-sm px-4 btn-success me-2 cursor-na">
+                            <span class="svg-icon svg-icon-3">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                              >
+                                <path
+                                  opacity="0.3"
+                                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                                  fill="black"
+                                />
+                                <path
+                                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                                  fill="black"
+                                />
+                              </svg>
+                            </span>
+                            <span>Contract Generated</span>
+                          </a>
+                        </ng-container>
+                        <ng-container *ngIf="offer.offerStatus==='REJECTED'">
+                          <a class="btn btn-sm px-4 btn-danger text-white me-2 cursor-na">
+                            <span class="svg-icon svg-icon-3 px-2">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.3" d="M6 19.7C5.7 19.7 5.5 19.6 5.3 19.4C4.9 19 4.9 18.4 5.3 18L18 5.3C18.4 4.9 19 4.9 19.4 5.3C19.8 5.7 19.8 6.29999 19.4 6.69999L6.7 19.4C6.5 19.6 6.3 19.7 6 19.7Z" fill="black"/>
+                                <path d="M18.8 19.7C18.5 19.7 18.3 19.6 18.1 19.4L5.40001 6.69999C5.00001 6.29999 5.00001 5.7 5.40001 5.3C5.80001 4.9 6.40001 4.9 6.80001 5.3L19.5 18C19.9 18.4 19.9 19 19.5 19.4C19.3 19.6 19 19.7 18.8 19.7Z" fill="black"/>
+                              </svg>
+                            </span>
+                            <span>Rejected</span>
+                          </a>
+                        </ng-container>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+           
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-container *ngIf="loading">
+  <app-wait-spinner class="m-auto d-block pt-20"></app-wait-spinner>
+</ng-container>

@@ -1,0 +1,41 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Dispute Reason</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i aria-hidden="true" class="ki ki-close"></i>
+        </button>
+    </div>
+    <div class="modal-body">
+       
+  <div class="form-group row">
+    <!--begin::Label-->
+    <textarea class="form-control text-area" id="rejectionReason" rows="20" col="20" [(ngModel)]="disputeReason"></textarea>
+    <!--end::Label-->
+    <!--begin::Col-->
+  
+    <!--end::Col-->
+  </div>
+    </div>
+    <div class="modal-footer justify-content-between ">
+        <!--begin::Hint-->
+        <!--end::Hint-->
+      <div class="d-flex flex-row  gap-5">
+        <button type="button" class="btn btn-sm btn-secondary btn-sm font-weight-bold" data-dismiss="modal" (click)="closeModal()" [disabled]=" loading">
+          <span *ngIf="loading">Please wait...
+              <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+          </span>
+          <ng-container *ngIf="!loading">
+            Close
+          </ng-container>
+          </button>
+      <button type="button" class="btn btn-sm btn-danger btn-sm font-weight-bold" (click)="reject()" [disabled]="disputeReason.length===0 || loading">
+          <span *ngIf="loading">Please wait...
+              <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+          </span>
+         <ng-container *ngIf="!loading">
+          Dispute
+      </ng-container>
+      </button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+
+
+<div class="card flex justify-content-center">
+    <p-dropdown  [options]="countriesLocalAPI" [(ngModel)]="selectedCountry"  (ngModelChange)="onCountrySelect()" optionLabel="name" [showClear]="true" placeholder="Select a Country"  >
+        <ng-template pTemplate="selectedItem">
+            <div class="d-flex align-items-center gap-2 w-100 flex-row" *ngIf="selectedCountry" style="max-width: 100px;">
+                <img [src]="selectedCountry['file_url']"  style="width: 18px"/>
+                <div>{{ selectedCountry['name'] }}</div>
+            </div>
+        </ng-template>
+        <ng-template let-country pTemplate="item">
+            <div class="flex align-items-center gap-2"  style="max-width: 100px;">
+                <img [src]="country['file_url']"  style="width: 18px"/>
+                <div>{{ country['name'] }}</div>
+            </div>
+        </ng-template>
+    </p-dropdown>
+</div>

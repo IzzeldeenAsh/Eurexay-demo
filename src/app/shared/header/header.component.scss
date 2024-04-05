@@ -1,0 +1,77 @@
+
+a{
+    text-decoration: none !important;
+  }
+  .video-bg {
+    background-color: #06234D;
+    background-image:url('https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/eurebag.png?alt=media&token=a1f04c50-fbd0-41da-8110-4f778da0e1a1');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+  
+  .animate-text {
+    font-family: 'Poppins', sans-serif;
+    padding-left: 65px;
+    @media (max-width:566px) {
+      padding-left: 10px;
+    }
+    }
+  
+   .inline-list {
+     
+     padding: 0;
+     margin: 0;
+   }
+  
+  .inline-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #d1d1d1;
+    display: inline-block;
+    /* Unicode character for a bullet (dot) */
+    margin-right: 5px;
+    font-size: 18px;
+    /* Adjust the font size as needed */
+  }
+  
+   .inline-list li {
+     display: inline-block;
+     margin-right: 10px;
+     color: #d1d1d1;
+    a{
+        color: #d1d1d1 !important;
+    }
+   }
+  
+  .filter {
+    position: absolute;
+    backdrop-filter: blur(1px);
+    z-index: 1;
+    color: transparent;
+  }
+  
+  .min-height-500 {
+    min-height: 300px;
+  }
+  
+  
+  .mgt-15{
+    margin-top: 15px;
+  }
+  .text-container-header{
+    padding-top: 5rem;
+        width: 70%;
+      margin: auto;
+    @media (max-width:991px) {
+      padding-top: 1rem;
+    }
+  }
+  @media print {
+    .page-header{
+      display: none !important;
+    }
+  }

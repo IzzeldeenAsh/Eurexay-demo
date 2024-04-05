@@ -1,0 +1,19 @@
+.bank-card{
+  width: 78%;
+  @media  (max-width:1200px) {
+      width: 50%;
+  }
+  @media (max-width: 768px) {
+    width: 78%;
+  }
+}
+.notice{
+  border-width: 1.5px ;
+}
+.min-h-427{
+min-height: 426px;
+}
+.ibanform{
+  width: 80%;
+    margin: 40px auto;
+}

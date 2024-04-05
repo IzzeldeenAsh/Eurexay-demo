@@ -1,0 +1,17 @@
+.invoice{
+    top:25px;
+}
+
+@media print{
+    .finance-header{
+        display: none ;
+        
+    }
+    .invoice{
+        top: 0;
+        width: 100%;
+    }
+    .card{
+        border-radius: 0 !important;
+    }
+}

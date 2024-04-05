@@ -1,0 +1,58 @@
+
+<div class="row g-5 gx-xxl-12 mt-1 m-auto">
+  <ng-container *ngIf="!loading">
+    <div class="position-relative" *ngIf="currentCase">
+      <app-feature-header 
+        [img]="currentCase.contractDTO.owner.profilePicBase64"
+        [featureName]="currentCase.contractDTO.businessCase.name "
+        [subtitle]="currentCase.contractDTO.owner.instituteName+ ' | ' + currentCase.contractDTO.owner.sector "
+      ></app-feature-header>
+     
+      <div class="d-flex sub-nav-links pb-50">
+        <div class="content-wrapper">
+          <div
+            class="d-flex justify-content-end align-items-center position-relative z-index-2 mt-10 container"
+          >
+            <div class="tabs-nav custom-tabs">  
+              <ng-container  *ngFor="let link of navLinks">
+                <a
+                class="custom-tab position-relative cursor-pointer"
+                [ngClass]="{ active: activeTab === link.label}"
+                id="navlink"
+                (click)="setActiveTab(link.index)"
+              >
+                <div class="symbol-label d-inline-block pe-2">
+                  <span
+                    class="svg-icon svg-icon-2"
+                    [class.svg-icon-gray-200]="activeTab === link.label"
+                    [class.svg-icon-gray-500]="activeTab !== link.label"
+                    [innerHTML]="link.icon"
+                  >
+                  </span>
+                </div>
+                {{ link.label }}
+              
+              </a>
+            </ng-container>
+         
+            </div>
+          </div>
+          <div class="custom-tab-content container pt-3">
+            <div class="tab-content ">
+              <div class="tab-pane" [ngClass]="{ active: activeTab === 'Case Details' }">
+                <app-case-details [currentCaseManage]="currentCase"></app-case-details>
+              </div>
+            </div>
+            <div class="tab-content ">
+              <div class="tab-pane" [ngClass]="{ active: activeTab === 'Messages' }">
+                <app-case-messages></app-case-messages>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </ng-container>
+</div>

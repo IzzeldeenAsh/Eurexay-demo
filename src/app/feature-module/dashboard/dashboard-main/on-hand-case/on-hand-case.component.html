@@ -1,0 +1,482 @@
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-5 mb-1">In Hand Cases</span>
+      <span class="text-muted mt-1  fs-7">List of your on hand cases</span>
+    </h3>
+  
+  </div>
+  <!-- end::Header -->
+  <!-- begin::Body -->
+  <div class="card-body py-3">
+    <ng-container *ngIf="inHandCases && inHandCases.length>0 else noInHandCases">
+      <div class="tab-content">
+        <!-- begin::Tap pane -->
+        <div
+    
+          id="kt_table_widget_5_tab_1"
+        >
+          <!-- begin::Table container -->
+          <div class="table-responsive">
+            <!-- begin::Table -->
+            <table
+              class="
+                table table-row-dashed table-row-gray-200
+                align-middle
+                gs-0
+                gy-4
+              "
+            >
+              <!-- begin::Table head -->
+              <thead>
+                <tr class="border-0">
+                  <th class="p-0 w-50px border-0"></th>
+                  <th class="p-0 min-w-150px border-0"></th>
+                  <th class="p-0 min-w-140px text-muted border-0 text-center">Duration</th>
+                  <th class="p-0 min-w-110px border-0  text-muted text-center">Owner</th>
+                  <th class="p-0 min-w-50px border-0 text-muted text-center"> Summary</th>
+                </tr>
+              </thead>
+              <!-- end::Table head -->
+              <!-- begin::Table body -->
+              <tbody>
+    
+                <tr *ngFor="let case of inHandCases">
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                        [src]="('data:image/jpeg;base64,'+ case.ownerInfo.profilePicBase64)" alt="image" 
+                          class=" align-self-center h-100 rounded"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                     {{case.name}}
+                    </a>
+                    <span class="text-muted fw-bold d-block">{{case.nickname}}</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">{{case.duration}} {{case.durationType}}</td>
+                  <td class="text-center">
+                    <div
+                    class="symbol symbol-35px symbol-circle"
+                    
+                    [ngbTooltip]="case.ownerInfo.username"
+                    placement="top"
+                  >
+                  
+                    <ng-container *ngIf="case.ownerInfo.username">
+                      <a (click)="viewProfile($event,case.ownerInfo.username)" class="symbol-label bg-primary text-inverse-primary fw-bolder cursor-pointer">
+                        {{ case.ownerInfo.username[0] }}
+                      </a>
+                    </ng-container>
+                  </div>
+                  
+                  </td>
+                  <td class="text-center">
+                    <a
+                      (click)="navigateToCase(case.contractUUID)"
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              <!-- end::Table body -->
+            </table>
+          </div>
+          <!-- end::Table -->
+        </div>
+        <!-- end::Tap pane -->
+        <!-- begin::Tap pane -->
+        <div
+          class="tab-pane fade"
+    
+          id="kt_table_widget_5_tab_2"
+        >
+          <!-- begin::Table container -->
+          <div class="table-responsive">
+            <!-- begin::Table -->
+            <table
+              class="
+                table table-row-dashed table-row-gray-200
+                align-middle
+                gs-0
+                gy-4
+              "
+            >
+              <!-- begin::Table head -->
+              <thead>
+                <tr class="border-0">
+                  <th class="p-0 w-50px"></th>
+                  <th class="p-0 min-w-150px"></th>
+                  <th class="p-0 min-w-140px"></th>
+                  <th class="p-0 min-w-110px"></th>
+                  <th class="p-0 min-w-50px"></th>
+                </tr>
+              </thead>
+              <!-- end::Table head -->
+              <!-- begin::Table body -->
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                          src="./assets/media/svg/brand-logos/plurk.svg"
+                          class="h-50 align-self-center"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      Brad Simmons
+                    </a>
+                    <span class="text-muted fw-bold d-block">Movie Creator</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">React, HTML</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-success">Approved</span>
+                  </td>
+                  <td class="text-center">
+                    <a
+                      
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                          src="./assets/media/svg/brand-logos/telegram.svg"
+                          class="h-50 align-self-center"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      Popular Authors
+                    </a>
+                    <span class="text-muted fw-bold d-block">Most Successful</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">Python, MySQL</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-warning">In Progress</span>
+                  </td>
+                  <td class="text-center">
+                    <a
+                      
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                          src="./assets/media/svg/brand-logos/bebo.svg"
+                          class="h-50 align-self-center"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      Active Customers
+                    </a>
+                    <span class="text-muted fw-bold d-block">Movie Creator</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">AngularJS, C#</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-danger">Rejected</span>
+                  </td>
+                  <td class="text-center">
+                    <a
+                      
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              <!-- end::Table body -->
+            </table>
+          </div>
+          <!-- end::Table -->
+        </div>
+        <!-- end::Tap pane -->
+        <!-- begin::Tap pane -->
+        <div
+          class="tab-pane fade"
+    
+          id="kt_table_widget_5_tab_3"
+        >
+          <!-- begin::Table container -->
+          <div class="table-responsive">
+            <!-- begin::Table -->
+            <table
+              class="
+                table table-row-dashed table-row-gray-200
+                align-middle
+                gs-0
+                gy-4
+              "
+            >
+              <!-- begin::Table head -->
+              <thead>
+                <tr class="border-0">
+                  <th class="p-0 w-50px"></th>
+                  <th class="p-0 min-w-150px"></th>
+                  <th class="p-0 min-w-140px"></th>
+                  <th class="p-0 min-w-110px"></th>
+                  <th class="p-0 min-w-50px"></th>
+                </tr>
+              </thead>
+              <!-- end::Table head -->
+              <!-- begin::Table body -->
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                          src="./assets/media/svg/brand-logos/kickstarter.svg"
+                          class="h-50 align-self-center"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      Bestseller Theme
+                    </a>
+                    <span class="text-muted fw-bold d-block">Best Customers</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">ReactJS, Ruby</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-warning">In Progress</span>
+                  </td>
+                  <td class="text-center">
+                    <a
+                      
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                          src="./assets/media/svg/brand-logos/bebo.svg"
+                          class="h-50 align-self-center"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      Active Customers
+                    </a>
+                    <span class="text-muted fw-bold d-block">Movie Creator</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">AngularJS, C#</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-danger">Rejected</span>
+                  </td>
+                  <td class="text-center">
+                    <a
+                      
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                          src="./assets/media/svg/brand-logos/vimeo.svg"
+                          class="h-50 align-self-center"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      New Users
+                    </a>
+                    <span class="text-muted fw-bold d-block">Awesome Users</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">Laravel,Metronic</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-primary">Success</span>
+                  </td>
+                  <td class="text-center">
+                    <a
+                      
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="symbol symbol-45px me-2">
+                      <span class="symbol-label">
+                        <img
+                          src="./assets/media/svg/brand-logos/telegram.svg"
+                          class="h-50 align-self-center"
+                          alt=""
+                        />
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <a
+                      
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      Popular Authors
+                    </a>
+                    <span class="text-muted fw-bold d-block">Most Successful</span>
+                  </td>
+                  <td class="text-center text-muted fw-bold">Python, MySQL</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-warning">In Progress</span>
+                  </td>
+                  <td class="text-center">
+                    <a
+                      
+                      class="
+                        btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                      "
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/arrows/arr064.svg'
+                        "
+                        class="svg-icon svg-icon-2"
+                      ></span>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              <!-- end::Table body -->
+            </table>
+          </div>
+          <!-- end::Table -->
+        </div>
+        <!-- end::Tap pane -->
+      </div>
+  
+    </ng-container>
+      <ng-template #noInHandCases>
+       <div class=" no-in-hand-cases">
+      <div class="in-hand-content">
+        <h1 class="fs-2 fw-bolder">You Currently Don't Have Cases To Work Yet</h1>
+        <span class="text-muted  fs-6 fw-bold">Search for a suitable case now!</span>
+        <a  [routerLink]="['/cases-main/available-Cases']" class="btn btn-primary btn-sm mt-5 kt_modal_add_customer" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Available Cases</a>
+      </div>
+        
+        <img class="d-md-block d-none"  style="width: 200px;" src="../../../../../assets/media/illustrations/sketchy-1/inHandCases.svg" alt="in-hand-cases">
+       </div>
+      </ng-template>
+  </div>
+  <!-- end::Body -->
+  

@@ -1,0 +1,116 @@
+<ng-container *ngIf="loading">
+  <app-wait-spinner class="m-auto d-block py-10"></app-wait-spinner>
+</ng-container>
+<div class="d-flex flex-sm-row flex-column ">
+
+
+<ng-container *ngIf="!loading">
+<div class="card d-flex w-100 flex-column flex-sm-row">
+  <app-filter-dropdown (applyFilterSearchInput)="searchFilter($event)"  #dropdown class=" filter"></app-filter-dropdown>
+  <ng-container *ngIf="filterCases.length !==0; else noData">
+  <div class="content-available-cases">
+     <div class=" g-6 g-xl-9 w-100" >
+       <!--begin::Col-->
+       <div class="col-12  mb-2 border-bottom" *ngFor="let case of filterCases" >
+         <!--begin::Card-->
+         <a (click)="view(case.uuid)" class="cursor-pointer    case-card">
+           <!--begin::Card header-->
+           <div class="card-header border-0 pt-9">
+             <!--begin::Card Title-->
+             <div class="d-flex justify-content-center align-items-center">
+               <!--begin::Avatar-->
+               <div class="symbol symbol-70px w-70px bg-light">
+                 <ng-container *ngIf="case.ownerInfo.profilePicBase64 ; else noImage">
+                   <img [src]="('data:image/jpeg;base64,'+ case.ownerInfo.profilePicBase64)" alt="image"  />
+                 </ng-container>
+                 <ng-template #noImage>
+                   <img
+                  src="https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/image%20project.png?alt=media&token=19555bcf-e269-47b4-a33a-2df0b6f9e8f6"
+  
+                     alt="noProfilePic"
+                   />
+                 </ng-template>
+  
+               </div>
+               <div class="d-flex flex-column pt-8 pl-20">
+                  <!--begin::Name-->
+             <div class="fs-3 fw-bolder text-dark"> {{case.name}}</div>
+             <!--end::Name-->
+             <!--begin::Description-->
+             <a class="text-gray-400 text-hover-primary fw-bold fs-5 mt-1 mb-7" (click)="viewProfile($event,case.ownerInfo.username)"> {{case.ownerInfo.instituteName}}</a>
+             <!--end::Description-->
+               </div>
+  
+               <!--end::Avatar-->
+             </div>
+             <!--end::Car Title-->
+             <!--begin::Card toolbar-->
+             <div class="card-toolbar">
+               <span class="rounded-2 fw-bolder me-auto px-4 py-3"
+               [ngClass]="{
+                 ' badge badge-light-primary ': case.caseOffer === null,
+                 ' badge badge-light-danger ': case.caseOffer?.offerStatus === 'REJECTED',
+                 ' badge badge-light-warning': case.caseOffer?.offerStatus === 'PENDING',
+                 ' badge-light-success text-green ': case.caseOffer?.offerStatus === 'CONTRACT_GENERATED' ||  case.caseOffer?.offerStatus === 'SUBMITTED'
+               }"
+               >{{ (case.caseOffer && case.caseOffer.offerStatus === 'CONTRACT_GENERATED') ? 'SUBMITTED' : (case.caseOffer ? case.caseOffer.offerStatus : 'UNSUBMITTED') }}
+              </span>
+             </div>
+             <!--end::Card toolbar-->
+           </div>
+           <!--end:: Card header-->
+           <!--begin:: Card body-->
+           <div class="card-body p-9">
+  
+             <!--begin::Info-->
+             <div class="d-flex flex-wrap mb-5">
+               <!--begin::Due-->
+               <div class=" d-flex border-gray-300 align-items-center border rounded min-w-125px py-3 px-4 me-7 mb-3">
+                 <div class="fw-bold text-gray-600">Expiry Date :</div>
+                 <div class="fs-6 text-primary fw-bolder pl-5"> {{case.expiryDate}}</div>
+               </div>
+               <!--end::Due-->
+               <!--begin::Budget-->
+               <div class="border d-flex border-gray-300 border rounded min-w-125px py-3 px-4 mb-3">
+                 <div class="fw-bold text-gray-600">Budget:</div>
+                 <div class="fs-6 text-primary fw-bolder pl-5">{{case.budget | currency}}</div>
+               </div>
+               <!--end::Budget-->
+             </div>
+             <!--end::Info-->
+                       <!--begin::Description-->
+                       <p class=" mt-1 mb-7"  [innerHTML]="case.caseAbstract | truncateWords | safeHtml"></p>
+                       <!--end::Description-->
+  
+             <!--begin::Users-->
+       <div class="text-start">
+        <button  (click)="view(case.uuid)" class="border-btn position-relative text-primary" style="padding-right: 40px; border: 1px solid #0778b9; background:none;" >
+          <a  class="text-primary fw-bold">View
+            <a  class="link-btn-2 arrow-2 arrow-create" >
+              <i class="fas fa-arrow-right text-primary"  ></i>
+              <i class="fas fa-arrow-right text-primary" ></i>
+      </a>
+            
+            <!--end::Svg Icon--></a>
+        </button>
+       </div>
+             <!--end::Users-->
+           </div>
+           <!--end:: Card body-->
+         </a>
+         <!--end::Card-->
+       </div>
+       <!--end::Col-->
+  
+     </div>
+  </div>
+  </ng-container>
+</div>
+  <ng-template #noData> 
+    <div class="d-block mx-auto py-20">
+      <span class=" text-gray-400 fw-bold fs-4">No Avaiable Cases </span>
+    </div>
+  </ng-template>
+</ng-container>
+
+</div>

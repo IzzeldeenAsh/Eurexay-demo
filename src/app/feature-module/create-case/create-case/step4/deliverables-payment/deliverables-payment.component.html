@@ -1,0 +1,386 @@
+<div class="pb-50">
+    <form [formGroup]="deliveryForm">
+      <label class="fs-6 fw-bolder mb-2 text-uppercase text-primary"
+        >Payment Plan
+        <i
+          class="fas fa-exclamation-circle ms-2 fs-7"
+          data-bs-toggle="tooltip"
+          title="Select a discount type that will be applied to this product"
+        ></i
+      ></label>
+  
+      <div
+        class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 mt-2"
+        data-kt-buttons="true"
+        data-kt-buttons-target="[data-kt-button='true']"
+      >
+        <div class="col">
+          <!--begin::Label-->
+          <label class="form-label fs-6 text-uppercase fw-medium text-primary"
+            >Remaining Budget</label
+          >
+          <!--end::Label-->
+          <!--begin::Input-->
+          <div
+            class="form-control mb-2 d-flex align-items-center bg-light-warning"
+            [class.bg-light-danger]=""
+          >
+            <span class="fs-5 fw-bolder text-gold badge"
+              >$
+              <span class="fs-5 fw-bolder " #casesCounter >{{ totalBudgetDisplayed }}</span>
+  
+               <!-- <span [class.text-red]="">{{ totalBudgetDisplayed }}</span> -->
+            </span>
+          </div>
+          <!--end::Input-->
+        </div>
+        <div class="col">
+          <!--begin::Label-->
+          <label class="form-label fs-6 text-uppercase fw-medium text-primary"
+            >Spent Budget</label
+          >
+          <!--end::Label-->
+          <!--begin::Input-->
+          <div
+            class="form-control mb-2 d-flex align-items-center bg-light-danger"
+          >
+            <span class="fs-5 fw-bolder text-red badge"
+              >$
+              <span class="fs-5 fw-bolder " #budgetSpentCounter >{{ budgetSpent }}</span>
+              <!-- <span>{{ budgetSpent }}</span> -->
+  
+            </span>
+          </div>
+          <!--end::Input-->
+        </div>
+        <div class="col">
+          <!--begin::Label-->
+          <label class="form-label fs-6 text-uppercase fw-medium text-primary"
+            >Percentage Count</label
+          >
+          <!--end::Label-->
+          <!--begin::Input-->
+          <div
+            class="form-control mb-2 d-flex align-items-center bg-light-primary"
+          >
+            <span class="fs-5 fw-bolder text-primary badge"
+              >
+              <span class="fs-5 fw-bolder " #PercentageCounter >{{percentageCounterDisplay}} </span>
+              <!-- <span>{{ budgetSpent }}</span> -->
+            %
+            </span>
+          </div>
+          <!--end::Input-->
+        </div>
+      </div>
+      <div
+      class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 mt-2"
+      data-kt-buttons="true"
+      data-kt-buttons-target="[data-kt-button='true']"
+    >
+      <div class="col mt-2">
+        <!--begin::Label-->
+        <label class="form-label fs-6 text-uppercase fw-medium text-primary"
+          >Deliverable Title</label
+        >
+        <!--end::Label-->
+        <!--begin::Input-->
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control mb-2"
+          placeholder="Enter Task Title"
+        />
+        <!--end::Input-->
+        <div
+          class="fv-plugins-message-container invalid-feedback"
+          *ngIf="name?.hasError('required') && name?.touched"
+        >
+          Deliverable Title is required
+        </div>
+        <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="deliveryForm.get('name')?.hasError('duplicatename') && deliveryForm.get('name')?.touched"
+      >
+        Deliverable Title must be unique
+      </div>
+      
+      </div>
+ 
+      <div class="col mt-2">
+        <!--begin::Label-->
+        <label class="form-label fs-6 text-uppercase fw-medium text-primary"
+          >Percentage (%)</label
+        >
+        <!--end::Label-->
+        <!--begin::Input-->
+        <input
+          formControlName="percentage"
+          type="number"
+          class="form-control mb-2"
+          (input)="getAmount($event)"
+          placeholder="Percentage"
+        />
+        <!--end::Input-->
+        <div
+          class="fv-plugins-message-container invalid-feedback text-muted"
+          *ngIf="deliveryForm.get('percentage')?.hasError('required')"
+        >
+          Numbers Only.
+        </div>
+
+        <div
+          class="fv-plugins-message-container invalid-feedback"
+          *ngIf="deliveryForm.get('percentage')?.hasError('min')"
+        >
+          Percentage should be above 0.
+        </div>
+
+        <div
+          class="fv-plugins-message-container invalid-feedback"
+          *ngIf="deliveryForm.get('percentage')?.hasError('max')"
+        >
+          Percentage should not be above 100.
+        </div>
+
+        <div
+          class="fv-plugins-message-container invalid-feedback"
+          *ngIf="deliveryForm.get('percentage')?.hasError('pattern')"
+        >
+          Percentage should be a number.
+        </div>
+
+        <ng-container *ngIf="!validPercentage">
+          <div class="fv-plugins-message-container invalid-feedback">
+            Please Enter a Valid Percentage (Only Numbers)
+          </div>
+        </ng-container>
+      </div>
+      <div class="col mt-2">
+        <!--begin::Label-->
+        <label class="form-label fs-6 text-uppercase fw-medium text-primary"
+          >Amount</label
+        >
+        <!--end::Label-->
+        <!--begin::Input-->
+        <div
+          class="form-control mb-2 d-flex align-items-center bg-light-primary"
+          [class.bg-light-danger]="amountFromPercentage > totalBudgetDisplayed"
+        >
+          <span class="fs-5 fw-bolder text-primary badge">
+            <span
+              [class.text-red]="amountFromPercentage > totalBudgetDisplayed"
+            >
+              <ng-container *ngIf="amountFromPercentage > totalBudgetDisplayed">
+                <span class="svg-icon svg-icon-2tx svg-icon-danger me-4 m-auto">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <rect
+                      opacity="0.3"
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="10"
+                      fill="black"
+                    />
+                    <rect
+                      x="11"
+                      y="14"
+                      width="7"
+                      height="2"
+                      rx="1"
+                      transform="rotate(-90 11 14)"
+                      fill="black"
+                    />
+                    <rect
+                      x="11"
+                      y="17"
+                      width="2"
+                      height="2"
+                      rx="1"
+                      transform="rotate(-90 11 17)"
+                      fill="black"
+                    />
+                  </svg>
+                </span>
+              </ng-container>
+              $ {{ amountFromPercentage }}</span
+            >
+          </span>
+        </div>
+        <!--end::Input-->
+      </div>
+    </div>
+    <div
+    class="row row-cols-1 g-9"
+    data-kt-buttons="true"
+    data-kt-buttons-target="[data-kt-button='true']"
+  >
+    <div class="col">
+      <div class="d-flex flex-column w-100 mr-auto">
+        <label
+          class="form-label fs-6 text-uppercase fw-medium text-primary"
+          >Description</label
+        >
+        <textarea
+          formControlName="description"
+          class="form-control form-control-lg w-100"
+          name="description"
+          rows="5"
+        ></textarea>
+        <div *ngIf="deliveryForm.get('description')?.errors?.['maxLengthExceeded']" class="fv-plugins-message-container invalid-feedback text-danger">
+          Description must not exceed 500 characters.
+        </div>
+        <div class="fv-plugins-message-container invalid-feedback text-muted">
+          Description must be at least 10 characters.
+        </div>
+      </div>
+    </div>
+  </div>
+  <a
+    (click)="addRequirement()"
+    class="add-req text-decoration-none cursor-pointer add-req-invalid mb-2"
+    style="margin-left: 10px"
+    [ngClass]="{
+      'add-req-invalid':
+        deliveryForm.invalid ||
+        this.amountFromPercentage > this.totalBudgetDisplayed,
+      'add-req-valid':
+        deliveryForm.valid &&
+        !(this.amountFromPercentage > this.totalBudgetDisplayed)
+    }"
+  >
+    <span>Add Deliverable</span></a
+  >
+  <div class="row row-cols-1 mt-3" *ngIf="showAlert">
+    <div
+      class="notice d-flex justify-content-center bg-light-danger rounded border-danger border border-dashed mb-9 p-4"
+    >
+      <!--begin::Icon-->
+      <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+      <span class="svg-icon svg-icon-2tx svg-icon-danger me-4 m-auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <rect
+            opacity="0.3"
+            x="2"
+            y="2"
+            width="20"
+            height="20"
+            rx="10"
+            fill="black"
+          />
+          <rect
+            x="11"
+            y="14"
+            width="7"
+            height="2"
+            rx="1"
+            transform="rotate(-90 11 14)"
+            fill="black"
+          />
+          <rect
+            x="11"
+            y="17"
+            width="2"
+            height="2"
+            rx="1"
+            transform="rotate(-90 11 17)"
+            fill="black"
+          />
+        </svg>
+      </span>
+      <!--end::Svg Icon-->
+      <!--end::Icon-->
+      <!--begin::Wrapper-->
+      <div class="d-flex flex-stack flex-grow-1">
+        <!--begin::Content-->
+        <div class="fw-bold">
+          <h4 class="text-gray-900 fw-bolder fs-5" >Budget Was Exceeded</h4>
+          <div class="fs-7 text-gray-700">
+            Plese modity the precentage to meet the budget limit
+            <br />
+          </div>
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--end::Wrapper-->
+    </div>
+  </div>
+  <div class="table">
+    <ng-container *ngIf="tasksList && tasksList.length > 0">
+      <div class="overflow-scroll">
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th class="text-uppercase">Task Name</th>
+              <th class="text-uppercase">Percentage</th>
+              <th class="text-uppercase">Amount</th>
+              <th class="text-uppercase">Description</th>
+              <!-- <th>Relation</th>
+            <th>Related To</th> -->
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let task of tasksList; let i = index"
+              class="requirement-row"
+            >
+              <td>{{ task.name }}</td>
+              <td>{{ task.percentage }} %</td>
+              <td>{{ task.amount }}</td>
+              <td>{{ task.description }}</td>
+              <td>
+                <button class="delete-req" (click)="deleteRequirement(i)">
+                  <i class="bi bi-x-circle"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+ 
+  </div>
+
+  <div class="row row-cols-1 mt-3 " *ngIf="remainBudget">
+    <div class="notice d-flex justify-content-center bg-light-danger rounded border-danger border border-dashed mb-9 p-4">
+      <!--begin::Icon-->
+      <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+      <span class="svg-icon svg-icon-2tx svg-icon-danger me-4 m-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black" />
+          <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black" />
+          <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black" />
+        </svg>
+      </span>
+      <!--end::Svg Icon-->
+      <!--end::Icon-->
+      <!--begin::Wrapper-->
+      <div class="d-flex flex-stack flex-grow-1">
+        <!--begin::Content-->
+        <div class="fw-bold">
+          <h4 class="text-gray-900 fw-bolder fs-5">There Still Budget To Spend</h4>
+          <div class="fs-7 text-gray-700">Please spend all the budget with a valid percentage
+          <br />
+          </div>
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--end::Wrapper-->
+    </div>
+  </div>
+      </form>
+      </div>

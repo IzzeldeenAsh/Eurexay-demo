@@ -1,0 +1,69 @@
+<div
+  data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+  data-kt-menu-placement="bottom-start"
+  class="menu-item menu-lg-down-accordion me-0 me-lg-2 d-flex gap-4">
+  <!--begin:Menu link-->
+  <div
+    class="filter-container"
+  >
+    <span class="menu-link position-relative">
+      <div  class="d-flex align-items-center">
+        <span class="menu-icon">
+          <i class="ki-outline ki-filter fs-4 text-primary"></i>
+        </span>
+        <span class="menu-title m-0 p-0">Filter</span>
+        <span class="menu-arrow"></span>
+      </div>
+    </span>
+    <div class="card filter-options" >
+      <div class="card flex justify-content-center">
+        <div class="p-1">Status:</div>
+        <p-multiSelect
+          [options]="status"
+          [(ngModel)]="selectedStatus"
+          optionLabel="status"
+          [filter]="false"
+        ></p-multiSelect>
+      </div>
+    </div>
+  </div>
+   <!--begin:Menu link-->
+   <div
+   class="sort-container"
+   
+ >
+   <span class="menu-link position-relative">
+     <div class="d-flex align-items-center">
+       <span class="menu-icon">
+         <i class="ki-outline ki-filter fs-4 text-primary"></i>
+       </span>
+       <span class="menu-title m-0 p-0">Sort</span>
+       <span class="menu-arrow"></span>
+     </div>
+   </span>
+   <div class="card sort-options" >
+     <div class="card flex justify-content-center">
+       <p-listbox [options]="sorts" [(ngModel)]="selectedSort" optionLabel="name" [style]="{'width':'15rem'}" [listStyle]="{'max-height': '220px'}"></p-listbox>
+     </div>
+   </div>
+ </div>
+  <!-- sort-menu -->
+
+  <div>
+    <div
+      class="d-flex align-items-center position-relative w-200px"
+    >
+      <i
+
+        class="ki-outline ki-magnifier fs-4 text-gray-500 position-absolute ms-3 fw-bold"
+      ></i
+      ><input
+    id="cases-list-view"
+        type="text"
+        placeholder="Find a view"
+        class="form-control form-control-sm form-control-solid w-100 ps-10 border border-300 bg-light-active"
+      />
+    </div>
+  </div>
+   <!--  -->
+</div>

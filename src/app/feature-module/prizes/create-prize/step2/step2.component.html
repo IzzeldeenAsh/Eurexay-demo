@@ -1,0 +1,194 @@
+<div class="pb-10 pb-lg-15">
+    <h2 class="fw-bolder text-dark">Prize Details</h2>
+   
+  </div>
+  <div [formGroup]="form">
+    <div class="row mb-10">
+        <div class="col-md-4 fv-row">
+            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2 "
+              ><span class="required  text-primary">Prize Amount (USD)</span
+              ><i
+                class="fas fa-exclamation-circle ms-2 fs-7"
+                ngbTooltip="Enter a card CVV code"
+              ></i
+            ></label>
+            <div class="position-relative">
+              <input
+                formControlName="prizeAmount"
+                type="text"
+                class="form-control form-control-solid"
+                placeholder="Prize Amount"
+                mask="separator.0" thousandSeparator=","
+              />
+              <div
+                class="fv-plugins-message-container invalid-feedback"
+                *ngIf="
+                  form.get('prizeAmount')?.hasError('required') &&
+                  form.get('prizeAmount')?.touched
+                "
+              >
+              Prize Amount is required
+              </div>
+              <div class="position-absolute translate-middle-y top-50 end-0 me-3">
+                <span
+                  class="svg-icon svg-icon-2hx"
+                  [inlineSVG]="'./assets/media/icons/duotune/finance/fin003.svg'"
+                ></span>
+              </div>
+            </div>
+          </div>
+        <div class="col-md-8 fv-row">
+          <div class="row fv-row">
+            <div class="col-6">
+              <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+              >Submission End Date</label
+            >
+             <input  class="form-control form-control-lg form-control-solid" type="date" name="submissionDate" placeholder="Submission Date" id="submissionDate" formControlName="submissionDate">
+              <div
+                class="fv-plugins-message-container invalid-feedback"
+                *ngIf="
+                  form.get('submissionDate')?.hasError('required') &&
+                  form.get('submissionDate')?.touched
+                "
+              >
+              Submission End Date is required
+              </div>
+              <div
+              class="fv-plugins-message-container invalid-feedback"
+              *ngIf="
+                form.get('submissionDate')?.hasError('minSubmissionDate') &&
+                form.get('submissionDate')?.touched
+              "
+            >
+            Submission must be at least 24hr from now
+            </div>
+              <div
+              class="fv-plugins-message-container invalid-feedback"
+              *ngIf="form!.hasError('issueDateGreater')"
+            >
+            Result Date cannot be before Publish Date
+            </div>
+            </div>
+            <div class="col-6">
+              <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+              > Results Announcement</label
+            >
+             <input  class="form-control form-control-lg form-control-solid" type="date" name="resultDate" placeholder="Announcement Date" id="resultDate" formControlName="resultDate">
+              <div
+                class="fv-plugins-message-container invalid-feedback"
+                *ngIf="
+                  form.get('resultDate')?.hasError('required') &&
+                  form.get('resultDate')?.touched
+                "
+              >
+              Anouncement Date is required
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+   <!-- app.component.html -->
+<div class="d-flex flex-column mb-7 fv-row">
+  <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+    <span class="required  text-primary" >Judges</span>
+    <i class="fas fa-exclamation-circle ms-2 fs-7" ngbTooltip="Specify a card holder's name"></i>
+  </label>
+  <div class="position-relative">
+    <input type="text" class="form-control form-control-solid" placeholder="Judge Name"  (input)="inputName($event)" />
+  <button (click)="addName()" class="btn btn-primary btn-sm add-judge"><i class="fas fa-plus"></i></button>
+  </div>
+</div>
+
+<ul class="judge-ul">
+  <li *ngFor="let judge of nameList; let i = index" class="mt-5">
+    <div
+    class="symbol symbol-35px symbol-circle"
+    
+    [ngbTooltip]="judge"
+    placement="top"
+  >
+  
+   
+      <a  class="symbol-label bg-primary text-inverse-primary fw-bolder cursor-pointer">
+        {{ judge.split('')[0] }}
+      </a>
+    
+  </div>
+    {{ judge }} 
+    <button (click)="removeName(i)" class="btn btn-sm"><i class="fas fa-trash text-red"></i></button>
+  </li>
+</ul>
+    <div class="d-flex flex-column mb-7 fv-row">
+      <label class="required fs-6 fw-bold form-label mb-2  text-primary">Submission Method</label>
+      <div class="position-relative">
+        <select
+        formControlName="delivery"
+        class="form-select form-select-solid"
+      >
+        <option></option>
+        <option value="UPLOAD">Upload Files</option>
+        <option value="ON_SITE">On Site</option>
+        <option value="POST_OFFICE">Post Office</option>
+        <option value="EMAIL">By Email</option>
+      </select>
+      
+        <div
+          class="fv-plugins-message-container invalid-feedback"
+          *ngIf="
+            form.get('delivery')?.hasError('required') &&
+            form.get('delivery')?.touched
+          "
+        >
+          Delivery method is required
+        </div>
+      </div>
+    </div>
+    <div class="fv-row mb-10" *ngIf="form.get('delivery')?.value === 'ON_SITE'">
+      <label class="form-label required text-primary">Address</label>
+      <input
+        name="address"
+        class="form-control form-control-lg form-control-solid"
+        [required]="form.get('delivery')?.value === 'ON_SITE'"
+        formControlName="address"
+      />
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched"
+      >
+        Address is required
+      </div>
+    </div>
+    <div class="fv-row mb-10" *ngIf="form.get('delivery')?.value === 'POST_OFFICE'">
+      <label class="form-label required text-primary">Post Office Number</label>
+      <input
+        name="postOfficeNumber"
+        class="form-control form-control-lg form-control-solid"
+        formControlName="postOfficeNumber"
+        [required]="form.get('delivery')?.value === 'POST_OFFICE'"
+      />
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="form.get('postOfficeNumber')?.hasError('required') && form.get('postOfficeNumber')?.touched"
+      >
+        Post Office Number is required
+      </div>
+    </div>
+    <div class="fv-row mb-10" *ngIf="form.get('delivery')?.value === 'EMAIL'">
+      <label class="form-label required text-primary">Email</label>
+      <input
+        name="email"
+        class="form-control form-control-lg form-control-solid"
+        formControlName="email"
+        [required]="form.get('delivery')?.value === 'EMAIL'"
+        #emailInput
+      />
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched"
+      >
+        Email is required
+      </div>
+    </div>
+  </div>
+  

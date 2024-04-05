@@ -1,0 +1,80 @@
+<div class="
+      d-flex
+      flex-column flex-column-fluid
+      bgi-position-y-bottom
+      position-x-center
+      bgi-no-repeat bgi-size-contain bgi-attachment-fixed
+    " style=" height:100vh; background-image: url('./assets/media/illustrations/sketchy-1/21.png')">
+  <!--begin::Content-->
+  <div class="d-flex flex-center flex-column flex-column-fluid c-bdy pb-lg-20">
+    <div class="mb-12"><img alt="Logo" src="../../../../assets/img/logo/full-logo-light.png"
+        class="h-30px" /></div>
+
+    <!--begin::Content body-->
+    <div class="w-lg-500px  c-bdy p-lg-15 mx-auto">
+  <div class="container">
+    <header>
+    <svg width="55" height="55" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect opacity="1" x="2" y="2" width="20" height="20" rx="5" fill="#0778B9" />
+      <path
+        d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z"
+        fill="white" />
+    </svg>
+
+    </header>
+    <div class="text-center">
+        <h4>Enter Verification Code</h4>
+      <div class="text-gray-600  fs-6 ">
+        An email with a verification code will be sent to you in the next seconds.
+      </div>
+    </div>
+
+
+<form [formGroup]="verificationForm" (ngSubmit)="verifyOTP()">
+  <div class="input-field">
+    <input #digit1Input type="text" formControlName="digit1" maxlength="1" />
+    <input #digit2Input type="text" formControlName="digit2" maxlength="1" />
+    <input #digit3Input type="text" formControlName="digit3" maxlength="1" />
+    <input #digit4Input type="text" formControlName="digit4" maxlength="1" />
+    <input #digit5Input type="text" formControlName="digit5" maxlength="1" />
+    <input #digit6Input type="text" formControlName="digit6" maxlength="1" />
+  </div>
+  <button #verifyButton type="submit" class="btn btn-sm btn-primary btn-primary-eu fw-bold me-2"
+    [ngClass]="{'btn-eure-primary ':!verificationForm.invalid,  'invalid-btn  ': verificationForm.invalid || isLoading}"
+    class="w-100 mt-20 " type="submit" [disabled]=" isLoading">
+    <ng-container *ngIf="isLoading">
+      <span class="indicator-progress" [style.display]="'block'">
+        Please wait...
+        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+      </span>
+    </ng-container>
+    <ng-container *ngIf="!isLoading">
+      Verify
+    </ng-container>
+  </button>
+  <div class="card-footer text-center pt-0 px-lg-2 px-1">
+
+
+  </div>
+  <div *ngIf="!showResend">
+    <p class=" text-gray-600 mt-1 fs-7">
+      Didn't receieve a code?
+      <a (click)="sendVerificationEmail()" class=" text-primary fw-bold cursor-pointer">Resend!</a>
+    </p>
+  </div>
+  <div *ngIf="showResend">
+    <span>Resend will be available in {{ countdown }} seconds.</span>
+  </div>
+
+</form>
+  </div>
+
+    </div>
+    <!--end::Content body-->
+  </div>
+  <!--end::Content-->
+
+  <!-- begin::Footer -->
+
+  <!-- end::Footer -->
+</div>

@@ -1,0 +1,67 @@
+<div class="main-wrapper auth-body ">
+  <div class="registraion-wrapper shadow-blur">
+      <div class="reg-left">
+<div class="regi-text">
+  <h1 class="text-white mb-2 mt-5 position-relative z-5 fw-bold fs-4">WELCOME TO EUREKXAY</h1>
+  <p class="text-lead text-white position-relative z-5">Let’s get you all set up so you can verify your personal account
+    and begin setting up your profile</p>
+</div>
+      </div>
+
+      <div class="reg-right">
+
+        <div class="p-20">
+          <div class="d-flex justifiy-content-center align-items-center flex-column">
+            <span class="text-muted mt-1 mb-3 fs-7 pl-2">Have an account? <a [routerLink]="['/auth/login'] "
+                class="text-info text-gradient fw-bold">Sign in</a></span>
+            <h1 class="fw-medium fs-2 my-3 pl-2">Join as</h1>
+          </div>
+          <div class="radio-container mt-15">
+
+            <div *ngFor="let account of accounts">
+              <!--begin:Option-->
+              <label class="d-flex flex-stack cursor-pointer mb-5">
+                <!--begin:Label-->
+                <span class="d-flex align-items-center me-2">
+                  <!--begin:Icon-->
+                  <span class="symbol symbol-50px me-6">
+                    <span class="symbol-label " [ngClass]="account.color" >
+                      <!-- Placeholder for the icon. You might want to adapt this dynamically -->
+                      <span class="svg-icon  "   [ngClass]="account.iconColro"
+                      >
+    
+                        <span [inlineSVG]="account.icon" class="svg-icon svg-icon-1" ></span>
+    
+                      </span>
+                    </span>
+                  </span>
+                  <!--end:Icon-->
+                  <!--begin:Info-->
+                  <span class="d-flex flex-column">
+                    <span class="fw-bolder fs-6">{{ account.name }}</span>
+                    <span class="fs-7 text-muted">Account</span>
+                  </span>
+                  <!--end:Info-->
+                </span>
+                <!--end:Label-->
+                <!--begin:Input-->
+                <span class="form-check form-check-custom form-check-solid">
+                  <input class="form-check-input" type="radio" name="accountType" [value]="account.name" [(ngModel)]="accountType" (change)="selectAccount(account)" />
+                </span>
+                <!--end:Input-->
+              </label>
+              <!--end::Option-->
+
+
+            </div>
+ 
+
+          </div>
+          <button [ngClass]="{'btn-eure-primary ':accountType !==undefined,  ' invalid-btn': accountType===undefined}"
+            class="w-100 mt-15 " (click)="createAccountType()" [disabled]="accountType===undefined">
+            Create Account
+          </button>
+        </div>
+      </div>
+  </div>
+</div>

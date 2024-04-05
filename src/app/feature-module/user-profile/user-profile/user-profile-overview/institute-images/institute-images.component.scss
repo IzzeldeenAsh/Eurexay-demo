@@ -1,0 +1,32 @@
+.gallery {
+	display: flex;
+	padding: 2px;
+	transition: .3s;
+	flex-wrap: wrap;
+	overflow: scroll;
+	
+	gap: 15px;
+	
+}
+.gallery__image {
+			border-radius:10px;
+
+			}
+.gallery__thumb{
+  border-radius: 10px;
+    overflow: hidden;
+}
+.gallery__column{
+	width: 130px;
+}
+img{
+	width: 100%;
+}
+.delete{
+	position: absolute;
+	left:-2px
+}
+.indicator-progress{
+	margin: auto;
+    color: #0778b9;
+}

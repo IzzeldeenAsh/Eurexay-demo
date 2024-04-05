@@ -1,0 +1,29 @@
+<div class="main-container">
+	<div class="check-container">
+		<div class="check-background">
+      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43.07 43.07"><defs>
+      </defs><path class="cls-1" d="M18.69,40.53,46.31,10.47" transform="translate(-10.97 -3.97)"/>
+      <path class="cls-1" d="M17.47,11.69,47.53,39.31" transform="translate(-10.97 -3.97)"/></svg>
+		</div>
+		<div class="check-shadow"></div>
+	</div>
+<div class="text-center" style="min-height: 170px;">
+<ng-container *ngIf="showDatails">
+  <h1 class="failed my-5">Payment Failed!</h1>
+  <span class="fs-6 text-gray-600">Your payment was not sucessful. <br> {{errorMessage}}</span>
+  <div class="text-center mb-1">
+    <!--begin::Link-->
+    <div class="btns mt-15 d-flex gap-6 m-auto justify-content-around">
+      <a class="btn btn-sm btn-primary me-2" [routerLink]="['/routePath']"  >
+        Return to case            </a>
+    <!--end::Link-->
+
+    <!--begin::Link-->
+    <a class="btn btn-sm btn-secondary"  [routerLink]="['/routePath']">
+        My Cases            </a>
+    <!--end::Link-->
+    </div>
+</div>
+</ng-container>
+</div>
+</div>

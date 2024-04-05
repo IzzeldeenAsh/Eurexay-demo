@@ -1,0 +1,140 @@
+table {
+  page-break-inside: avoid;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 100%;
+}
+.justify-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+}
+
+th {
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+td {
+  text-align: right;
+}
+.text-center {
+  text-align: center !important;
+}
+/* Page styles */
+.page {
+  position: relative;
+  margin: 1cm 0;
+  background: #fff;
+  box-shadow: 0 4px 5px rgba(75, 75, 75, 0.2);
+  min-height: 29.7cm;
+  height: auto;
+  padding: 1cm;
+  overflow: visible;
+  border-radius: 10px;
+  @media (max-width: 768px) {
+    .page {
+      /* Adjust styles for smaller screens */
+      width: 100%; /* Full width on smaller screens */
+      margin: 0; /* Remove margin on smaller screens */
+    }
+  }
+
+  /* Media query for mobile phones */
+  @media (max-width: 480px) {
+    .page {
+      /* Further adjustments for mobile screens */
+      padding: 0.5cm; /* Reduce padding for mobile screens */
+    }
+  }
+}
+.custom-tab-content {
+  border-radius: 8px;
+  margin-top: -15px;
+}
+.case-icon {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #e7edfa;
+  display: flex;
+  svg {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+  }
+}
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  left: 30px;
+}
+
+/* Clearfix */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Main content */
+main {
+  overflow: auto;
+}
+/* Content styles */
+.content {
+  padding: 40px;
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  width: 60%;
+  z-index: 1;
+  transform: translateX(-50%);
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+.case-info-table{
+    border-collapse: collapse;
+    width: 100%;
+      border: none;
+    th, td {
+      border: none;
+      padding: 8px;
+      text-align: center;
+    }
+    tr:first-child th:first-child {
+      border-radius: 10px 0px 0px 0px;
+    }
+
+    tr:first-child th:last-child {
+      border-radius: 0px 10px 0px 0px;
+    }
+
+    tr{
+      border-bottom: 1px solid #E7EDFA;
+    }
+    th {
+      background-color: #E7EDFA;
+    }
+  }
+  .delivarble-payment{
+    page-break-inside: avoid;
+  }
+  .custom-button-upload{
+    color: #0778b9;
+    border: 1px solid #0778b9;
+    padding: 8px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }

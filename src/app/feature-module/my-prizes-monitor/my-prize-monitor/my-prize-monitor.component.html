@@ -1,0 +1,33 @@
+<header>
+    <app-prize-summary-header ></app-prize-summary-header>
+</header>
+<main class="app-main">
+    <ng-container *ngIf="loading">
+        <app-wait-spinner class="loader-container"></app-wait-spinner>
+        </ng-container>
+    <ng-container *ngIf="currentPrize && !loading">
+        <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100">
+            <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
+                <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-4 m-0" >
+                    Prize Overview
+                        </h1>
+                        <div class="div fw-medium text-muted fs-7">{{currentPrize.status }}</div>
+                </div>
+            <!--end::Page title-->
+
+            </div>
+            <div class="row g-5 g-xl-10">
+                <div class="col-xl-2 mb-xl-10" *ngIf="currentPrize.status!=='PUBLISHED'"></div>
+                <div class="col-xl-8 mb-5 mb-xl-10">
+                    <!--begin::Timeline Widget 1-->
+                    <app-prize-body [prize]="currentPrize"></app-prize-body>
+               </div>
+               <div class="col-xl-2 mb-xl-10" *ngIf="currentPrize.status!=='PUBLISHED'"></div>
+               <div class="col-xl-4 mb-xl-10" *ngIf="currentPrize.status==='PUBLISHED'">
+                <app-participants-list [participantsList]="participantsList" [totalAllowed]="currentPrize.allowedParticipantNumber"></app-participants-list>
+
+                    </div>
+            </div>
+    </ng-container>
+
+</main>

@@ -1,0 +1,235 @@
+<div class="pb-10 pb-lg-15">
+  <h2 class="fw-bolder text-dark">Case Info</h2>
+ 
+</div>
+<div [formGroup]="form">
+  <div class="row ">
+    <div class="col-md-6 col-12 pt-5">
+      <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+      >Case Name</label
+    >
+     <input  class="form-control form-control-lg form-control-solid" type="text" name="name" placeholder="Enter Case Name" id="startDate" formControlName="name">
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="
+          form.get('name')?.hasError('required') &&
+          form.get('name')?.touched
+        "
+      >
+      Case Name is required
+      </div>
+    </div>
+    <div class="col-md-6 col-12 pt-5">
+      <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+      >Case Nickname</label
+    >
+     <input  class="form-control form-control-lg form-control-solid" type="text" name="nickname" placeholder="Enter Case Nickname" id="nickname" formControlName="nickname">
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="
+          form.get('nickname')?.hasError('required') &&
+          form.get('nickname')?.touched
+        "
+      >
+      Case Nickname is required
+      </div>
+    </div>
+
+  
+  </div>
+  <div class="row ">
+    <div class="col-md-6 col-12 pt-5">
+      <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+      >Case Type</label
+    >
+    <div class="position-relative">
+      <select
+      formControlName="caseType"
+      class="form-select form-select-solid"
+    >
+      <option></option>
+      <option value="DESCRIPTIVE">Descriptive</option>
+      <option value="ILLUSTRATIVE">Illustrative</option>
+      <option value="CUMULATIVE">Cumulative</option>
+      <option value="CRITICAL_INSTANCE">Critical Instance</option>
+    </select>
+    
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="
+          form.get('caseType')?.hasError('required') &&
+          form.get('caseType')?.touched
+        "
+      >
+      Case Type method is required
+      </div>
+    </div>
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="
+          form.get('caseType')?.hasError('required') &&
+          form.get('caseType')?.touched
+        "
+      >
+      Case Type is required
+      </div>
+    </div>
+    <div class="col-md-6 col-12 pt-5">
+      <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2 "
+      ><span class="required  text-primary">Case Budget (USD)</span
+      ><i
+        class="fas fa-exclamation-circle ms-2 fs-7"
+        ngbTooltip="Enter a card CVV code"
+      ></i
+    ></label>
+    <div class="position-relative">
+      <input
+        formControlName="budget"
+        type="text"
+        class="form-control form-control-solid"
+        placeholder="Case Budget"
+        mask="separator.0" thousandSeparator=","
+      />
+     
+     
+      <div
+      class="fv-plugins-message-container invalid-feedback"
+      *ngIf="
+      form.get('name')?.touched &&
+        form.get('budget')?.hasError('min')
+      "
+    >
+    Case Budget must be greater than 100USD
+    </div>
+      <div class="position-absolute translate-middle-y top-50 end-0 me-3">
+        <span
+          class="svg-icon svg-icon-2hx"
+          [inlineSVG]="'./assets/media/icons/duotune/finance/fin003.svg'"
+        ></span>
+      </div>
+    </div>
+    <div
+    class="fv-plugins-message-container invalid-feedback"
+    *ngIf="
+      form.get('budget')?.hasError('required') &&
+      form.get('budget')?.touched
+    "
+  >
+  Case Budget is required
+  </div>
+  <div
+  class="fv-plugins-message-container invalid-feedback text-gray-600 py-3"
+  *ngIf="showResettingDuration"
+>
+  Changing budget will reset payments
+</div>
+    </div>
+  
+  </div>
+  <div class="row ">
+      
+    <div class="col-md-4 col-12 pt-5">
+      <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+      >Publish Date</label
+    >
+     <input  class="form-control form-control-lg form-control-solid" type="date" name="startDate" placeholder="Publish Date" id="startDate" formControlName="startDate">
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="
+          form.get('startDate')?.hasError('required') &&
+          form.get('startDate')?.touched
+        "
+      >
+      Publish Date is required
+      </div>
+      <div
+      class="fv-plugins-message-container invalid-feedback"
+      *ngIf="
+        form.get('startDate')?.hasError('invalidDate') &&
+        form.get('startDate')?.touched
+      "
+    >
+    Publish Date must be at least today.
+    </div>
+      
+   
+    </div>
+    <div class="col-md-4 col-12 pt-5">
+      <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+      > Expiry Date</label
+    >
+     <input  class="form-control form-control-lg form-control-solid" type="date" name="expiryDate" placeholder="Announcement Date" id="expiryDate" formControlName="expiryDate">
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="
+          form.get('expiryDate')?.hasError('required') &&
+          form.get('expiryDate')?.touched
+        "
+      >
+      Expiry Date is required
+      </div>
+      <div
+      class="fv-plugins-message-container invalid-feedback"
+      *ngIf="form!.hasError('issueDateGreater')"
+    >
+    Expiry Date cannot be before Publish Date
+    </div>
+    </div>
+      <div class="col-md-4 col-12 pt-5">
+        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2 "
+          ><span class="required  text-primary">Research Duration</span
+          ></label>
+        <div class="position-relative">
+          <input
+            formControlName="duration"
+            type="text"
+            class="form-select form-select-solid"
+            placeholder="Research Duration"
+          />
+          <div
+            class="fv-plugins-message-container invalid-feedback"
+            *ngIf="
+              form.get('duration')?.hasError('required') &&
+              form.get('duration')?.touched
+            "
+          >
+          Research Duration is required
+          </div>
+          
+          <div class="position-absolute translate-middle-y top-50 end-0 ">
+            <select
+            formControlName="durationType"
+            data-control="select2"
+            data-hide-search="true"
+            class="form-select form-select-solid"
+          >
+
+            <option value="DAY" class="fs-6">Day</option>
+            <option value="MONTH" class="fs-6">Month</option>
+            <option value="YEAR" class="fs-6">Year</option>
+          </select>
+          </div>
+        </div>
+        <div
+          class="fv-plugins-message-container invalid-feedback text-gray-600 py-3"
+          *ngIf="showResettingDuration"
+        >
+        Changing duration will reset payments
+        </div>
+      </div>
+    </div>
+    <div class="row pt-10">
+      <div class="col-12">
+        <label class="required fs-6 fw-bold form-label mb-2  text-primary"
+        >Case Abstract</label
+      >
+        <quill-editor class="content-editor w-100" [placeholder]="''" [modules]="quillConfiguration" [formControl]="caseAbstract"> </quill-editor>
+      </div>
+      <div
+      class="fv-plugins-message-container invalid-feedback text-gray-600 py-3"
+      
+    >
+      Case Abstract should be at least 13 characters long.
+    </div>
+    </div>
+</div>

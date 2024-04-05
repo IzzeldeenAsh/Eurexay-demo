@@ -1,0 +1,97 @@
+<div class="card">
+  <!--begin::Card header-->
+  <div class="card-header card-header-stretch border-bottom border-gray-200">
+    <!--begin::Title-->
+    <div class="card-title">
+      <h3 class="fw-bold m-0">Invoice History</h3>
+    </div>
+  </div>
+  <!--end::Card header-->
+  <!--begin::Tab Content-->
+  <div class="tab-content">
+    <!--begin::Tab panel-->
+    <div
+      id="kt_billing_months"
+      class="card-body p-0 tab-pane fade active show"
+      role="tabpanel"
+      aria-labelledby="kt_billing_months"
+    >
+      <!--begin::Table container-->
+      <div class="table-responsive">
+        <!--begin::Table-->
+        <div class="fv-row grid-item position-relative search-filter my-3">
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-5 fw-bold mb-2 search-label">
+              <span class="fw-medium pl-5">
+                <span class="svg-icon svg-icon-primary">
+                  <span
+                    [inlineSVG]="'./assets/media/icons/duotune/general/gen004.svg'"
+                    class="svg-icon svg-icon-1"
+                  ></span>
+                </span>
+              </span>
+            </label>
+            <input
+              type="text"
+              class="form-control form-control-lg form-control-solid"
+              name="name"
+              placeholder="Search"
+              (input)="applyFilterGlobal($event, 'contains')"
+              #input
+            />
+          </div>
+<p-table
+        #dt1
+        [value]="invoicesList"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['date', 'description', 'amount']"
+        >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:25%" class="text-gray-600">
+                    <div class="flex align-items-center">
+                        Date
+                    </div>
+                </th>
+                <th style="min-width:40%" class="text-gray-600">
+                    <div class="flex align-items-center">
+                        Description
+                    </div>
+                </th>
+                <th style="min-width:25%" class="text-gray-600">
+                    <div class="flex align-items-center">
+                        Amount
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-invoice>
+            <tr>
+                <td>{{ invoice.updatedDate | date }}</td>
+                <td class="text-primary">
+                  <a  class="cursor-pointer" (click)="navigateToDetails(invoice.itemUUID)">
+                    <ng-container [ngSwitch]="invoice.paymentType">
+                      <span *ngSwitchCase="'CASE_PUBLISHING'">Case Publish Fees</span>
+                      <span *ngSwitchCase="'CONTRACT_FINALIZING'">Contract Finalizing (Case budget)</span>
+                      <span *ngSwitchCase="'PRIZE_PUBLISHING'">Prize Publish Fees</span>
+                      </ng-container>
+                  </a>
+                </td>
+                <td class="text-primary fw-bolder">{{ invoice.paidAmount | currency }}</td>
+                <td><a class="btn btn-sm btn-light btn-active-light-primary cursor-pointer" (click)="navigateToDetails(invoice.itemUUID)">View</a></td>
+            </tr>
+        </ng-template>
+       
+    </p-table>
+      </div>
+    </div>
+  </div>
+</div>

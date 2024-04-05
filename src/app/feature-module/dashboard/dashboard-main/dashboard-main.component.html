@@ -1,0 +1,33 @@
+
+<div   class="wrapper">
+  <section class="container services__area content-wrapper pt-100 pb-40  " >
+
+    <div class="row g-5 g-xl-8 cards-platform alert-row d-flex" >
+      <div class="col-12  align-items-stretch h-100">
+        <app-widgets class=" position-relative z-index-2"
+        [availableCasesNumber]="statistics ? statistics.availableCasesCount : null"
+        [availablePrizesNumber]="statistics ?  statistics.availablePrizesCount : null"
+        [offersReceived]="statistics ?  statistics.receivedOffersCount : null"
+        [loader]="loader"
+        [ownerContracts]="statistics ?  statistics.inHandCasesCount : null"
+        ></app-widgets>
+      </div>
+    </div>
+    <div class=" row g-5 gx-xxl-8 mt-1 pl-15">
+      <div class="col-lg-6">
+       <app-case-create class="card card-xxl-stretch mb-5 mb-xxl-8" ></app-case-create>
+      </div>
+      <div class="col-lg-6">
+       <app-notifications class="card card-xxl-stretch mb-5 mb-xxl-8"></app-notifications>
+      </div>
+     </div>
+    <div class="row g-5 gx-xxl-8 mt-1 pl-15" *ngIf="!loader">
+      <div class="col-lg-6">
+        <app-on-hand-case [inHandCases]="inHandCases" class="card card-xxl-stretch mb-5 mb-xxl-8" ></app-on-hand-case>
+      </div>
+      <div class="col-lg-6">
+        <app-on-hand-prizes [inHandPrizes]="inHandPrizes"  class="card card-xxl-stretch mb-5 mb-xxl-8" ></app-on-hand-prizes>
+      </div>
+    </div>
+  </section>
+</div>

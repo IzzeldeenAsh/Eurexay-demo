@@ -1,0 +1,470 @@
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-5 mb-1">In Hand Prizes</span>
+    <span class="text-muted mt-1  fs-7">List of your on hand cases</span>
+  </h3>
+
+</div>
+<!-- end::Header -->
+<!-- begin::Body -->
+<div class="card-body py-3 overflow-scroll">
+  <ng-container *ngIf="inHandPrizes && inHandPrizes.length>0 else noInHandPrizes">
+    <div class="tab-content">
+      <!-- begin::Tap pane -->
+      <div
+  
+        id="kt_table_widget_5_tab_1"
+      >
+        <!-- begin::Table container -->
+        <div class="table-responsive">
+          <!-- begin::Table -->
+          <table
+            class="
+              table table-row-dashed table-row-gray-200
+              align-middle
+              gs-0
+              gy-4
+            "
+          >
+            <!-- begin::Table head -->
+            <thead>
+              <tr class="border-0">
+                <th class="p-0 w-50px border-0"></th>
+                <th class="p-0 min-w-150px border-0"></th>
+                <th class="p-0 min-w-140px text-muted border-0 text-center">End Date</th>
+                <th class="p-0 min-w-110px border-0  text-muted text-center">Amount</th>
+                <th class="p-0 min-w-50px border-0 text-muted text-center"> Summary</th>
+              </tr>
+            </thead>
+            <!-- end::Table head -->
+            <!-- begin::Table body -->
+            <tbody>
+  
+              <tr *ngFor="let prize of inHandPrizes">
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label text-center">
+                      <span class="svg-icon svg-icon-info svg-icon-1 ms-n1 flex-grow-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path opacity="0.4" d="M8.67 14H4C2.9 14 2 14.9 2 16V22H8.67V14Z" fill="#292D32"/>
+                          <path d="M13.3302 10H10.6602C9.56016 10 8.66016 10.9 8.66016 12V22H15.3302V12C15.3302 10.9 14.4402 10 13.3302 10Z" fill="#292D32"/>
+                          <path opacity="0.4" d="M20.0001 17H15.3301V22H22.0001V19C22.0001 17.9 21.1001 17 20.0001 17Z" fill="#292D32"/>
+                          <path d="M15.0102 4.84999C15.3202 4.53999 15.4402 4.16999 15.3402 3.84999C15.2402 3.52999 14.9302 3.3 14.4902 3.23L13.5302 3.06999C13.4902 3.05999 13.4002 2.99998 13.3802 2.95998L12.8502 1.89998C12.4502 1.08998 11.5402 1.08998 11.1402 1.89998L10.6102 2.95998C10.5902 2.99998 10.5002 3.05999 10.4602 3.06999L9.50017 3.23C9.06017 3.3 8.76017 3.52999 8.65017 3.84999C8.55017 4.16999 8.67017 4.53999 8.98017 4.84999L9.72017 5.59999C9.75017 5.62999 9.79017 5.75 9.78017 5.79L9.57017 6.70998C9.41017 7.38998 9.67017 7.69997 9.84017 7.82997C10.0102 7.94997 10.3802 8.10999 10.9902 7.74999L11.8902 7.21999C11.9302 7.18999 12.0602 7.18999 12.1002 7.21999L13.0002 7.74999C13.2802 7.91999 13.5102 7.96999 13.6902 7.96999C13.9002 7.96999 14.0502 7.88997 14.1402 7.82997C14.3102 7.70997 14.5702 7.39998 14.4102 6.70998L14.2002 5.79C14.1902 5.74 14.2202 5.62999 14.2602 5.59999L15.0102 4.84999Z" fill="#292D32"/>
+                        </svg>
+                      </span>
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6">
+                   {{prize.name}}
+                  </a>
+                  <!-- <span class="text-muted fw-bold d-block">{{prize.}}</span> -->
+                </td>
+                <td class="text-center text-muted fw-bold">{{prize.submissionEndDate}} </td>
+                <td class="text-center">
+               {{prize.amount}}
+                
+                </td>
+                <td class="text-center">
+                  <a
+                    [routerLink]="['/prizes/participated-in-prizes']"
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+            <!-- end::Table body -->
+          </table>
+        </div>
+        <!-- end::Table -->
+      </div>
+      <!-- end::Tap pane -->
+      <!-- begin::Tap pane -->
+      <div
+        class="tab-pane fade"
+  
+        id="kt_table_widget_5_tab_2"
+      >
+        <!-- begin::Table container -->
+        <div class="table-responsive">
+          <!-- begin::Table -->
+          <table
+            class="
+              table table-row-dashed table-row-gray-200
+              align-middle
+              gs-0
+              gy-4
+            "
+          >
+            <!-- begin::Table head -->
+            <thead>
+              <tr class="border-0">
+                <th class="p-0 w-50px"></th>
+                <th class="p-0 min-w-150px"></th>
+                <th class="p-0 min-w-140px"></th>
+                <th class="p-0 min-w-110px"></th>
+                <th class="p-0 min-w-50px"></th>
+              </tr>
+            </thead>
+            <!-- end::Table head -->
+            <!-- begin::Table body -->
+            <tbody>
+              <tr>
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/brand-logos/plurk.svg"
+                        class="h-50 align-self-center"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Brad Simmons
+                  </a>
+                  <span class="text-muted fw-bold d-block">Movie Creator</span>
+                </td>
+                <td class="text-center text-muted fw-bold">React, HTML</td>
+                <td class="text-center">
+                  <span class="badge badge-light-success">Approved</span>
+                </td>
+                <td class="text-center">
+                  <a
+                    
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/brand-logos/telegram.svg"
+                        class="h-50 align-self-center"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Popular Authors
+                  </a>
+                  <span class="text-muted fw-bold d-block">Most Successful</span>
+                </td>
+                <td class="text-center text-muted fw-bold">Python, MySQL</td>
+                <td class="text-center">
+                  <span class="badge badge-light-warning">In Progress</span>
+                </td>
+                <td class="text-center">
+                  <a
+                    
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/brand-logos/bebo.svg"
+                        class="h-50 align-self-center"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Active Customers
+                  </a>
+                  <span class="text-muted fw-bold d-block">Movie Creator</span>
+                </td>
+                <td class="text-center text-muted fw-bold">AngularJS, C#</td>
+                <td class="text-center">
+                  <span class="badge badge-light-danger">Rejected</span>
+                </td>
+                <td class="text-center">
+                  <a
+                    
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+            <!-- end::Table body -->
+          </table>
+        </div>
+        <!-- end::Table -->
+      </div>
+      <!-- end::Tap pane -->
+      <!-- begin::Tap pane -->
+      <div
+        class="tab-pane fade"
+  
+        id="kt_table_widget_5_tab_3"
+      >
+        <!-- begin::Table container -->
+        <div class="table-responsive">
+          <!-- begin::Table -->
+          <table
+            class="
+              table table-row-dashed table-row-gray-200
+              align-middle
+              gs-0
+              gy-4
+            "
+          >
+            <!-- begin::Table head -->
+            <thead>
+              <tr class="border-0">
+                <th class="p-0 w-50px"></th>
+                <th class="p-0 min-w-150px"></th>
+                <th class="p-0 min-w-140px"></th>
+                <th class="p-0 min-w-110px"></th>
+                <th class="p-0 min-w-50px"></th>
+              </tr>
+            </thead>
+            <!-- end::Table head -->
+            <!-- begin::Table body -->
+            <tbody>
+              <tr>
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/brand-logos/kickstarter.svg"
+                        class="h-50 align-self-center"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Bestseller Theme
+                  </a>
+                  <span class="text-muted fw-bold d-block">Best Customers</span>
+                </td>
+                <td class="text-center text-muted fw-bold">ReactJS, Ruby</td>
+                <td class="text-center">
+                  <span class="badge badge-light-warning">In Progress</span>
+                </td>
+                <td class="text-center">
+                  <a
+                    
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/brand-logos/bebo.svg"
+                        class="h-50 align-self-center"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Active Customers
+                  </a>
+                  <span class="text-muted fw-bold d-block">Movie Creator</span>
+                </td>
+                <td class="text-center text-muted fw-bold">AngularJS, C#</td>
+                <td class="text-center">
+                  <span class="badge badge-light-danger">Rejected</span>
+                </td>
+                <td class="text-center">
+                  <a
+                    
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/brand-logos/vimeo.svg"
+                        class="h-50 align-self-center"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    New Users
+                  </a>
+                  <span class="text-muted fw-bold d-block">Awesome Users</span>
+                </td>
+                <td class="text-center text-muted fw-bold">Laravel,Metronic</td>
+                <td class="text-center">
+                  <span class="badge badge-light-primary">Success</span>
+                </td>
+                <td class="text-center">
+                  <a
+                    
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/brand-logos/telegram.svg"
+                        class="h-50 align-self-center"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Popular Authors
+                  </a>
+                  <span class="text-muted fw-bold d-block">Most Successful</span>
+                </td>
+                <td class="text-center text-muted fw-bold">Python, MySQL</td>
+                <td class="text-center">
+                  <span class="badge badge-light-warning">In Progress</span>
+                </td>
+                <td class="text-center">
+                  <a
+                    
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+            <!-- end::Table body -->
+          </table>
+        </div>
+        <!-- end::Table -->
+      </div>
+      <!-- end::Tap pane -->
+    </div>
+
+  </ng-container>
+    <ng-template #noInHandPrizes>
+     <div class=" no-in-hand-cases">
+    <div class="in-hand-content">
+      <h1 class="fs-2 fw-bolder">You Currently Don't Have Prize To Work Yet</h1>
+      <span class="text-muted  fs-6 fw-bold">Search for a suitable prize now!</span>
+      <a [routerLink]="['/prizes/available-prizes']" class="btn btn-primary btn-sm mt-5 kt_modal_add_customer">Available Prizes</a>
+    </div>
+      
+      <img class="d-md-block d-none" style="width: 270px;"  src="../../../../../assets/media/illustrations/sketchy-1/inHandPrizes.svg" alt="in-hand-prize">
+     </div>
+    </ng-template>
+</div>
+<!-- end::Body -->

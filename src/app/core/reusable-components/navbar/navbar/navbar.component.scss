@@ -1,0 +1,44 @@
+
+.navbar {
+
+  flex-shrink: 0;
+  background: #FFF;
+  box-shadow: 0px -1px 0px 0px #E2E2EA inset;
+  border-bottom: 1px solid #f3f3f4;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1001;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .login-signup {
+    .login-nav-btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      color: #0778b9;
+      font-size: 13px;
+      text-decoration: none !important;
+      margin: 0 10px ;
+    }
+  }
+
+  .sign-up-nav{
+    color: #fff;
+    background: #0778b9;
+    font-size: 13px;
+    padding: 8px 20px;
+          text-decoration: none !important;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+}

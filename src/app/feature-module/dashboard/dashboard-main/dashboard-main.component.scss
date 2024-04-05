@@ -1,0 +1,81 @@
+.bg-gradient-primary {
+  background-image: linear-gradient(210deg, #f9f9f9 0%, #005aff 100%)
+}
+
+.bg-cover {
+  background-size: cover;
+}
+.spinner{
+  width: 100%;
+  height: 100%;
+}
+.spin-comp{
+  margin: auto;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+.cards-platform{
+padding: 0 12px;
+}
+.border-btn{
+  background: none;
+  padding: 5px 20px;
+  border: 1px solid #0778b9;
+  border-radius: 50px;
+  width: fit-content;
+  a{
+    text-decoration: none;
+
+  }
+}
+
+// 
+.complete-offer{
+  height: 200px !important;
+  max-height: 200px !important;
+}
+
+
+.overlay-blue{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/eurebag.png?alt=media&token=a1f04c50-fbd0-41da-8110-4f778da0e1a1');
+  background: rgb(7,120,185);
+  background: -moz-linear-gradient(90deg, rgba(7,120,185,0.6) 0%, rgba(176,212,233,0.3) 49%, rgba(255,255,255,0) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(7,120,185,0.6) 0%, rgba(176,212,233,0.3) 49%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(90deg, rgba(7,120,185,0.6) 0%, rgba(176,212,233,0.3) 49%, rgba(255,255,255,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0778b9",endColorstr="#ffffff",GradientType=1);
+border-radius: 10px;
+}
+
+
+.services {
+  &__area {
+    position: absolute;
+    top: 260px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10rem;
+    @media  (max-width:700px) {
+      padding: 0px 10px;
+    }
+  }
+
+}
+.content-wrapper{
+  max-width: 1700px;
+}
+.arrow-create{
+      border: none;
+    position: absolute;
+    top: 10px;
+   
+        right: 18px;
+}

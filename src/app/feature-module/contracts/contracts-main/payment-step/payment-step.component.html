@@ -1,0 +1,49 @@
+<div class="card paypal mb-3  w-md-530px w-lg-630px w-xl-800px">
+    <!--begin::Card body-->
+    <div class="card-body">
+        <!--begin::Row-->
+        <div class="row">
+            <!--begin::Col-->
+            <div class="col-lg-7 d-flex align-items-center w-100 justify-content-between">
+                <!--begin::Info-->
+           <div class="d-flex gap-10 align-items-center" >
+            <div class="paypal-logo my-5">
+           <img class="w-100px" src="https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/580b57fcd9996e24bc43c530.png?alt=media&token=621591b5-df2f-4b42-969f-b6ce85c2ed3a" alt="paypalLogo">
+            </div>
+           <div class="div">
+            <div class="fs-5">
+              <span class="text-primary fw-boldest me-1 "> <span class="fs-2">{{budget | currency}}</span></span> 
+          </div>
+          <!--end::Info-->
+
+          <!--begin::Notice-->
+          <div class=" fw-medium fs-7  text-gray-500">
+           {{budget}} USD case budget is required
+          </div>
+          <!--end::Notice-->
+           </div>
+           </div>
+               <div class="d-flex align-items-center py-2">
+                <a class="btn btn-sm me-2  text-white bg-success"
+                [class.btn-success]="!isFinalizing"
+                [class.btn-success]="isFinalizing"
+                (click)="toggleFinializing($event)"
+                >
+             
+             
+                 <span  *ngIf="isFinalizing" class="svg-icon svg-icon-3" >
+                 </span>
+             
+                 <span *ngIf="!isFinalizing">Proceed</span>
+                 <span *ngIf="isFinalizing">Please wait...
+                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                 </span>
+             </a>
+            </div>
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Card body-->
+</div>

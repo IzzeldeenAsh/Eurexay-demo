@@ -1,0 +1,9 @@
+hr.horizontal {
+  padding-top: 2px;
+  background-color: transparent;
+  border-top: none !important;
+}
+
+hr.horizontal.dark {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+}

@@ -1,0 +1,68 @@
+//
+// Stepper Links
+//
+
+// Base
+.stepper.stepper-links {
+    .stepper-nav {
+		display: flex;
+		margin: 0 auto;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+
+        .stepper-item {
+			position: relative;
+			flex-shrink: 0;
+			margin: 1rem 1.5rem;
+
+			// &:after {
+			// 	content: " ";
+			// 	position: absolute;
+			// 	top: 2.3rem;
+			// 	left: 0;
+			// 	height: 2px;
+			// 	width: 100%;
+			// 	background-color: transparent;
+			// 	transition: $transition-link;
+			// }
+
+            .stepper-title {
+                color: $dark;
+                font-weight:500;
+                font-size: 1rem;
+              padding: 10px 55px;
+
+            }
+
+            // Current
+            &.current {
+				transition: $transition-link;
+
+
+				.stepper-title {
+
+					color: $primary;
+          color: #0778b9;
+    background-color: #E7EDFA;
+    padding: 10px 55px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid #0778b9;
+    text-align: center;
+				}
+
+
+				&:after {
+					background-color: $primary;
+				}
+			}
+
+			&.completed {
+				.stepper-title {
+					color: $gray-400;
+				}
+			}
+        }
+    }
+}

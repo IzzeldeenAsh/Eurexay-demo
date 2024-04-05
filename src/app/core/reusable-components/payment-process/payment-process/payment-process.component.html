@@ -1,0 +1,505 @@
+<div class="bg-white p-4 border-right w-450px overflow-scroll">
+  <div
+    class="d-flex flex-column flex-grow-1 gap-7 my-4 my-8 px-5 me-3"
+    data-kt-scroll="true"
+    data-kt-scroll-height="auto"
+    data-kt-scroll-offset="5px"
+    style="height: 801px"
+  >
+    <ng-container *ngFor="let payment of payments; let i = index">
+
+      <ng-container *ngIf="payment.status === 'COMPLETED'">
+        <div class="d-flex align-items-center position-relative">
+          <div
+            class="d-flex flex-center flex-shrink-0 w-25px h-25px bg-light-success rounded-circle border border-success"
+          >
+            <div class="w-8px h-8px bg-success rounded-circle"></div>
+          </div>
+
+          <div
+            class="h-100 w-1px border-end border-success position-absolute translate-y-middle top-n50 bottom-50 app-sidebar-panel-timeline"
+          ></div>
+
+          <div
+            class="card border border-dashed d-flex flex-column p-6 gap-10 flex-grow-1 mb-2 ms-4"
+          >
+            <div class="d-flex flex-stack">
+              <div
+                class="d-flex flex-center h-40px w-40px flex-shrink-0 rounded-circle bg-gray-100 border border-gray-200"
+              >
+                <span class="svg-icon svg-icon-success svg-icon-2x"
+                  ><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Navigation/Check.svg--><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    version="1.1"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <polygon points="0 0 24 0 24 24 0 24" />
+                      <path
+                        d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z"
+                        fill="#000000"
+                        fill-rule="nonzero"
+                        transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) "
+                      />
+                    </g></svg
+                  ><!--end::Svg Icon--></span
+                >
+              </div>
+
+              <span
+                class="rounded text-success fw-semibold fs-8 bg-light-success py-1 px-2 border border-success-clarity"
+              >
+                {{ payment.status }}
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-column" *ngIf="payment.planningMethod !== 'DELIVERABLES'">
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Start: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-800">
+                   {{ payment.startDate | date }}
+                 </span>
+                </div>
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Due: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-800">
+                   {{ payment.dueDate | date }}
+                 </span>
+                </div>
+                 </div>
+              <div class="d-flex flex-column">
+                <span class="fs-base text-gray-500"> Payment {{ i + 1 }} </span>
+                <span class="fs-8 fw-bold text-gray-800">
+                  {{ payment.amount | currency }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="payment.status === 'IN_PROGRESS'">
+        <div class="d-flex align-items-center position-relative">
+          <div
+            class="d-flex flex-center flex-shrink-0 w-25px h-25px bg-light-primary rounded-circle border border-primary-clarity"
+          >
+            <div class="w-8px h-8px bg-primary rounded-circle"></div>
+          </div>
+          <div
+            class="h-100 w-1px border-end border-primary-clarity position-absolute translate-y-middle top-n50 bottom-50 app-sidebar-panel-timeline"
+          ></div>
+
+          <div
+            class="card border-0 d-flex flex-column p-6 gap-10 flex-grow-1 mb-2 ms-4"
+            style="
+              background: linear-gradient(180deg, #1858fd 0%, #003fde 100%);
+            "
+            data-bs-theme="light"
+          >
+            <div class="d-flex flex-stack">
+              <div
+                class="d-flex flex-center h-40px w-40px flex-shrink-0 rounded-circle border border-light-clarity"
+              >
+                <svg
+                  version="1.1"
+                  id="L9"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 100 100"
+                  enable-background="new 0 0 0 0"
+                  xml:space="preserve"
+                >
+                  <rect x="40" y="35" width="4" height="10" fill="#fff">
+                    <animateTransform
+                      attributeType="xml"
+                      attributeName="transform"
+                      type="translate"
+                      values="0 0; 0 20; 0 0"
+                      begin="0"
+                      dur="0.6s"
+                      repeatCount="indefinite"
+                    ></animateTransform>
+                  </rect>
+                  <rect x="50" y="35" width="4" height="10" fill="#fff">
+                    <animateTransform
+                      attributeType="xml"
+                      attributeName="transform"
+                      type="translate"
+                      values="0 0; 0 20; 0 0"
+                      begin="0.2s"
+                      dur="0.6s"
+                      repeatCount="indefinite"
+                    ></animateTransform>
+                  </rect>
+                  <rect x="60" y="35" width="4" height="10" fill="#fff">
+                    <animateTransform
+                      attributeType="xml"
+                      attributeName="transform"
+                      type="translate"
+                      values="0 0; 0 20; 0 0"
+                      begin="0.4s"
+                      dur="0.6s"
+                      repeatCount="indefinite"
+                    ></animateTransform>
+                  </rect>
+                </svg>
+              </div>
+
+              <span
+                class="rounded text-white fw-semibold fs-8 bg-white bg-opacity-10 py-1 px-2 border border-light-clarity"
+              >
+                IN PROGRESS
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-column" *ngIf="payment.planningMethod !== 'DELIVERABLES'">
+             <div class="d-flex-flex-row">
+              <span class="fs-base text-gray-500">Start: &nbsp; </span>
+              <span class="fs-8 fw-bold text-gray-100">
+                {{ payment.startDate | date }}
+              </span>
+             </div>
+             <div class="d-flex-flex-row">
+              <span class="fs-base text-gray-500">Due: &nbsp; </span>
+              <span class="fs-8 fw-bold text-gray-100">
+                {{ payment.dueDate | date }}
+              </span>
+             </div>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="fs-base text-gray-400"> Payment {{ i + 1 }} </span>
+                <span class="fs-8 fw-bold text-white">
+                  {{ payment.amount | currency }}
+                </span>
+              </div>
+
+              <span
+                *ngIf="loggenInUser === owner"
+                class="btn btn-sm rounded text-white fw-semibold fs-8 bg-white bg-opacity-5 bg-hover-primary py-1 px-2 border border-light-clarity"
+                (click)="dispute($event)"
+              >
+                Dispute
+              </span>
+              <ng-container  *ngIf="isAdmin">
+                <p-confirmPopup ></p-confirmPopup>
+                <span
+                 
+                  class="btn btn-sm rounded text-white fw-semibold fs-8 bg-white bg-opacity-5 bg-hover-danger py-1 px-2 border border-light-clarity"
+                  (click)="confirm2($event, payment.id)"
+                >
+                  Hold
+                </span>
+              </ng-container>
+              <ng-container   *ngIf="participantUsername === loggenInUser && payment.planningMethod === 'DELIVERABLES'">
+                <p-confirmPopup></p-confirmPopup>
+                <span
+               
+                  class="btn btn-sm rounded text-white fw-semibold fs-8 bg-white bg-opacity-5 bg-hover-success py-1 px-2 border border-light-clarity"
+                  (click)="confirm5($event, payment.id)"
+                >
+                  Submit
+                </span>
+              </ng-container>
+            
+            </div>
+          </div>
+        </div></ng-container
+      >
+      <ng-container *ngIf="payment.status === 'ON_HOLD'">
+        <div class="d-flex align-items-center position-relative">
+          <div
+            class="d-flex flex-center flex-shrink-0 w-25px h-25px bg-light-danger rounded-circle border border-primary-clarity"
+          >
+            <div class="w-8px h-8px bg-danger rounded-circle"></div>
+          </div>
+          <div
+            class="h-100 w-1px border-end border-primary-clarity position-absolute translate-y-middle top-n50 bottom-50 app-sidebar-panel-timeline"
+          ></div>
+
+          <div
+            class="card border-0 d-flex flex-column p-6 gap-10 flex-grow-1 mb-2 ms-4"
+            style="
+              background: linear-gradient(180deg, #fd4618 0%, #de0000 100%);
+            "
+            data-bs-theme="light"
+          >
+            <div class="d-flex flex-stack">
+              <div
+                class="d-flex flex-center h-40px w-40px flex-shrink-0 rounded-circle border border-light-clarity"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    opacity="0.34"
+                    d="M12 9V14"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M11.9999 21.41H5.93993C2.46993 21.41 1.01993 18.93 2.69993 15.9L5.81993 10.28L8.75993 5.00003C10.5399 1.79003 13.4599 1.79003 15.2399 5.00003L18.1799 10.29L21.2999 15.91C22.9799 18.94 21.5199 21.42 18.0599 21.42H11.9999V21.41Z"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    opacity="0.34"
+                    d="M11.9946 17H12.0036"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <span
+                class="rounded text-white fw-semibold fs-8 bg-white bg-opacity-10 py-1 px-2 border border-light-clarity"
+              >
+                HELD
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-column" *ngIf="payment.planningMethod !== 'DELIVERABLES'">
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Start: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-100">
+                   {{ payment.startDate | date }}
+                 </span>
+                </div>
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Due: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-100">
+                   {{ payment.dueDate | date }}
+                 </span>
+                </div>
+                 </div>
+              <div class="d-flex flex-column">
+                <span class="fs-base text-gray-400"> Payment {{ i + 1 }} </span>
+                <span class="fs-8 fw-bold text-white">
+                  {{ payment.amount | currency }}
+                </span>
+              </div>
+
+              <span
+                *ngIf="loggenInUser === owner"
+                class="btn btn-sm rounded text-white fw-semibold fs-8 bg-white bg-opacity-5 bg-hover-primary py-1 px-2 border border-light-clarity"
+                (click)="dispute($event)"
+              >
+                Dispute
+              </span>
+              <ng-container  *ngIf="isAdmin">
+                <p-confirmPopup>
+                  <ng-template pTemplate="content" let-message>
+                    <div
+                      class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border p-3 mb-3"
+                    >
+                      <i
+                        [class]="message.icon"
+                        class="text-6xl text-primary-500"
+                      ></i>
+                      <p>{{ message.message }}</p>
+                    </div>
+                  </ng-template>
+                </p-confirmPopup>
+                <span
+                 
+                  class="btn btn-sm rounded text-white fw-semibold fs-8 bg-white bg-opacity-5 bg-hover-danger py-1 px-2 border border-light-clarity"
+                  (click)="confirm3($event, payment.id)"
+                >
+                  Unhold
+                </span>
+              </ng-container>
+            
+            </div>
+          </div>
+        </div></ng-container
+      >
+      <ng-container *ngIf="payment.status === 'INACTIVE'">
+        <div class="d-flex align-items-center position-relative">
+          <div
+            class="d-flex flex-center flex-shrink-0 w-25px h-25px bg-light-gray-100 rounded-circle border border-gray-300"
+          >
+            <div
+              class="w-8px h-8px border border-gray-300 bg-gray-200 rounded-circle"
+            ></div>
+          </div>
+          <div
+            class="h-100 w-1px border-end border-gray-200 position-absolute translate-y-middle top-n50 bottom-50 app-sidebar-panel-timeline"
+          ></div>
+
+          <div
+            class="card border border-dashed d-flex flex-column p-6 gap-10 flex-grow-1 mb-2 ms-4"
+          >
+            <div class="d-flex flex-stack">
+              <div
+                class="d-flex flex-center h-40px w-40px flex-shrink-0 rounded-circle bg-gray-100 border border-gray-200"
+              >
+                <i class="ki-outline ki-pin text-gray-600 lh-0 fs-2"></i>
+              </div>
+
+              <span
+                class="rounded text-gray-400 fw-semibold fs-8 bg-light py-1 px-2 border border-primary-clarity"
+              >
+                {{ payment.status }}
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-column" *ngIf="payment.planningMethod !== 'DELIVERABLES'">
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Start: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-800">
+                   {{ payment.startDate | date }}
+                 </span>
+                </div>
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Due: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-800">
+                   {{ payment.dueDate | date }}
+                 </span>
+                </div>
+                 </div>
+                 
+              <div class="d-flex flex-column">
+                <span class="fs-base text-gray-500"> Payment {{ i + 1 }} </span>
+                <span class="fs-8 fw-bold text-gray-800">
+                  {{ payment.amount | currency }}
+                </span>
+              </div>
+              <ng-container    *ngIf="payment.planningMethod === 'DELIVERABLES' && loggenInUser === participantUsername && firstInactiveDeliverableIndex === i">
+                <span 
+                  class="btn btn-sm rounded fw-semibold text-success text-hover-white bg-light-success fs-8 bg-hover-success py-1 px-2 border border-light-clarity"
+                >
+                  ACTIVATE
+                </span>
+              </ng-container>
+            </div>
+            
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="payment.status === 'PENDING'">
+        <div class="d-flex align-items-center position-relative">
+          <div
+            class="d-flex flex-center flex-shrink-0 w-25px h-25px bg-light-warning rounded-circle border border-primary-clarity"
+          >
+            <div class="w-8px h-8px bg-warning rounded-circle"></div>
+          </div>
+          <div
+            class="h-100 w-1px border-end border-primary-clarity position-absolute translate-y-middle top-n50 bottom-50 app-sidebar-panel-timeline"
+          ></div>
+
+          <div
+            class="card border-0 d-flex flex-column p-6 gap-10 flex-grow-1 mb-2 ms-4"
+            style="
+              background: linear-gradient(180deg, #fda518 0%, #de8500 100%);
+            "
+            data-bs-theme="light"
+          >
+            <div class="d-flex flex-stack">
+              <div
+                class="d-flex flex-center h-40px w-40px flex-shrink-0 rounded-circle border border-light-clarity"
+              >
+                <div class="svg-icon svg-icon-white svg svg-icon-1">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M12 8V13"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12 22C7.17 22 3.25 18.08 3.25 13.25C3.25 8.42 7.17 4.5 12 4.5C16.83 4.5 20.75 8.42 20.75 13.25"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      opacity="0.4"
+                      d="M9 2H15"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      opacity="0.4"
+                      d="M14.9 18.5V17.34C14.9 15.91 15.92 15.32 17.16 16.04L18.16 16.62L19.16 17.2C20.4 17.92 20.4 19.09 19.16 19.81L18.16 20.39L17.16 20.97C15.92 21.69 14.9 21.1 14.9 19.67V18.5Z"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <span
+                class="rounded text-white fw-semibold fs-8 bg-white bg-opacity-10 py-1 px-2 border border-light-clarity"
+              >
+                {{ payment.status }}
+              </span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              
+              <div class="d-flex flex-column" *ngIf="payment.planningMethod !== 'DELIVERABLES'">
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Start: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-800">
+                   {{ payment.startDate | date }}
+                 </span>
+                </div>
+                <div class="d-flex-flex-row">
+                 <span class="fs-base text-gray-500">Due: &nbsp; </span>
+                 <span class="fs-8 fw-bold text-gray-800">
+                   {{ payment.dueDate | date }}
+                 </span>
+                </div>
+                 </div>
+              <ng-container    *ngIf="isAdmin">
+                <p-confirmPopup></p-confirmPopup>
+                <span
+                  *ngIf="isAdmin"
+                  class="btn btn-sm rounded text-white fw-semibold fs-8 bg-white bg-opacity-5 bg-hover-warning py-1 px-2 border border-light-clarity"
+                  (click)="confirm4($event, payment.id)"
+                >
+                  Release
+                </span>
+              </ng-container>
+             
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

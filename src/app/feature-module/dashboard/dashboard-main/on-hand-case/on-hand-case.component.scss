@@ -1,0 +1,34 @@
+.no-in-hand-cases{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    a{
+        width: fit-content
+    }
+    h1{
+        padding-top: 20px;
+    }
+    img{
+        width: 260px;
+    }
+  
+}
+.in-hand-content{
+    display: flex;
+    flex-direction: column;
+   }
+
+   @media (max-width:1399px) {
+    .no-in-hand-cases{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .kt_modal_add_customer{
+        margin: auto;
+    }
+}
+
+th,td{
+padding: 10px !important;
+}

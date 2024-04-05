@@ -1,0 +1,83 @@
+::ng-deep .mdc-form-field{
+  padding: 0 20px !important;
+      width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+
+        justify-content: space-between !important;
+}
+::ng-deep .mdc-radio {
+  order: 2 !important;
+}
+
+::ng-deep .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle {
+  border-color: #3763ba !important;
+}
+
+
+::ng-deep .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
+  border-color: #3763ba !important;;
+}
+
+::ng-deep .mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
+  background-color: #E7EDFA !important;
+}
+::ng-deep .mat-mdc-radio-button.mat-accent {
+  --mat-radio-checked-ripple-color: #E7EDFA !important;
+}
+::ng-deep .mdc-radio{
+  display: none !important;
+}
+::ng-deep .mdc-label{
+  width: 100% !important;
+}
+.role-select{
+background-color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 100%;
+    border :1px solid #e8e8e8;
+    gap:20px;
+    cursor: pointer;
+    img{
+      width: 60px;
+    }
+}
+
+        .checked {
+          box-shadow: 5.383093357086182px 30.529041290283203px 27px 0px rgba(1, 130, 213, 0.13);
+          position: relative;
+          z-index: 10;
+          border: none !important;
+        }
+ .auth-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+.role-select {
+  transition: all 0.3s ease;
+}
+
+.example-radio-button {
+  position: relative;
+}
+
+.role-select img {
+  transition: opacity 0.3s ease;
+  /* Apply opacity transition to the images */
+}
+
+.role-select.checked img:first-child {
+  opacity: 0;
+  /* Hide the unchecked icon when the radio button is checked */
+}
+
+.role-select.checked img:last-child {
+  opacity: 1;
+  /* Show the checked icon when the radio button is checked */
+}
+.radio-container{
+  width: 90%;
+  margin: auto;
+}

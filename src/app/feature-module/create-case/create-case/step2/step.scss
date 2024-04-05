@@ -1,0 +1,57 @@
+.remove-btn {
+    background: none;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+  
+    i {
+      color: #cc273f;
+    }
+  }
+  .add-req-invalid {
+   
+  }
+  
+  .add-req-valid {
+   
+  }
+  .delete-req {
+    background: none;
+    i {
+      color: red;
+    }
+  }
+  
+
+
+td {
+    max-width: 250px;
+    word-break: break-all;
+  }
+  
+  th {
+    color: #0778b9;
+    padding-left: 10px !important;
+    background-color: #e5f6ff;
+  }
+  
+  th:first-child {
+    border-top-left-radius: 8px;
+  }th:last-child {
+    border-top-right-radius: 8px;
+  }
+  
+  td {
+    max-width: 250px;
+    padding-left: 10px !important;
+    word-break: break-all;
+  }
+  
+  .attach-btn{
+    width: 100%;
+    background-color: #e1f1fa;
+    color: #0778b9;
+    border: 1px dashed;
+    padding: 13px 0;
+    border-radius: 8px;
+}

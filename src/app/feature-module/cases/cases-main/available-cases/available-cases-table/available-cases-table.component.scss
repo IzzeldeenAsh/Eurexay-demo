@@ -1,0 +1,80 @@
+.symbol{
+    box-shadow: 1px 2px 3px rgba(25, 105, 255, 0.1);
+  }
+  .case-card{
+    transition: all 0.2s ease-in-out;
+  }
+
+.content-available-cases{
+  border-left: 1px solid #f3f3f3 ;
+  display: flex;
+  width: 70%;
+  position: relative;
+  @media (max-width:576px) {
+    width: 100%;
+  }
+  .filter-btn{
+    height: fit-content;
+    position: absolute;
+    top: -50px;
+    z-index: 2;
+  }
+  @media screen and (max-width:400px) {
+    flex-direction: column;
+    .filter-btn{
+      margin: 5px 0;
+      right: 0;
+    }
+  }
+}
+.filter-drop{
+  background-color: #fff;
+  height: fit-content;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 3;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.filter-drop.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.filter{
+  width: 25%;
+  height: fit-content;
+  @media (max-width:576px) {
+    width: 100%;
+  }
+}
+.border-bottom{
+  border-bottom: 1px solid #f3f3f3;
+  padding: 0 !important;
+}
+.border-bottom:last-child{
+  border-bottom: none !important
+}
+.border-btn{
+  background: none;
+  padding: 5px 20px;
+  border: 1px solid #0778b9;
+  border-radius: 50px;
+  width: fit-content;
+  a{
+    text-decoration: none;
+
+  }
+}
+
+
+.arrow-create{
+  border: none;
+position: absolute;
+top: 10px;
+
+    right: 18px;
+}

@@ -1,0 +1,272 @@
+
+<div
+class=" 
+py-30
+"
+id="kt_create_account_stepper">
+<h1 class=" py-10 page-heading d-flex text-dark fw-bold fs-3 my-0 flex-column justify-content-center">
+  <ng-container *ngIf="newCase else EditCase">Create Case</ng-container>
+  <ng-template #EditCase>Edit Case</ng-template>
+</h1>
+<div
+class="    stepper stepper-pills stepper-column
+d-flex
+flex-column flex-xl-row flex-row-fluid"
+>
+  <div
+    class="
+      d-flex
+      justify-content-center
+      bg-white
+      rounded
+      justify-content-xl-start
+      flex-row-auto
+      w-100 w-xl-300px w-xxl-400px
+      me-9
+    "
+  >
+    <div class="px-6 px-lg-10 px-xxl-15 py-20">
+      <div class="stepper-nav">
+        <div
+          class="stepper-item"
+          [ngClass]="{
+            current: currentStep$.value === 1,
+            completed: currentStep$.value > 1
+          }"
+        >
+          <div class="stepper-line w-40px"></div>
+
+          <div class="stepper-icon w-40px h-40px">
+            <i class="stepper-check fas fa-check"></i>
+            <span class="stepper-number">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M14 7H10C8.35 7 7 8.35 7 10V14C7 15.65 8.35 17 10 17H14C15.65 17 17 15.65 17 14V10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 7V17" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12.98V15C2 20 4 22 9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+
+          <div class="stepper-label">
+            <h3 class="stepper-title">Case Info</h3>
+
+            <div class="stepper-desc fw-bold">Fill out the case details</div>
+          </div>
+        </div>
+
+        <div
+          class="stepper-item"
+          [ngClass]="{
+            current: currentStep$.value === 2,
+            completed: currentStep$.value > 2
+          }"
+        >
+          <div class="stepper-line w-40px"></div>
+
+          <div class="stepper-icon w-40px h-40px">
+            <i class="stepper-check fas fa-check"></i>
+            <span class="stepper-number">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12.3701 8.87988H17.6201"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.37988 8.87988L7.12988 9.62988L9.37988 7.37988"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.3701 15.8799H17.6201"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.37988 15.8799L7.12988 16.6299L9.37988 14.3799"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12.95V15C2 20 4 22 9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+
+          <div class="stepper-label">
+            <h3 class="stepper-title"> Scope Of Work</h3>
+            <div class="stepper-desc fw-bold">Add requirements for your case</div>
+          </div>
+        </div>
+
+        <div
+          class="stepper-item"
+          [ngClass]="{
+            current: currentStep$.value === 3,
+            completed: currentStep$.value > 3
+          }"
+        >
+          <div class="stepper-line w-40px"></div>
+
+          <div class="stepper-icon w-40px h-40px">
+            <i class="stepper-check fas fa-check"></i>
+            <span class="stepper-number">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18.0001 7.16C17.9401 7.15 17.8701 7.15 17.8101 7.16C16.4301 7.11 15.3301 5.98 15.3301 4.58C15.3301 3.15 16.4801 2 17.9101 2C19.3401 2 20.4901 3.16 20.4901 4.58C20.4801 5.98 19.3801 7.11 18.0001 7.16Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.9702 14.44C18.3402 14.67 19.8502 14.43 20.9102 13.72C22.3202 12.78 22.3202 11.24 20.9102 10.3C19.8402 9.59004 18.3102 9.35003 16.9402 9.59003"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.96998 7.16C6.02998 7.15 6.09998 7.15 6.15998 7.16C7.53998 7.11 8.63998 5.98 8.63998 4.58C8.63998 3.15 7.48998 2 6.05998 2C4.62998 2 3.47998 3.16 3.47998 4.58C3.48998 5.98 4.58998 7.11 5.96998 7.16Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.99994 14.44C5.62994 14.67 4.11994 14.43 3.05994 13.72C1.64994 12.78 1.64994 11.24 3.05994 10.3C4.12994 9.59004 5.65994 9.35003 7.02994 9.59003"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.0001 14.63C11.9401 14.62 11.8701 14.62 11.8101 14.63C10.4301 14.58 9.33008 13.45 9.33008 12.05C9.33008 10.62 10.4801 9.46997 11.9101 9.46997C13.3401 9.46997 14.4901 10.63 14.4901 12.05C14.4801 13.45 13.3801 14.59 12.0001 14.63Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14.91 17.78C13.32 16.72 10.69 16.72 9.08997 17.78C7.67997 18.72 7.67997 20.26 9.08997 21.2C10.69 22.27 13.31 22.27 14.91 21.2"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+
+          <div class="stepper-label">
+            <h3 class="stepper-title">Participants</h3>
+            <div class="stepper-desc fw-bold">Who can see your case?</div>
+          </div>
+        </div>
+
+        <div
+          class="stepper-item"
+          [ngClass]="{
+            current: currentStep$.value === 4,
+            completed: currentStep$.value > 4
+          }"
+        >
+          <div class="stepper-line w-40px"></div>
+
+          <div class="stepper-icon w-40px h-40px">
+            <i class="stepper-check fas fa-check"></i>
+            <span class="stepper-number"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+              <path d="M2.01196 13.05V15C2.01196 20 4.01196 22 9.01196 22H15.012C20.012 22 22.012 20 22.012 15V9C22.012 4 20.012 2 15.012 2H9.01196C4.01196 2 2.01196 4 2.01196 9"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8.33203 15.27L14.872 8.73004"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8.74197 10.37C9.42128 10.37 9.97195 9.81936 9.97195 9.14005C9.97195 8.46073 9.42128 7.91003 8.74197 7.91003C8.06266 7.91003 7.51196 8.46073 7.51196 9.14005C7.51196 9.81936 8.06266 10.37 8.74197 10.37Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.282 16.09C15.9613 16.09 16.512 15.5393 16.512 14.86C16.512 14.1807 15.9613 13.63 15.282 13.63C14.6027 13.63 14.052 14.1807 14.052 14.86C14.052 15.5393 14.6027 16.09 15.282 16.09Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg></span>
+          </div>
+
+          <div class="stepper-label">
+            <h3 class="stepper-title">Payment</h3>
+            <div class="stepper-desc fw-bold">Select your preferable payment</div>
+          </div>
+        </div>
+
+        <div
+          class="stepper-item"
+          [ngClass]="{ current: currentStep$.value === 5 }"
+        >
+          <div class="stepper-line w-40px"></div>
+
+          <div class="stepper-icon w-40px h-40px">
+            <i class="stepper-check fas fa-check"></i>
+            <span class="stepper-number"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M2 12.96V15C2 20 4 22 9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 10.38L16.12 9.25"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7.87988 12L10.6199 14.75L13.1699 12.21"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg></span>
+          </div>
+
+          <div class="stepper-label">
+            <h3 class="stepper-title">Publish</h3>
+            <div class="stepper-desc fw-bold">Ready? Publish your case now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="loading">
+    <app-wait-spinner class="m-auto"></app-wait-spinner>
+  </ng-container>
+  <div *ngIf="!loading" class="d-flex flex-row-fluid flex-center bg-white rounded">
+    <form
+      class="py-20 w-100 w-xl-900px px-9"
+      noValidate
+      id="kt_create_account_form"
+    >
+      <div class="current">
+        <ng-container *ngIf="currentStep$.value === 1">
+          <app-step1
+            class="w-100"
+            [updateParentModel]="updateAccount"
+            [defaultValues]="account$.value"
+          ></app-step1>
+        </ng-container>
+
+        <ng-container *ngIf="currentStep$.value === 2">
+          <app-step2
+            class="w-100"
+            [caseUUID]="newCaseUUID"
+            [updateParentModel]="updateAccount"
+            [defaultValues]="account$.value"
+          ></app-step2>
+        </ng-container>
+
+        <ng-container *ngIf="currentStep$.value === 3">
+          <app-step3
+            class="w-100"
+            [updateParentModel]="updateAccount"
+            [defaultValues]="account$.value"
+          ></app-step3>
+        </ng-container>
+
+        <ng-container *ngIf="currentStep$.value === 4">
+          <app-step4
+            class="w-100"
+            [updateParentModel]="updateAccount"
+            [defaultValues]="account$.value"
+          ></app-step4>
+        </ng-container>
+
+        <ng-container *ngIf="currentStep$.value === 5">
+          <app-step5 class="w-100" [caseUUID]="newCaseUUID"></app-step5>
+        </ng-container>
+      </div>
+
+      <div class="d-flex flex-stack pt-10">
+        <div class="mr-2">
+          <ng-container *ngIf="currentStep$.value !== 1">
+            <button
+              type="button"
+              class="btn btn-sm btn-light-primary me-3"
+              (click)="prevStep()"
+            >
+              <span
+                [inlineSVG]="'./assets/media/icons/duotune/arrows/arr063.svg'"
+                class="svg-icon svg-icon-4 me-1"
+              ></span>
+              Back
+            </button>
+          </ng-container>
+        </div>
+
+        <ng-container *ngIf="currentStep$.value !== formsCount">
+          <div>
+            <button
+            type="button"
+            class="btn btn-sm btn-primary me-3"
+            [disabled]="!isCurrentFormValid$.value || saving "
+            (click)="save()"
+          >
+            <span  *ngIf="!saving" class="indicator-label">
+                Save As Draft
+            </span>
+            <span *ngIf="saving">Please wait...
+              <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+          </span>
+          </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-primary me-3"
+              [disabled]="!isCurrentFormValid$.value || saving "
+              (click)="nextStep()"
+            >
+              <span class="indicator-label">
+                <ng-container *ngIf="currentStep$.value < formsCount - 1">
+                  Continue {{ " " }}
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr064.svg'
+                    "
+                    class="svg-icon svg-icon-3 ms-2 me-0"
+                  ></span>
+                </ng-container>
+                <ng-container *ngIf="currentStep$.value === formsCount - 1">
+                  Submit
+                </ng-container>
+              </span>
+            </button>
+         
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+</div>
+
+</div>

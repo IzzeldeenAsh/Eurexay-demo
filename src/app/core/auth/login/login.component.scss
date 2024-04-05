@@ -1,0 +1,104 @@
+
+.mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.login-wrap{
+
+
+    width: 100%;
+}
+@media (max-width:767px){
+  .login-wrap {
+
+      margin-top: 50px;
+
+    }
+}
+.plain{
+  box-shadow: none !important;
+}
+.head-auth{
+  h3{
+        font-weight: 700;
+          font-size: 27px;
+  }
+}
+.bg-gr{
+background-color: #e4e4e4 !important;
+}
+.card{
+  background: none !important;
+  padding-top: 150px;
+  @media (max-width:767px) {
+    padding-top: 50px;
+
+  }
+}
+
+.login-img{
+  height: 100vh !important;
+  max-height: 800px;
+    margin: 20px;
+  width: 100%;
+  border-radius: 10px;
+  top: -100px ;
+  padding: 20px 0;
+  img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    height: 100%;
+  }
+
+}
+.login-video{
+video{
+  border-radius: 10px;
+}
+
+}
+.background-img-fully{
+      width: 100vw;
+        height: 100vh;
+background:#f5f7fb;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#dfdfdf", GradientType=1);
+        position: absolute;
+        background-position: right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @media (max-width:1200px) {
+          background-position: left;
+        }
+}
+
+.globe{
+position: absolute;
+right: 5%;
+top: 10%;
+width: 50%;
+z-index: 1;
+img{
+  width: 100%;
+}
+}
+.login-form{
+  @media (max-width:991px) {
+      margin-right: auto;
+      margin-left: auto;
+  }
+}
+.welcome-text{
+  img{
+    position: absolute;
+    opacity: 0.17;
+    top: -4px;
+    width: 50px;
+    left: 214px;
+    @media (max-width:1163px) {
+      top: 28px;
+    left: 37px;
+    }
+  }
+}

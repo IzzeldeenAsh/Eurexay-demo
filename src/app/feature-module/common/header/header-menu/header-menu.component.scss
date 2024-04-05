@@ -1,0 +1,137 @@
+:host {
+  height: inherit;
+  width: inherit;
+}
+.header{
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  margin: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.header.scrolled{
+  position: fixed !important;
+  /* margin-top: 5px; */
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 1px -3px 18px rgba(0,0,0,0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+.icon{
+  fill:#06234D !important
+}
+    .feature-name{
+      color: #06234D;
+
+    }
+    .user-text{
+      h6{
+        color: #06234D;
+      }
+    }
+}
+a{
+  text-decoration: none !important;
+}
+.menu-link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex: 0 0 100%;
+  padding: 7px 0;
+  margin: 10px 0;
+  transition: none;
+  font-weight: 600;
+  min-width: fit-content;
+  outline: 0 !important;
+&:hover{
+ .menu-sub-d{
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.3s, opacity 0.3s;
+ }
+
+}
+
+.menu-sub-d {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s; /* Add transition here */
+}
+
+
+
+
+
+
+  span {
+    color: #A1A5B7;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-weight: 500;
+    padding: 2px 0;
+    i {
+      color: #f4f4f4;
+    }
+  }
+}
+
+.active {
+  transition: color .2s ease, background-color .2s ease;
+  border-radius: 4px;
+
+
+  .feature-name {
+    color: #10e1ff !important;
+  }
+
+  i {
+    color: #fff;
+  }
+}
+.user-text{
+  h6{
+    color: #fcfcfc;
+  }
+}
+.list-menu {
+  max-width: 100px;
+}
+
+.mobile_btn {
+
+  i {
+    color: #fff;
+    background-color: #0778b9;
+    padding: 11px;
+    border-radius: 50%;
+  }
+}
+.dark-logo{
+  width: 41px;
+    margin-right: 23px;
+}
+@media print {
+  .header {
+    display: none !important;
+  }
+}
+.nav-logo{
+  width: 100px;
+  margin-right: 30px;
+  height: 11px;
+  margin-top: 27px;
+}
+.cases-sub{
+  position: absolute;
+    top: 41px;
+    left: 24px;
+   
+}
+.prizes-sub{
+  position: absolute;
+    top: 41px;
+    left: 24px;
+}

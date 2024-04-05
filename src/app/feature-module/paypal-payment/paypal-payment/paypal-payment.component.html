@@ -1,0 +1,6 @@
+<div class="blue-bar"></div>
+
+<app-pending-payment  *ngIf="loader" ></app-pending-payment>
+<app-payment-successful  *ngIf="showSucess" [paymentId]="paymentId" [paymentType]="paymentType" [itemUUID]="itemUUID"></app-payment-successful>
+<app-payment-failed [errorMessage]="errorMessage"  *ngIf="showfailed"></app-payment-failed>
+

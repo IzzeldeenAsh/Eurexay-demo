@@ -1,0 +1,68 @@
+.remove-btn {
+    background: none;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+
+    i {
+      color: #cc273f;
+    }
+  }
+  .form-control.form-control-solid {
+    background-color: #fff !important;
+  }
+  .add-req-invalid {
+    width: fit-content;
+    margin-top: 10px;
+    display: block;
+    padding: 5px 20px;
+    background-color: #cacaca ;
+    border-radius: 10px;
+
+    color: #fff !important;
+  }
+  .add-req-valid {
+    background-color: #0778b9 !important;
+    border-radius: 21px;
+    color: #fff !important;
+    width: fit-content;
+    margin-top: 10px;
+    display: block;
+    border-radius: 10px;
+    padding: 5px 20px;
+    &:hover {
+      background-color: #0b3b80;
+    }
+  }
+  .delete-req {
+    background: none;
+    i {
+      color: red;
+    }
+  }
+
+td {
+    max-width: 250px;
+    word-break: break-all;
+  }
+
+  th {
+    color: #0778b9;
+    padding-left: 10px !important;
+    background-color: #e5f6ff;
+  }
+
+  th:first-child {
+    border-top-left-radius: 8px;
+  }th:last-child {
+    border-top-right-radius: 8px;
+  }
+
+  td {
+    max-width: 250px;
+    padding-left: 10px !important;
+    word-break: break-all;
+  }
+.add-relation-btn{
+  background: none;
+}

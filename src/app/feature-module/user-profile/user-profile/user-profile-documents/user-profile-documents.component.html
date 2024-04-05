@@ -1,0 +1,47 @@
+<ng-container *ngIf="loading">
+  <app-wait-spinner class="m-auto"></app-wait-spinner>
+</ng-container>
+<section class=" pt-10" *ngIf="!loading">
+
+  <!-- Certificates -->
+  <div class="row gy-5 gx-xl-10 pt-5">
+    <app-file-component [displayedCertificates]="displayedCertificates" [name]="'Certificates'"></app-file-component>
+    <div class="col-12 ">
+      <a  *ngIf="canEdit"
+      (click)="addCertificate()"
+      class="pb-10 add-dynamic d-flex flex-row align-items-center text-decoration-none cursor-pointer"
+    >
+      <i class="material-icons pr-10 fs-5">add_circle_outline</i>
+      <span class="fs-6">Add More Certificate</span></a>
+    </div>
+  </div>
+
+   <!-- Awards -->
+  <div class="row gy-5 gx-xl-10 pt-5">
+    <app-file-component [displayedCertificates]="displayedAwards" [name]="'Awards'"></app-file-component>
+    <div class="col-12"  *ngIf="canEdit">
+      <a
+      (click)="addAward()"
+      class="pb-10 add-dynamic d-flex flex-row align-items-center text-decoration-none cursor-pointer"
+    >
+      <i class="material-icons pr-10 fs-5">add_circle_outline</i>
+      <span class="fs-6">Add More Awards</span></a>
+    </div>
+  </div>
+
+  <!-- Accreditation -->
+  <div class="row gy-5 gx-xl-10 pt-5">
+    <app-file-component [displayedCertificates]="displayedAccreditation" [name]="'Accreditations'"></app-file-component>
+  
+    <div class="col-12" *ngIf="canEdit">
+      <a
+      (click)="addAccreditation()"
+      class="pb-10 add-dynamic d-flex flex-row align-items-center text-decoration-none cursor-pointer"
+    >
+      <i class="material-icons pr-10 fs-5">add_circle_outline</i>
+      <span class="fs-6">Add More Accreditation</span></a>
+    </div>
+  </div>
+
+</section>
+

@@ -1,0 +1,34 @@
+<div class="position-relative ">
+  <app-feature-header class="summary-header"
+  [icon]="'./assets/media/icons/prize.svg'"
+  [featureName]="'Prize'"
+  [creartLinkText]="'Start A Business Prize!'"
+  ></app-feature-header>
+  <div class="d-flex sub-nav-links ">
+    <div class="content-wrapper">
+      <div class="d-flex justify-content-end align-items-center  position-relative z-index-2 mt-10 container">
+        <div class="tabs-nav custom-tabs">
+          <a class="custom-tab position-relative" *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive
+            #rla="routerLinkActive" [class.active]="rla.isActive"  (click)="clearNotification(link.label)" id="navlink">
+            <div class="symbol-label d-inline-block pe-2">
+              <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
+              <span class="svg-icon svg-icon-2 " [class.svg-icon-gray-200]="rla.isActive" [class.svg-icon-gray-500]="!rla.isActive" [innerHTML]="link.icon">
+              </span>
+              <!--end::Svg Icon-->
+            </div>
+            {{link.label}}
+           <ng-container *ngIf="notifications && notifications.unseenNotificationsCount" >
+            <!-- <span *ngIf="link.label === 'Participated In Prizes' && notifications.unseenNotificationsCount['NEW_PRIZE_PARTICIPANT']" class="notification-badge">{{ notifications.unseenNotificationsCount.NEW_PRIZE_PARTICIPANT }}</span> -->
+            <span *ngIf="link.label === 'Available Prizes' && notifications.unseenNotificationsCount['AVAILABLE_PRIZE'] " class="notification-badge">{{ notifications.unseenNotificationsCount.AVAILABLE_PRIZE }}</span>
+           </ng-container>
+          </a>
+
+        </div>
+
+      </div>
+      <div class="custom-tab-content container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

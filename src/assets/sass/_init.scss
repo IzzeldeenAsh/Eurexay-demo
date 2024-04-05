@@ -1,0 +1,38 @@
+//
+// Main init file of global bootstrap and theme functions, mixins, variables and config
+//
+
+// Custom functions & mixins
+@import './core/base/functions';
+@import './core/base/mixins';
+@import './core/components/mixins';
+@import './core/vendors/plugins/mixins';
+
+// Custom variables
+@import './components/variables.custom';
+@import './core/components/variables';
+@import './core/components/variables.custom';
+@import './core/components/variables-dark';
+
+// Bootstrap initializaton
+@import'../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/mixins';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/variables-dark';
+@import'../../../node_modules/bootstrap/scss/maps';
+@import '../../../node_modules/bootstrap/scss/utilities';
+// 3rd-Party plugins variables
+@import './core/vendors/plugins/variables';
+
+
+// Custom layout variables
+@import 'layout/variables';
+
+$primary: #0778b9; // set the $primary variable
+$danger: #d51414; // set the $danger variable
+// merge with existing $theme-colors map
+$theme-colors: map-merge($theme-colors, ("primary": $primary));
+$theme-colors: map-merge($theme-colors, ("danger": $danger));
+
+// set changes
+@import "bootstrap";

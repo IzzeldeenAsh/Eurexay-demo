@@ -1,0 +1,30 @@
+.about{
+    white-space: break-spaces;
+}
+.case-abstract{
+    max-width: 570px;
+}
+.case-info-table{
+    border-collapse: collapse;
+    width: 100%;
+      border: none;
+    th, td {
+      border: none;
+      padding: 8px;
+      text-align: center;
+    }
+    tr:first-child th:first-child {
+      border-radius: 10px 0px 0px 0px;
+    }
+
+    tr:first-child th:last-child {
+      border-radius: 0px 10px 0px 0px;
+    }
+
+    tr{
+      border-bottom: 1px solid #E7EDFA;
+    }
+    th {
+      background-color: #E7EDFA;
+    }
+  }

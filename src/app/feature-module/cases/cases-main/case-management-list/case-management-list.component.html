@@ -1,0 +1,11 @@
+<div class="row g-5 gx-xxl-12 mt-1 m-auto  pb-50">
+  <div class="col-xxl-12">
+    <app-case-management-records *ngIf="managementRecords.length>0 else noData" [managementRecords]="managementRecords" [loading]="loaderSubject.getValue()"></app-case-management-records>
+    <ng-template #noData>
+   <div class="text-center pt-70">
+    <span class=" text-gray-400 fw-bold fs-4">No Availbale Cases</span>
+   </div>
+    </ng-template>
+    <div class="text-danger text-center pt-20 fs-6" *ngIf="errorMessage">Unexpected Error</div>
+      </div>
+</div>

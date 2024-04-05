@@ -1,0 +1,125 @@
+@use '../abstract' as *;
+
+
+.logo-sm-screen{
+  margin: 0 auto;
+  display: none;
+
+}
+.logo{
+  text-align: center;
+}
+.main-logo {
+  opacity: 20%;
+  margin: auto;
+  width: 55%;
+
+}
+.text-logo-l {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+// .auth-wrapper .authbox .auth-left {
+//   display: flex;
+//   align-items: center;
+// padding: 40px ;
+//   flex-direction: column;
+
+// }
+// .auth-wrapper .authbox .auth-right .auth-left-wrap {
+//   max-width: 100%;
+//   flex: 0 0 100%;
+// }
+// .auth-wrapper .authbox .auth-left h1 {
+//   font-size: 25px;
+//   font-weight: 200;
+//   margin-bottom: 5px;
+//   text-align: left;
+// }
+.full-width {
+  width: 100%;
+}
+.custom-input {
+  height: 60px;
+  font-size: 14px;
+  color: #8F9499;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.28px;
+  border-color: #D6DCE4;
+}
+.eye-icon{
+position: absolute !important;
+  top: 18px;
+  right: 1px;
+  background: none !important;
+      padding-bottom: 6px !important;
+        padding-right: 10px !important;
+}
+
+.forgot-pass{
+  display: block;
+  color: #07122F;
+  z-index: 99;
+  /* text-align: center; */
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  z-index: 99;
+  line-height: 150%;
+  letter-spacing: 0.28px;
+  span{
+    color: $e-blue;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  a{cursor: pointer !important; }
+  position: relative;
+    }
+
+@media (max-width:767px) {
+  .authbox{
+    padding-top: 50px;
+  }
+
+// .auth-wrapper .authbox {
+//   flex-direction: column;
+// }
+// .auth-wrapper .authbox .auth-right{
+//   position: relative;
+//   display: none;
+// }
+
+.logo-sm-screen{
+  margin-top: 70px;
+  display: block;
+}
+// .auth-wrapper .authbox .auth-left{
+//   text-align: center;
+//   h1{
+//     text-align: center;
+//   }
+//   width: 100%;
+// }
+}
+.to-home{
+position: absolute;
+  font-family: "poppins-m";
+  font-size: 14px;
+  z-index: 100;
+  top: 50px;
+  left: 27px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.28px;
+    a{
+          color: #07122F !important;
+            text-decoration: none;
+    }
+}

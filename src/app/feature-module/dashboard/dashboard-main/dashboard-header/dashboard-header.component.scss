@@ -1,0 +1,126 @@
+.bg-gradient-primary {
+background-image: -webkit-linear-gradient(210deg, #0049d2 0%, #0049d2 100%);
+  background-image: -moz-linear-gradient(210deg, #0049d2 0%, #0049d2 100%);
+  background-image: -o-linear-gradient(210deg, #0049d2 0%, #0049d2 100%);
+  background-image: linear-gradient(240deg, #0049d2 0%, #0049d2 100%);
+  background-color: #0049d2;
+}
+.video-bg{
+  background-color: #06234D;
+}
+.animate-text {
+  font-family: 'Poppins', sans-serif;
+      padding-left: 65px;
+}
+.page-header{
+  min-height: 367px;
+}
+.animate-text span {
+  color: transparent;
+  animation: blur 10s forwards;
+  -webkit-animation: blur 10s forwards;
+  /* Safari and older Chrome versions */
+}
+
+.animate-text span:nth-child(1) {
+  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+  /* Safari and older Chrome versions */
+}
+
+.animate-text span:nth-child(2) {
+  animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+  /* Safari and older Chrome versions */
+}
+
+.animate-p {
+  color: transparent;
+  animation: blur 10s forwards;
+  -webkit-animation: blur 10s forwards;
+  /* Safari and older Chrome versions */
+  animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+  /* Safari and older Chrome versions */
+}
+.filter {
+  position: absolute;
+  backdrop-filter: blur(1px);
+  z-index: 1;
+  color: transparent;
+}
+.min-height-500 {
+  min-height: 400px;
+}
+
+@keyframes blur {
+  0% {
+    text-shadow: 0 80px 100px #fff;
+    opacity: 0;
+  }
+
+  5% {
+    text-shadow: 0 50px 90px #fff;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  20% {
+    text-shadow: 0 0 0px #fff;
+  }
+
+  80% {
+    text-shadow: 0 0 0px #fff;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  95% {
+    text-shadow: 0 0 0px #fff;
+  }
+
+  100% {
+    text-shadow: 0 0 0px #fff;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blur {
+  0% {
+    text-shadow: 0 80px 100px #fff;
+    opacity: 0;
+  }
+
+  5% {
+    text-shadow: 0 50px 90px #fff;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  20% {
+    text-shadow: 0 0 0px #fff;
+  }
+
+  80% {
+    text-shadow: 0 0 0px #fff;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  95% {
+    text-shadow: 0 0 0px #fff;
+  }
+
+  100% {
+    text-shadow: 0 0 0px #fff;
+    opacity: 1;
+  }
+}

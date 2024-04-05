@@ -1,0 +1,18 @@
+.main-splash{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f7fb;;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 5000;
+}
+.video-bg-splash{
+  width: 70%;
+    margin: auto;
+  @media (max-width:800px) {
+    width: 100%;
+    transform: scale(1.5);
+  }
+}

@@ -1,0 +1,60 @@
+ /* Footer */
+ footer {
+    display: flex;
+    justify-content: space-between;
+   
+  }
+
+  .blank{
+    height: 50px ;
+    background:none;
+    width: 100%;
+  }
+  
+  .case-info-table{
+    border-collapse: collapse;
+    width: 100%;
+      border: none;
+    th, td {
+      border: none;
+      padding: 8px;
+      text-align: center;
+    }
+    tr:first-child th:first-child {
+      border-radius: 10px 0px 0px 0px;
+    }
+
+    tr:first-child th:last-child {
+      border-radius: 0px 10px 0px 0px;
+    }
+
+    tr{
+      border-bottom: 1px solid #E7EDFA;
+    }
+    th {
+      background-color: #E7EDFA;
+    }
+  }
+  .case-icon{
+    width: 50px;
+height: 50px;
+flex-shrink: 0;
+border-radius: 10px;
+background: #E7EDFA;
+display: flex;
+svg{
+  width: 30px;
+  height: 30px;
+  margin: auto;
+}
+  }
+  .paypal-logo{
+    width: 137px;
+    background-color: #e7edfa;
+    padding: 20px;
+    border-radius: 10px;
+    svg{
+      width: 100px;
+    }
+  }
+  

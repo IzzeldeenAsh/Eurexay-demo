@@ -1,0 +1,152 @@
+<div class="card">
+  <!--begin::Card header-->
+  <div class="card-header card-header-stretch border-bottom border-gray-200">
+    <!--begin::Title-->
+    <div class="card-title">
+      <h3 class="fw-bold m-0">Cases List</h3>
+    </div>
+  </div>
+  <!--end::Card header-->
+  <!--begin::Tab Content-->
+  <div class="tab-content">
+    <!--begin::Tab panel-->
+    <div
+      id="kt_billing_months"
+      class="card-body p-0 tab-pane fade active show"
+      role="tabpanel"
+      aria-labelledby="kt_billing_months"
+    >
+      <!--begin::Table container-->
+      <div class="table-responsive">
+        <!--begin::Table-->
+        <div class="fv-row grid-item position-relative search-filter my-3">
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-5 fw-bold mb-2 search-label">
+              <span class="fw-medium pl-5">
+                <span class="svg-icon svg-icon-primary">
+                  <span
+                    [inlineSVG]="'./assets/media/icons/duotune/general/gen004.svg'"
+                    class="svg-icon svg-icon-1"
+                  ></span>
+                </span>
+              </span>
+            </label>
+            <input
+              type="text"
+              class="form-control form-control-lg form-control-solid"
+              name="name"
+              placeholder="Search"
+              (input)="applyFilterGlobal($event, 'contains')"
+              #input
+            />
+          </div>
+<p-table
+        #dt1
+        [value]="managementRecords"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['Case']"
+        >
+        <ng-template pTemplate="header">
+            <tr>
+                <th  class="text-gray-600">
+                    <div class="flex align-items-center">
+                        Case
+                    </div>
+                </th>
+                <th  class="text-gray-600">
+                    <div class="flex align-items-center">
+                        Status
+                    </div>
+                </th>
+                <th  class="text-gray-600">
+                    <div class="flex align-items-center">
+                        Progress
+                    </div>
+                </th>
+                <th  class="text-gray-600">
+                    <div class="flex align-items-center">
+                       Participant
+                    </div>
+                </th>
+                <th >
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-case>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center pl-10">
+                  <div class="symbol symbol-60px me-5">
+                    <ng-container
+                      *ngIf="case.contractDTO.owner.profilePicBase64; else noImage"
+                    >
+                      <img
+                        [src]="
+                          'data:image/jpeg;base64,' +
+                          case.contractDTO.owner.profilePicBase64
+                        "
+                        alt="case-img"
+                      />
+                    </ng-container>
+                    <ng-template #noImage>
+                      <img
+                        src="https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/image%20project.png?alt=media&token=19555bcf-e269-47b4-a33a-2df0b6f9e8f6"
+                        class=""
+                        alt=""
+                      />
+                    </ng-template>
+                  </div>
+                  <div class="d-flex justify-content-start flex-column">
+                    <a
+                      class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                    >
+                      {{ case.contractDTO.businessCase.name }}
+                    </a>
+                    <span class="text-muted fw-bold text-muted d-block fs-7">
+                      {{ case.contractDTO.owner.participantType }}
+                    </span>
+                  </div>
+                </div>
+              </td>
+                <td class="text-primary" >
+                  <span
+                  class="badge"
+                  [ngClass]="{
+          ' badge-light-primary': case.status === 'IN_PROGRESS',}"
+                >
+                  <ng-container>{{
+                    case.status === "IN_PROGRESS" ? "IN PROGRESS": case.status
+                  }}</ng-container>
+                </span>
+                </td>
+                <td class="p-0">
+                  <div class="d-flex align-items-center w-100 ">
+                    <!--begin::Progress-->
+                    <div class="progress h-6px w-100 mx-3 bg-gray-300">
+                        <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="case.progressPercentage"  aria-valuenow="62" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                    <!--end::Progress-->
+                    <!--begin::Value-->
+                    <span class="text-gray-500 fw-bold fs-6">
+                        {{case.progressPercentage}}%
+                    </span>
+                    <!--end::Value-->
+                </div>
+                </td>
+                <td><a (click)="navigateToParticipant(case.contractDTO.participant.userDto.username)" class="cursor-pointer text-primay"> {{case.contractDTO.participant.fullName}}</a></td>
+                <td><a class="btn btn-sm btn-light btn-active-light-primary cursor-pointer" (click)="navigateTocaseManage(case.id)">Manage</a></td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+      </div>
+    </div>
+  </div>
+</div>

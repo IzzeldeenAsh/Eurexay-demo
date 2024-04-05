@@ -1,0 +1,158 @@
+<div
+class="flex-column flex-lg-row-auto w-100 w-lg-350px w-xl-300px mb-10 order-1 order-lg-2 participant"
+>
+<!--begin::Card-->
+<div
+  class="card card-flush pt-3 mb-0"
+  data-kt-sticky="true"
+  data-kt-sticky-name="subscription-summary"
+  data-kt-sticky-offset="{default: false, lg: '200px'}"
+  data-kt-sticky-width="{lg: '250px', xl: '300px'}"
+  data-kt-sticky-left="auto"
+  data-kt-sticky-top="150px"
+  data-kt-sticky-animation="false"
+  data-kt-sticky-zindex="95"
+>
+  <!--begin::Card header-->
+  <div class="card-header">
+    <!--begin::Card title-->
+    <div class="card-title">
+      <h2>Owner</h2>
+    </div>
+    <!--end::Card title-->
+  </div>
+  <!--end::Card header-->
+  <!--begin::Card body-->
+  <div class="card-body pt-0 fs-6">
+    <!--begin::Section-->
+    <div class="mb-7">
+      <!--begin::Title-->
+      <!--end::Title-->
+      <!--begin::Details-->
+      <div class="d-flex align-items-center">
+        <!--begin::Avatar-->
+        <div class="symbol symbol-50px symbol-circle">
+          <img
+            [src]="
+              'data:image/jpeg;base64,' +
+              currentContract.owner.profilePicBase64
+            "
+            class=""
+            alt="profile-pic"
+          />
+        </div>
+        <!--end::Avatar-->
+        <!--begin::Details-->
+        <div class="ms-5">
+          <a
+            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2"
+            >{{ currentContract.owner.instituteName }}</a
+          >
+          <div class="fw-bold text-muted">
+            {{ currentContract.owner.fullName }}
+          </div>
+        </div>
+        <!--end::Details-->
+      </div>
+      <!--end::Details-->
+      <!--begin::Email-->
+      <!--end::Email-->
+    </div>
+    <!--end::Section-->
+    <!--begin::Seperator-->
+    <div class="separator separator-dashed mb-7"></div>
+    <!--end::Seperator-->
+    <!--begin::Section-->
+    <div class="mb-7">
+      <!--begin::Title-->
+      <h5 class="mb-3">Personal details</h5>
+      <!--end::Title-->
+      <!--begin::Details-->
+      <div class="mb-0">
+        <!--begin::Plan-->
+        <span
+          [ngClass]="{
+            ' badge-light-primary':
+              currentContract.owner.participantType ===
+              'BUSINESS',
+            ' badge-light-warning ':
+              currentContract.owner.participantType ===
+              'INDIVIDUAL',
+            '  badge-light-success':
+              currentContract.owner.participantType ===
+              'RESEARCHER'
+          }"
+          class="badge me-2"
+          >{{ currentContract.owner.participantType }}</span
+        >
+        <!--end::Plan-->
+        <!--begin::Price-->
+        <span class="fw-bold text-gray-600">
+          <span class="pl-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 13 13"
+              fill="none"
+            >
+              <path
+                d="M6.4427 10.3131L9.56732 12.2029C10.1395 12.5493 10.8397 12.0373 10.6892 11.3898L9.86095 7.83601L12.6242 5.44173C13.1286 5.00503 12.8576 4.17682 12.195 4.12412L8.5584 3.81542L7.13539 0.457399C6.87939 -0.152466 6.00601 -0.152466 5.75001 0.457399L4.327 3.80789L0.690395 4.11659C0.027826 4.16929 -0.243225 4.9975 0.261231 5.4342L3.02445 7.82848L2.19623 11.3823C2.04565 12.0298 2.74586 12.5418 3.31808 12.1954L6.4427 10.3131Z"
+                fill="#E79E08"
+              />
+            </svg> </span
+        ></span>
+        <!--end::Price-->
+      </div>
+      <!--end::Details-->
+    </div>
+    <!--end::Section-->
+    <!--begin::Seperator-->
+    <div class="separator separator-dashed mb-7"></div>
+    <!--end::Seperator-->
+    <!--begin::Section-->
+    <div class="mb-10">
+      <!--begin::Title-->
+      <h5 class="mb-3">Details</h5>
+      <!--end::Title-->
+      <!--begin::Details-->
+
+      <div class="fw-bold text-gray-600 d-flex flex-column">
+        <div>{{ currentContract.owner.continent }}</div>
+        <div class="d-block">
+          Country : {{ currentContract.owner.country }}
+        </div>
+        <!--end::Card info-->
+        <!--begin::Card expiry-->
+        <!--end::Card expiry-->
+      </div>
+      <!--end::Details-->
+    </div>
+    <!--end::Section-->
+    <!--begin::Actions-->
+    <div class="mb-0">
+      <button
+        type="submit"
+        class="btn btn-primary btn-sm"
+        id="kt_subscriptions_create_button"
+        (click)="
+          viewprofile(currentContract.owner.userDto.username)
+        "
+      >
+        <!--begin::Indicator-->
+        <span class="indicator-label">View Profile</span>
+        <span class="indicator-progress"
+          >Please wait...
+          <span
+            class="spinner-border spinner-border-sm align-middle ms-2"
+          ></span
+        ></span>
+        <!--end::Indicator-->
+      </button>
+    </div>
+    <!--end::Actions-->
+  </div>
+  <!--end::Card body-->
+</div>
+<!--end::Card-->
+</div>

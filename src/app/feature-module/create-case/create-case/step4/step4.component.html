@@ -1,0 +1,59 @@
+<div class="pb-10 pb-lg-15">
+  <h2 class="fw-bolder text-dark">Case Payment</h2>
+ 
+</div>
+<!--begin::Card body-->
+<div class="card-body pt-0">
+
+  <!--begin::Input group-->
+  <div class="fv-row mb-10">
+    <!--begin::Label-->
+    <label class="fs-6 fw-bold mb-2 text-uppercase text-primary">Payment Type
+    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Select a discount type that will be applied to this product"></i></label>
+    <!--End::Label-->
+    <!--begin::Row-->
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 mt-2" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
+      <!--begin::Col-->
+      <div class="col" *ngFor="let method of paymentMethods">
+        <!--begin::Option-->
+
+          <!--begin::Option-->
+          <label [class.active]="selectedPaymentOption === method.value" class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start px-4 py-3" data-kt-button="true">
+            <!--begin::Radio-->
+            <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+              <input class="form-check-input" type="radio" name="discount_option" [value]="method.value" (change)="onPaymentOptionChange($event)" [checked]="selectedPaymentOption === method.value" />
+            </span>
+            <!--end::Radio-->
+            <!--begin::Info-->
+            <span class="ms-5">
+              <span class="fs-5 fw-bolder text-gray-800 d-block">{{ method.label }}</span>
+            </span>
+            <!--end::Info-->
+          </label>
+          <!--end::Option-->
+
+        <!--end::Option-->
+      </div>
+      <!--end::Col-->
+
+    </div>
+    <!--end::Row-->
+  </div>
+  <!--end::Input group-->
+  <!--begin::Input group-->
+  <div class="fv-row mb-10" *ngIf="selectedPaymentOption === '1'">
+    <app-monthly-payment (paymentsCompleted)="monthlyPaymentsArray($event)"  [monthlyPayments]="monthlyPayments" [caseBudget]="caseBudget"  [paymentsList]="paymentsList"></app-monthly-payment>
+  </div>
+  <!--end::Input group-->
+  <!--begin::Input group-->
+  <div class=" mb-10 fv-row" id="kt_ecommerce_add_product_discount_fixed" *ngIf="selectedPaymentOption === '2'">
+    <app-quarterly-payment (paymentsCompleted)="quarteltyPaymentsArray($event)"  [quarterlyPayments]="quarterlyPayments" [caseBudget]="caseBudget"  [paymentsList]="paymentsList"  ></app-quarterly-payment>
+  </div>
+  <!--end::Input group-->
+
+  <div class="d-flex flex-wrap justify-content-center w-100" id="taxt_class" *ngIf="selectedPaymentOption === '3'">
+    <app-deliverables-payment (paymentsCompleted)="deliverablesList($event)"   class="w-100" [caseBudget]="caseBudget"  [paymentsList]="paymentsList" ></app-deliverables-payment>
+  </div>
+
+</div>
+<!--end::Card header-->

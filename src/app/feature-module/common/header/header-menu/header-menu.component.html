@@ -1,0 +1,32 @@
+<!-- Dashboard -->
+<img src="https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/logo-white.png?alt=media&token=a336fc4a-90df-4c6f-95e4-619bc82eca05" class="d-none d-md-block nav-logo" alt="logo" cla *ngIf="!showBlue">
+
+<div class="d-none d-lg-block header-middle">
+  <div class="list-menu d-flex gap-1  ">
+    <ng-container *ngFor="let mainTittle of side_bar_data ">
+      <ng-container *ngFor="let menu of mainTittle?.menu">
+        <a class="menu-link  position-relative" [class.active]="base === menu.base " [routerLink]=" menu.route">
+          <span class="menu-element">
+            <span
+              class="d-flex text-decoration-none justify-content-center align-items-center ">
+
+              <span class="feature-name">{{ menu?.menuValue }}</span></span>
+          </span>
+          <ng-container *ngIf="menu.menuValue ==='Cases'">
+            <app-cases-sub-menu class="cases-sub menu-sub-d"></app-cases-sub-menu>
+          </ng-container>
+          
+          <ng-container *ngIf="menu.menuValue ==='Prizes'">
+            <app-prizes-sub class="prizes-sub menu-sub-d"></app-prizes-sub>
+          </ng-container>
+          
+          <span class="menu-arrow d-lg-none"></span>
+        </a>
+      </ng-container>
+    </ng-container>
+
+  </div>
+</div>
+
+
+

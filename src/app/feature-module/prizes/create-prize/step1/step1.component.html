@@ -1,0 +1,143 @@
+<div class="pb-10 pb-lg-12">
+    <h2 class="fw-bolder text-dark">Prize Details</h2>
+  </div>
+  <div [formGroup]="form">
+    <div class="fv-row mb-10">
+      <label class="form-label required text-primary">Prize Title</label
+      ><input
+        name="prizeTitle"
+        class="form-control form-control-lg form-control-solid"
+        formControlName="prizeTitle"
+        placeholder="Enter Prize Title"
+      />
+      <div
+        class="fv-plugins-message-container invalid-feedback"
+        *ngIf="
+          form.get('prizeTitle')?.hasError('required') &&
+          form.get('prizeTitle')?.touched
+        "
+      >
+        Prize Title is required
+      </div>
+    </div>
+    <!-- <div class="fv-row mb-10">
+        <label class="form-label required  text-primary">Who Can Participate</label
+        ><select
+          name="whoCanParticipate"
+          class="form-select form-select-lg form-select-solid"
+          formControlName="whoCanParticipate"
+        >
+          <option value="INDIVIDUAL">Individual</option>
+          <option value="BUSINESS">Business Owner</option>
+          <option value="RESEARCHER">Researchers</option>
+          <option value="ALL">All</option>
+        </select>
+      </div> -->
+      <div class="fv-row mb-10">
+        <label class="form-label required  text-primary">Prize Description</label
+        >
+        <quill-editor class="content-editor w-100" [placeholder]="''" [modules]="quillConfiguration" [formControl]="prizAbstract"> </quill-editor>
+       
+      </div>
+      <div class="fv-row mb-10">
+        <label class="form-label required  text-primary">Prize Requirements</label
+        ><textarea
+          name="prizeRequirements"
+          class="form-control form-control-lg form-control-solid"
+          rows="3"
+          formControlName="prizeRequirements"
+          placeholder="Enter Prize Requirements"
+        ></textarea>
+      </div>
+   <!--begin::Form-->
+<div >
+  <!--begin::Input group-->
+  <div class="form-group row">
+      <!--begin::Label-->
+      <label class="col-lg-2 col-form-label text-lg-right  text-primary">Upload Files:</label>
+      <!--end::Label-->
+      <!--begin::Col-->
+    <div class="col-lg-10">
+      <div class="col-lg-10">
+        <!--begin::Dropzone-->
+        <div class="dropzone dropzone-queue mb-2" id="kt_dropzonejs_example_3">
+            <!--begin::Controls-->
+            <div class="dropzone-panel mb-lg-0 mb-2">
+              <input type="file" id="fileInput" (change)="handleFileInput($event)" style="display: none" multiple>
+                <button class="dropzone-select btn btn-sm btn-primary me-2" (click)="attchFile()">Attach files</button>
+                <button class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</button>
+            </div>
+            <!--end::Controls-->
+
+            <!--begin::Items-->
+            <div class="dropzone-items wm-200px">
+                <div class="dropzone-item" style="display:none">
+                    <!--begin::File-->
+                    <div class="dropzone-file">
+                        <div class="dropzone-filename" title="some_image_file_name.jpg">
+                            <span data-dz-name>some_image_file_name.jpg</span>
+                            <strong>(<span data-dz-size>340kb</span>)</strong>
+                        </div>
+
+                        <div class="dropzone-error" data-dz-errormessage></div>
+                    </div>
+                    <!--end::File-->
+
+                    <!--begin::Progress-->
+                    <div class="dropzone-progress">
+                        <div class="progress">
+                            <div
+                                class="progress-bar bg-primary"
+                                role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Progress-->
+
+                    <!--begin::Toolbar-->
+                    <div class="dropzone-toolbar">
+                        <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Items-->
+        </div>
+        <!--end::Dropzone-->
+
+        <!--begin::Hint-->
+        <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+        <!--end::Hint-->
+    </div>
+    <div class="col-lg-10" *ngFor="let file of uploadedFiles; let i = index">
+      <div class="dropzone dropzone-queue mb-2">
+       <div class="dropzone-item dz-processing dz-image-preview dz-success dz-complete">
+         <div class="dropzone-file">
+           <div class="dropzone-filename">
+             {{ file.name }} 
+             <strong>
+               ({{ file.size / 1024 | number:'1.2-2' }} KB)
+             </strong>
+           </div>
+         </div>
+         <div class="dropzone-progress">
+           <div class="progress" >
+             <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress="" style="opacity: 0; width: 100%;"></div>
+           </div>
+         </div>
+         <div class="dropzone-toolbar">
+           <div class="dropzone-delete">
+             <i class="bi bi-x fs-1" (click)="deleteFile(i)"></i>
+           </div>
+         </div>
+       </div>
+      </div>
+     </div>
+    </div>
+      <!--end::Col-->
+  </div>
+  <!--end::Input group-->
+</div>
+<!--end::Form-->
+  </div>
+  

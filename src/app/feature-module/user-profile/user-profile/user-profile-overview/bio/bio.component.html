@@ -1,0 +1,54 @@
+<div class="card-header border-0 pt-10">
+  <!-- begin::Title-->
+
+  <div class="card-toolbar">
+    <span class="badge fw-bolder fs-7 me-auto px-4 py-3 badge-light-primary">
+     About
+    </span>
+        <!-- begin::Edit-->
+       <ng-container *ngIf="canEdit">
+        <a  (click)="toggleEdit()"
+        class=" btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow align-self-center ml-10"> <i
+          class="bi bi-pencil-fill fs-7"></i></a>
+       </ng-container>
+       
+        <!-- end::Edit-->
+  </div>
+  <!-- end::Title-->
+
+  <!-- begin::Toolbar-->
+  <div class="card-toolbar">
+      <div class="institute-logo badge-light-primary">
+          <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/63ec4c91-f6d4-4b5b-84b0-6af2c1312d1c/dfpbq6p-ff4cd882-1ef8-4124-b91e-144e4d425378.png/v1/fill/w_200,h_200/windows_11_logo_by_rejaneappel_dfpbq6p-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjAwIiwicGF0aCI6IlwvZlwvNjNlYzRjOTEtZjZkNC00YjViLTg0YjAtNmFmMmMxMzEyZDFjXC9kZnBicTZwLWZmNGNkODgyLTFlZjgtNDEyNC1iOTFlLTE0NGU0ZDQyNTM3OC5wbmciLCJ3aWR0aCI6Ijw9MjAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.mK_k6CPLUNGroX5LXMgK0JxZuOQTO6vAcZ-0r8y3wmY" alt="logo">
+      </div>
+
+  </div>
+
+  <!-- end::Title-->
+
+  <!-- begin::Toolbar-->
+
+  <!-- end::Toolbar-->
+</div>
+<!-- end::Header-->
+
+<!-- begin::Body-->
+<ng-container *ngIf="loading">
+  <app-wait-spinner class="m-auto"></app-wait-spinner>
+</ng-container>
+
+<div class="card-body" *ngIf="!loading">
+  <!-- begin::Chart-->
+  <ng-container *ngIf="isEditing; else displayText">
+    <textarea [(ngModel)]="content" rows="5" class="form-control fs-7 fw-medium " style="min-height: 500px; overflow: scroll;"></textarea>
+    <button (click)="updateBio()" class="btn btn-primary mt-2">Save</button>
+  </ng-container>
+
+  <ng-template #displayText>
+    <p [ngClass]="{
+      'text-center' : content === null ,  'text-start': content !==null
+    }">{{ content }}</p>
+  </ng-template>
+
+
+</div>

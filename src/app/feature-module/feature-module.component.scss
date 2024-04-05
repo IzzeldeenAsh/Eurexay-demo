@@ -1,0 +1,35 @@
+@media print {
+  .nav{
+    display: none !important;
+  }
+}
+.header{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+app-notifications-inner {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  right: 0;
+  width: 500px;
+  @media (max-width:600px) {
+  width: 300px;
+  }
+}
+.showNotifications{
+  visibility: visible;
+  opacity: 1;
+
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed; /* Changed from absolute to fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+}
+.showNotifications, .overlay {
+  transition: opacity 0.3s ease-in-out;
+}

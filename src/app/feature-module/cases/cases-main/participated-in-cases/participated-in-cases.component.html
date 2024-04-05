@@ -1,0 +1,21 @@
+
+
+      <ng-container *ngIf="!loading">
+        <ng-container
+          *ngIf="
+            availableContracts.length && availableContracts.length !== 0;
+            else noData
+          "
+        >
+        <app-pariticipated-in-cases-table [availableContracts]="availableContracts"></app-pariticipated-in-cases-table>
+        </ng-container>
+
+        <ng-template #noData>
+          <div class="d-block mx-auto py-20">
+            <span class="text-gray-400 fw-bold fs-4"
+              >No Participated In Cases</span
+            >
+          </div>
+        </ng-template>
+      </ng-container>
+

@@ -1,0 +1,93 @@
+.institute-cover-img{
+  width: 90%;
+  margin: auto;
+}
+.profile-cover {
+
+background: url(https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/eurekxay-videos%2Finstute-cover.jpg?alt=media&token=9f604473-6764-46fa-93c7-62e0262208b4), lightgray 50%/cover no-repeat;
+  position: relative;
+  background-position: center;
+  border-radius: 10px;
+  background-size: cover;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+  background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(15, 82, 179, 1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(15, 82, 179, 1) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(15, 82, 179, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#0f52b3", GradientType=1);
+  }
+}
+ .institute-name{
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+  &::after{
+    display: block;
+    content: '';
+    width: 50px;
+    height: 1px;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-top: 10px;
+  }
+ }
+.widget-card{
+  position: relative;
+width: 165px;
+  height: 80px;
+    flex-shrink: 0;
+
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  span{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  .c-contents {
+
+   padding-left: 52px;
+    padding-top: 15px;
+    p{
+      color: #0778B9;
+    }
+  }
+}
+.page-header{
+  overflow: visible !important;
+}
+.us-cards{
+      position: absolute;
+        left: 50%;
+        bottom: -50px;
+        z-index: 1;
+        gap: 29px;
+        transform: translate(-50%);
+        @media (max-width:768px) {
+          display: none !important;
+        }
+}
+.us-widgets-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: wrap;
+  .widget-card{
+    width: 80%;
+    margin: 10px auto;
+  }
+}
+.bio-card{
+  height: 93%;
+}

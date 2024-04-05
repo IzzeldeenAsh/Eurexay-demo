@@ -1,0 +1,284 @@
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">My Own Cases</span>
+  </h3>
+
+    <div class="card-toolbar">
+      <ul class="nav">
+        <li class="nav-item" *ngFor="let status of statusList">
+          <a
+            class="
+              nav-link
+              btn btn-sm btn-color-muted btn-active btn-active-light-primary
+              fw-medium
+              px-4
+              fs-8
+              me-1
+            "
+            data-bs-toggle="tab"
+            [ngClass]="activeClass(status)"
+            (click)="setTab(status)"
+          >
+            {{status}}
+          </a>
+        </li>
+        <li class="nav-item" >
+          <a
+            class="
+              nav-link
+              btn btn-sm btn-color-muted btn-active btn-active-light-primary
+              fw-medium
+              px-4
+              fs-8
+              me-1
+            "
+            data-bs-toggle="tab"
+            [ngClass]="activeClass('ALL')"
+            (click)="setTab('ALL')"
+          >
+            ALL
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- end::Menu-->
+
+  <!-- <button type="button" class="btn btn-sm btn-light-primary me-3" >
+        <span
+        [inlineSVG]="'./assets/media/icons/duotune/general/gen031.svg'"
+        class="svg-icon svg-icon-3"
+      ></span>        Filter
+    </button> -->
+</div>
+<div class="card-body py-3">
+  <div class="table-responsive">
+    <div class="fv-row grid-item position-relative search-filter my-3">
+      <!--begin::Label-->
+      <label class="d-flex align-items-center fs-5 fw-bold mb-2 search-label">
+        <span class="fw-medium pl-5">
+          <span class="svg-icon svg-icon-primary">
+            <span
+              [inlineSVG]="'./assets/media/icons/duotune/general/gen004.svg'"
+              class="svg-icon svg-icon-1"
+            ></span>
+          </span>
+        </span>
+      </label>
+      <input
+        type="text"
+        class="form-control form-control-lg form-control-solid"
+        name="name"
+        placeholder="Search"
+        value=""
+        [(ngModel)]="searchTerm"
+        (keyup)="applyFilter()"
+        #input
+      />
+    </div>
+
+    <table class="table align-middle gs-0 gy-4" *ngIf="!loader">
+      <thead>
+        <tr class="fw-bolder text-muted bg-light">
+          <th class="ps-4 text-uppercase">CASE</th>
+          <th
+            (click)="toggleSortCasesByStatus()"
+            class="min-w-70px text-uppercase cursor-pointer"
+          >
+            <span class="text-gold">⇅ </span>STATUS
+          </th>
+          <th
+            (click)="toggleSortCasesByBudget()"
+            class="min-w-125px text-uppercase cursor-pointer"
+          >
+            <span class="text-gold">⇅ </span> BUDGET
+          </th>
+          <th
+            (click)="toggleSortCasesByPublishDate()"
+            class="min-w-125px text-uppercase cursor-pointer"
+          >
+            <span class="text-gold">⇅ </span>PUBLISH DATE
+          </th>
+          <th
+            (click)="toggleSortCasesByExpiryDate()"
+            class="min-w-125px text-uppercase cursor-pointer"
+          >
+            <span class="text-gold">⇅ </span>EXPIRY DATE
+          </th>
+          <th class="min-w-70px text-start text-uppercase">Participant</th>
+          <th class="min-w-70px text-start text-uppercase">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let case of filteredCases">
+          <tr>
+            <td style="max-width: 229px;   min-width: 200px;">
+              <div class="d-flex align-items-center pl-20">
+                <div class="symbol symbol-50px me-3">
+                  <span class="symbol-label bg-light">
+                    <span
+                      class="svg-icon svg-icon-warning"
+                      *ngIf="case.status === 'DRAFT'"
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/files/fil019.svg'
+                        "
+                        class="svg-icon svg-icon-1"
+                      ></span>
+                    </span>
+                    <span
+                      class="svg-icon svg-icon-info"
+                      *ngIf="case.status === 'CONTRACTING'"
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/files/fil017.svg'
+                        "
+                        class="svg-icon svg-icon-1"
+                      ></span>
+                    </span>
+                    <span
+                      class="svg-icon svg-icon-danger"
+                      *ngIf="case.status === 'TAKEN'"
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/files/fil014.svg'
+                        "
+                        class="svg-icon svg-icon-1"
+                      ></span>
+                    </span>
+                    <span
+                      class="svg-icon svg-icon-success"
+                      *ngIf="case.status === 'PUBLISHED'"
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/files/fil016.svg'
+                        "
+                        class="svg-icon svg-icon-1"
+                      ></span>
+                    </span>
+                    <span
+                      class="svg-icon svg-icon-primary"
+                      *ngIf="case.status === 'SCHEDULED'"
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/files/fil019.svg'
+                        "
+                        class="svg-icon svg-icon-1"
+                      ></span>
+                    </span>
+                    <span
+                      class="svg-icon svg-icon-danger"
+                      *ngIf="case.status === 'REJECTED'"
+                    >
+                      <span
+                        [inlineSVG]="
+                          './assets/media/icons/duotune/files/fil015.svg'
+                        "
+                        class="svg-icon svg-icon-1"
+                      ></span>
+                    </span>
+                  </span>
+                </div>
+                <div class="d-flex justify-content-start flex-column">
+                  <a
+                    class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+                  >
+                    {{ case.name }}
+                  </a>
+                  <span class="text-muted fw-medium d-block fs-9">{{
+                    case.nickname
+                  }}</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  ' badge-light-primary': case.status === 'Approved',
+                  ' badge-light-warning text-gold bg-light-warning':
+                    case.status === 'DRAFT',
+                  ' badge-light-danger': case.status === 'TAKEN',
+                  ' badge-light-info': case.status === 'CONTRACTING',
+                  ' badge-light-success text-green ':
+                    case.status === 'PUBLISHED',
+                  ' badge-light-primary text-primary ':
+                    case.status === 'SCHEDULED'
+                }"
+                >{{ case.status }}
+              </span>
+            </td>
+            <td>
+              <a
+                class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+              >
+                <span class="text-primary"> ${{ case.budget }}</span>
+              </a>
+            </td>
+            <td>
+              <a
+                class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+              >
+                {{ case.startDate | date : "dd MMM yyyy" }}
+              </a>
+            </td>
+            <td>
+              <a
+                class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+              >
+                {{ case.expiryDate | date : "dd MMM yyyy" }}
+              </a>
+            </td>
+
+            <td class="text-start">
+              <div
+                class="symbol symbol-35px symbol-circle"
+                [ngbTooltip]="case.participantUsername"
+                placement="top"
+              >
+                <ng-container
+                  *ngIf="case.participantUsername; else noParticipant"
+                >
+                  <a
+                    (click)="viewProfile($event, case.participantUsername)"
+                    class="symbol-label bg-primary text-inverse-primary fw-bolder cursor-pointer"
+                  >
+                    {{ case.participantUsername[0] }}
+                  </a>
+                </ng-container>
+                <ng-template #noParticipant>
+                  <span class="badge bg-light-primary" style="color: #80b6d6"
+                    >N/A</span
+                  >
+                </ng-template>
+              </div>
+            </td>
+            <td class="text-start">
+              <button
+                (click)="summary(case.uuid)"
+                class="btn bg-light-primary btn-color-muted btn-active-color-primary btn-sm px-4 me-2"
+              >
+                View
+              </button>
+              <button
+                (click)="editCase(case.uuid)"
+                *ngIf="case.status === 'DRAFT'"
+                class="btn bg-light-warning btn-color-warning btn-active-color-primary btn-sm px-4 text-gold"
+              >
+                Edit
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <ng-container *ngIf="loader">
+      <app-wait-spinner class="m-auto d-block py-10"></app-wait-spinner>
+    </ng-container>
+  </div>
+</div>

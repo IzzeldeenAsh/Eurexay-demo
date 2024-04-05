@@ -1,0 +1,16 @@
+
+
+.blue-bar{
+    height: 62px;
+    width: 100%;
+    background-color: #076598;
+    position: absolute;
+    z-index: 10;
+    background-image: linear-gradient(-269deg, #076090 0%, #0779b8 100%);
+  }
+  @media print{
+    .blue-bar{
+      display: none;
+    }
+  }
+  

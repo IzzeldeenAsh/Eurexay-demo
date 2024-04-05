@@ -1,0 +1,217 @@
+<div>
+
+ 
+  <div class="row gx-3 gx-xl-8 gy-3 ">
+    <div class=" col-md-3 col-sm-6 col-12 mb-5 max-height" >
+      <!--begin::Tiles Widget 5-->
+      <a  class="card card-xxl-stretch h-100  services__item">
+        <!--begin::Body-->
+        <div class="card-body d-flex flex-column ">
+          <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+          <span class="svg-icon svg-icon-primary svg-icon-2hx ms-n1 flex-grow-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
+              <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
+              <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
+              <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
+            </svg>
+          </span>
+          <!--end::Svg Icon-->
+          <ng-container *ngIf="loader || availableCasesNumber===null">
+            <span class="indicator-progress text-primary" [style.display]="'block'">
+              Please wait...
+              <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+            </span>
+          </ng-container>
+
+          <div  *ngIf="!loader ||  availableCasesNumber!==null" class="d-flex flex-column ">
+
+            <div class="">
+              <div class="services__icon">
+                <div class="notification-content">
+                  <h3 class="services__title"><a [routerLink]="['/about']">
+                    <div class="text-primary fw-bold fs-1 mb-0">{{availableCasesNumber}}</div>
+                    <div class=" text-muted  fs-6">Available To Join Cases</div>
+                    </a></h3>
+                </div>
+              </div>
+              <div class="services__content">
+
+
+                <a [routerLink]="['/cases-main/available-Cases']" class="link-btn-2 arrow-2 cursor-pointer" style="border-color: aqua;">
+                  <i class="fas fa-arrow-right" ></i>
+                  <i class="fas fa-arrow-right" ></i>
+          </a>
+              
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--end::Body-->
+      </a>
+      <!--end::Tiles Widget 5-->
+    </div>
+    <div class=" col-md-3  col-sm-6 col-12 mb-5 max-height">
+      <!--begin::Tiles Widget 5-->
+      <a  class="card card-xxl-stretch h-100  bg-body services__item">
+        <!--begin::Body-->
+        <div class="card-body d-flex flex-column ">
+          <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+          <span class="svg-icon svg-icon-success svg-icon-2hx ms-n1 flex-grow-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path opacity="0.4" d="M21.6602 10.44L20.6802 14.62C19.8402 18.23 18.1802 19.69 15.0602 19.39C14.5602 19.35 14.0202 19.26 13.4402 19.12L11.7602 18.72C7.59018 17.73 6.30018 15.67 7.28018 11.49L8.26018 7.30001C8.46018 6.45001 8.70018 5.71001 9.00018 5.10001C10.1702 2.68001 12.1602 2.03001 15.5002 2.82001L17.1702 3.21001C21.3602 4.19001 22.6402 6.26001 21.6602 10.44Z" fill="#699DDE"/>
+              <path d="M15.0599 19.39C14.4399 19.81 13.6599 20.16 12.7099 20.47L11.1299 20.99C7.15985 22.27 5.06985 21.2 3.77985 17.23L2.49985 13.28C1.21985 9.30998 2.27985 7.20998 6.24985 5.92998L7.82985 5.40998C8.23985 5.27998 8.62985 5.16998 8.99985 5.09998C8.69985 5.70998 8.45985 6.44998 8.25985 7.29998L7.27985 11.49C6.29985 15.67 7.58985 17.73 11.7599 18.72L13.4399 19.12C14.0199 19.26 14.5599 19.35 15.0599 19.39Z" fill="#0778B9"/>
+              <path d="M17.4899 10.51C17.4299 10.51 17.3699 10.5 17.2999 10.49L12.4499 9.26002C12.0499 9.16002 11.8099 8.75002 11.9099 8.35002C12.0099 7.95002 12.4199 7.71002 12.8199 7.81002L17.6699 9.04002C18.0699 9.14002 18.3099 9.55002 18.2099 9.95002C18.1299 10.28 17.8199 10.51 17.4899 10.51Z" fill="white"/>
+              <path d="M14.5601 13.89C14.5001 13.89 14.4401 13.88 14.3701 13.87L11.4601 13.13C11.0601 13.03 10.8201 12.62 10.9201 12.22C11.0201 11.82 11.4301 11.58 11.8301 11.68L14.7401 12.42C15.1401 12.52 15.3801 12.93 15.2801 13.33C15.2001 13.67 14.9001 13.89 14.5601 13.89Z" fill="white"/>
+            </svg>
+          </span>
+          <!--end::Svg Icon-->
+          <div class="d-flex flex-column ">
+            <ng-container *ngIf="loader || ownerContracts === null">
+              <span class="indicator-progress text-primary" [style.display]="'block'">
+                Please wait...
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+              </span>
+            </ng-container>
+            <div *ngIf="!loader || ownerContracts !== null" class="">
+              <div class="services__icon">
+                <div class="notification-content">
+                  <h3 class="services__title"><a >
+                    <div class="text-green  fw-bold fs-1 mb-0 ">{{ownerContracts}}</div>
+                    <div class="text-muted  fs-6">Paricipated-In Contracts</div>
+                    </a></h3>
+                </div>
+              </div>
+              <div class="services__content">
+
+
+
+                <a  [routerLink]="['/cases-main/contracts']" [queryParams]="{index: 1}" class="link-btn-2 arrow-2 cursor-pointer" style="border-color: aqua;">
+                        <i class="fas fa-arrow-right" ></i>
+                        <i class="fas fa-arrow-right" ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--end::Body-->
+      </a>
+      <!--end::Tiles Widget 5-->
+    </div>
+    <div class=" col-md-3 col-sm-6  col-12 max-height">
+      <!--begin::Tiles Widget 5-->
+      <a  class="card card-xxl-stretch h-100  services__item">
+        <!--begin::Body-->
+        <div class="card-body d-flex flex-column ">
+          <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+          <span class="svg-icon svg-icon-info svg-icon-2hx ms-n1 flex-grow-1" style="max-height: 54px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path opacity="0.4" d="M8.67 14H4C2.9 14 2 14.9 2 16V22H8.67V14Z" fill="#292D32"/>
+              <path d="M13.3302 10H10.6602C9.56016 10 8.66016 10.9 8.66016 12V22H15.3302V12C15.3302 10.9 14.4402 10 13.3302 10Z" fill="#292D32"/>
+              <path opacity="0.4" d="M20.0001 17H15.3301V22H22.0001V19C22.0001 17.9 21.1001 17 20.0001 17Z" fill="#292D32"/>
+              <path d="M15.0102 4.84999C15.3202 4.53999 15.4402 4.16999 15.3402 3.84999C15.2402 3.52999 14.9302 3.3 14.4902 3.23L13.5302 3.06999C13.4902 3.05999 13.4002 2.99998 13.3802 2.95998L12.8502 1.89998C12.4502 1.08998 11.5402 1.08998 11.1402 1.89998L10.6102 2.95998C10.5902 2.99998 10.5002 3.05999 10.4602 3.06999L9.50017 3.23C9.06017 3.3 8.76017 3.52999 8.65017 3.84999C8.55017 4.16999 8.67017 4.53999 8.98017 4.84999L9.72017 5.59999C9.75017 5.62999 9.79017 5.75 9.78017 5.79L9.57017 6.70998C9.41017 7.38998 9.67017 7.69997 9.84017 7.82997C10.0102 7.94997 10.3802 8.10999 10.9902 7.74999L11.8902 7.21999C11.9302 7.18999 12.0602 7.18999 12.1002 7.21999L13.0002 7.74999C13.2802 7.91999 13.5102 7.96999 13.6902 7.96999C13.9002 7.96999 14.0502 7.88997 14.1402 7.82997C14.3102 7.70997 14.5702 7.39998 14.4102 6.70998L14.2002 5.79C14.1902 5.74 14.2202 5.62999 14.2602 5.59999L15.0102 4.84999Z" fill="#292D32"/>
+            </svg>
+          </span>
+          <!--end::Svg Icon-->
+          <div class="d-flex flex-column ">
+            <ng-container *ngIf="loader || availablePrizesNumber===null">
+              <span class="indicator-progress text-primary" [style.display]="'block'">
+                Please wait...
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+              </span>
+            </ng-container>
+            <div *ngIf="!loader || availablePrizesNumber !==null" class="">
+              <div class="services__icon">
+                <div class="notification-content">
+                  <h3 class="services__title"><a [routerLink]="['/about']">
+                    <div class="text-info fw-bold fs-1 mb-0   ">{{availablePrizesNumber}}</div>
+                    <div class=" text-muted  fs-6">Available To Join Prizes</div>
+                    </a></h3>
+                </div>
+              </div>
+              <div class="services__content">
+
+                <a  [routerLink]="['/prizes/available-prizes']"  class="link-btn-2 arrow-2 cursor-pointer" >
+                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--end::Body-->
+      </a>
+      <!--end::Tiles Widget 5-->
+    </div>
+    <div class=" col-md-3 col-sm-6  col-12 max-height">
+      <!--begin::Tiles Widget 5-->
+      <a  class="card card-xxl-stretch h-100  bg-body services__item">
+        <!--begin::Body-->
+        <div class="card-body d-flex flex-column ">
+          <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+          <span class="svg-icon svg-icon-warning svg-icon-2hx ms-n1 flex-grow-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="36" viewBox="0 0 35 36" fill="none">
+              <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd" d="M18.5263 20.5694L22.8473 14.6925H19.6066V8.81548L13.1251 17.6309H16.3658V20.5694H8.75008C7.94467 20.5694 7.29175 19.9116 7.29175 19.1002V4.40775C7.29175 3.59631 7.94467 2.93851 8.75008 2.93851H26.2501C27.0555 2.93851 27.7084 3.59631 27.7084 4.40775V19.1002C27.7084 19.9116 27.0555 20.5694 26.2501 20.5694H18.5263Z" fill="#3576B4"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14.2979 16.0357L13.125 17.631H16.3657V23.508L22.8472 14.6925H22.5481L29.4689 9.65674C29.7954 9.4192 30.2512 9.49326 30.487 9.82217C30.5767 9.94736 30.625 10.0979 30.625 10.2523V24.9772C30.625 26.6001 29.3192 27.9157 27.7083 27.9157H7.29167C5.68084 27.9157 4.375 26.6001 4.375 24.9772V10.2523C4.375 9.84656 4.70146 9.51766 5.10417 9.51766C5.25745 9.51766 5.40683 9.56633 5.53109 9.65674L14.2979 16.0357Z" fill="#3576B4"/>
+            </svg>
+          </span>
+          <!--end::Svg Icon-->
+          <div class="d-flex flex-column ">
+            <ng-container *ngIf="loader || offersReceived === null">
+              <span class="indicator-progress text-primary" [style.display]="'block'">
+                Please wait...
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+              </span>
+            </ng-container>
+            <div *ngIf="!loader || offersReceived !==null" class="">
+              <div class="services__icon">
+                <div class="notification-content">
+                  <h3 class="services__title"><a >
+                    <div class="text-gold  fw-bold fs-1 mb-0 ">{{offersReceived}}</div>
+                    <div class="text-muted  fs-6">Offers Recieved</div>
+                    </a></h3>
+                </div>
+              </div>
+              <div class="services__content">
+
+
+
+                <a [routerLink]="['/cases-main/offers']"  class="link-btn-2 arrow-2 cursor-pointer" >
+                        <i class="fas fa-arrow-right" ></i>
+                        <i class="fas fa-arrow-right" ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--end::Body-->
+      </a>
+      <!--end::Tiles Widget 5-->
+    </div>
+  </div>
+</div>
+
+
+  <!--Almost Done->
+  <div class="card h-207 bgi-no-repeat bgi-size-contain card-xl-stretch mb-3 mb-xl-8 complete-profile-card">
+    <!--begin::Body-->
+    <!-- <div class="card-body d-flex flex-column justify-content-around position-relative">
+
+
+    <div class="complete-profile position-relative z-index-2">
+      <h2 class=" text-white fs-3  m-0 ">Almost Done!
+      </h2>
+      <span class="fs-7 text-gray-200">Complete your profile</span>
+    </div>
+    <div class="overlay-blue"></div>
+      <div class="m-0 position-relative z-index-2" *ngIf="showBtn">
+        <a [routerLink]="link" class=" btn-eure-secondary fw-bold px-8 py-3" data-bs-toggle="modal"
+          data-bs-target="#kt_modal_create_campaign">Profile</a>
+      </div>
+    </div>
+  </div> -->
+  <!--end::Tiles Widget 2-->

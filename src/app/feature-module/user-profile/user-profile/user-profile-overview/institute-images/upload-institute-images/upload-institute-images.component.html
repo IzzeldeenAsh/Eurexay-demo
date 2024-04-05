@@ -1,0 +1,173 @@
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Intitute Images Upload</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i aria-hidden="true" class="ki ki-close"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+           
+    <div class="form-group row">
+        <!--begin::Label-->
+        <label class="col-lg-2 col-form-label text-lg-right  text-primary">Upload Images:</label>
+        <!--end::Label-->
+        <!--begin::Col-->
+      <div class="col-lg-10">
+        <div class="col-lg-10">
+          <!--begin::Dropzone-->
+          <div class="dropzone dropzone-queue mb-2" id="kt_dropzonejs_example_3">
+              <!--begin::Controls-->
+              <div class="dropzone-panel mb-lg-0 mb-2">
+                <input type="file" id="fileInput" (change)="handleFileInput($event)" style="display: none" accept="image/*">
+                  <button class="dropzone-select btn btn-sm btn-primary me-2" (click)="attchFile()">Attach files</button>
+                  <button class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</button>
+              </div>
+              <!--end::Controls-->
+              <div class="row row-cols-1 mt-3" *ngIf="showAlert">
+                <div
+                  class="notice d-flex justify-content-center bg-light-danger rounded border-danger border border-dashed mb-2 p-1"
+                >
+                  <!--begin::Icon-->
+                  <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+                  <span class="svg-icon svg-icon-2tx svg-icon-danger me-4 m-auto">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <rect
+                        opacity="0.3"
+                        x="2"
+                        y="2"
+                        width="20"
+                        height="20"
+                        rx="10"
+                        fill="black"
+                      />
+                      <rect
+                        x="11"
+                        y="14"
+                        width="7"
+                        height="2"
+                        rx="1"
+                        transform="rotate(-90 11 14)"
+                        fill="black"
+                      />
+                      <rect
+                        x="11"
+                        y="17"
+                        width="2"
+                        height="2"
+                        rx="1"
+                        transform="rotate(-90 11 17)"
+                        fill="black"
+                      />
+                    </svg>
+                  </span>
+                  <!--end::Svg Icon-->
+                  <!--end::Icon-->
+                  <!--begin::Wrapper-->
+                  <div class="d-flex flex-stack flex-grow-1">
+                    <!--begin::Content-->
+                    <div class="fw-bold">
+                      <h4 class="text-gray-900 fw-bolder fs-8 pt-3" >File size exceeds 2MB limit.</h4>
+                    </div>
+                    <!--end::Content-->
+                  </div>
+                  <!--end::Wrapper-->
+                </div>
+              </div>
+              <!--begin::Items-->
+              <div class="dropzone-items wm-200px">
+                  <div class="dropzone-item" style="display:none">
+                      <!--begin::File-->
+                      <div class="dropzone-file">
+                          <div class="dropzone-filename" title="some_image_file_name.jpg">
+                              <span data-dz-name>some_image_file_name.jpg</span>
+                              <strong>(<span data-dz-size>340kb</span>)</strong>
+                          </div>
+  
+                          <div class="dropzone-error" data-dz-errormessage></div>
+                      </div>
+                      <!--end::File-->
+  
+                      <!--begin::Progress-->
+                      <div class="dropzone-progress">
+                          <div class="progress">
+                              <div
+                                  class="progress-bar bg-primary"
+                                  role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                              </div>
+                          </div>
+                      </div>
+                      <!--end::Progress-->
+  
+                      <!--begin::Toolbar-->
+                      <div class="dropzone-toolbar">
+                          <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                      </div>
+                      <!--end::Toolbar-->
+                  </div>
+              </div>
+              <!--end::Items-->
+          </div>
+          <!--end::Dropzone-->
+  
+          <!--begin::Hint-->
+          <span class="form-text text-muted">Max file size is 2MB and max number of files is 8.</span>
+          <!--end::Hint-->
+      </div>
+     <ng-container >
+      <div class="col-lg-10" *ngFor="let file of uploadedFiles; let i = index">
+        <div class="dropzone dropzone-queue mb-2">
+         <div class="dropzone-item dz-processing dz-image-preview dz-success dz-complete">
+           <div class="dropzone-file">
+             <div class="dropzone-filename">
+                <div class="dropzone-preview">
+                    <img [src]="images[i]" style="width: 70px;" class="preview-image" alt="Image Preview" *ngIf="file.type.startsWith('image/')">
+                </div>
+        
+               {{ file.name }} 
+               
+             </div>
+           </div>
+           <div class="dropzone-progress">
+             <div class="progress" >
+               <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress="" style="opacity: 0; width: 100%;"></div>
+             </div>
+           </div>
+           <div class="dropzone-toolbar">
+             <div class="dropzone-delete">
+               <i class="bi bi-x fs-1" (click)="deleteFile(i)"></i>
+             </div>
+           </div>
+         </div>
+        </div>
+       </div>
+     </ng-container>
+      </div>
+        <!--end::Col-->
+    </div>
+        </div>
+        <div class="modal-footer">
+           
+            <button type="button" class="btn btn-light-primary btn-sm font-weight-bold" data-dismiss="modal" (click)="closeModal()" [disabled]=" loading">
+                <span *ngIf="loading">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                </span>
+                <ng-container *ngIf="!loading">
+                  Close
+                </ng-container>
+                </button>
+            <button type="button" class="btn btn-primary  btn-sm font-weight-bold" (click)="postImage()" [disabled]="uploadedFiles.length===0 || loading">
+                <span *ngIf="loading">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                </span>
+               <ng-container *ngIf="!loading">
+                Save changes
+            </ng-container>
+            </button>
+        </div>
+    </div>

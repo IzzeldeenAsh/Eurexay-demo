@@ -1,0 +1,59 @@
+
+
+  <div class="row g-5 gx-xxl-4 mt-1 m-auto  ">
+    <div class="card card-custom">
+      <!-- begin::Header -->
+      <div class="card-header card-header-stretch overflow-auto">
+        <ul
+          class="
+            nav nav-stretch nav-line-tabs
+            fw-bold
+            border-transparent
+            flex-nowrap
+          "
+          role="tablist"
+        >
+          <li class="nav-item position-relative">
+            <a
+              class="nav-link cursor-pointer"
+              [ngClass]="{ active: activeTab === tabNames[0] }"
+              (click)="setActiveTab(0)"
+              role="tab"
+            >
+            Participated In Contracts 
+            </a>
+          </li>
+          <li class="nav-item position-relative">
+            <a
+              class="nav-link cursor-pointer"
+              [ngClass]="{ active: activeTab === tabNames[1] }"
+              (click)="setActiveTab(1)"
+              role="tab"
+            >
+              My Contracts 
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- end::Header -->
+      <!-- begin::Form -->
+      <form class="form" novalidate #form="ngForm" (ngSubmit)="submitPreview()">
+        <!-- begin::Body -->
+        <div class="card-body">
+          <div class="tab-content pt-3">
+            <!-- begin::Header -->
+            <div class="tab-pane" [ngClass]="{ active: activeTab === 'MyContracts' }">
+              <app-my-contracts ></app-my-contracts>
+            </div>
+            <div class="tab-pane" [ngClass]="{ active: activeTab === 'availableContracts' }">
+              <app-participated-in-cases></app-participated-in-cases>
+            </div>
+  
+        
+          </div>
+        </div>
+        <!-- end::Body -->
+      </form>
+      <!-- end::Form -->
+    </div>
+</div>

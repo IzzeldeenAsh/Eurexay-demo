@@ -1,0 +1,70 @@
+.card {
+  &.card-blog {
+    .card-image {
+      border-radius: 10px;
+      border: 1px solid #F1F1F5;
+      background: #FFF;
+      .img {
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+    .card-title {
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+.document-title{
+  .icon{
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    display: flex;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #E7EDFA;
+    margin: 0 10px;
+    align-items: center;
+    justify-content: center;
+}
+svg{
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+  }
+span{
+  color: #0778B9;
+font-size: 1.2rem;
+font-style: normal;
+font-weight: 500;
+line-height: 38px; /* 172.727% */
+letter-spacing: -0.55px;
+}
+
+.card-wrap{
+  max-width: 200px;
+}
+.certificates-container {
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.cards-file{
+max-width: none;
+ min-width: 297px;
+ width: max-content;
+ @media (max-width:500px) {
+  min-width: 200px;
+ }
+}
+
+.word-break{
+  word-break: break-word;
+}
+.breal{
+  word-break: break-word;
+}

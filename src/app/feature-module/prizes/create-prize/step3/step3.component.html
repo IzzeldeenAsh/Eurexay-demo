@@ -1,0 +1,142 @@
+<div class="pb-10 pb-lg-15">
+    <h2 class="fw-bolder text-dark">Availability Details</h2>
+    <div class="text-gray-400 fw-bold fs-6">
+      Set up who and from where people can participate in this prize
+    </div>
+  </div>
+  <form [formGroup]="form">
+
+    <div class="d-flex gap-2 align-items-center">
+        <label class="form-check form-switch form-check-custom form-check-solid"
+        ><input
+          formControlName="limitParticipants"
+          class="form-check-input"
+          type="checkbox"
+          value="true"
+        /><span class="form-check-label fw-bold text-primary"
+          >Limit Participant Number</span
+        ></label>
+
+
+    </div>
+    <div class="fv-row my-10" *ngIf="  this.form.get('limitParticipants')?.value === true">
+        <label class="form-label required  text-primary">Participants Number</label
+        ><input
+          name="participantsNumber"
+          type="number"
+          class="form-control form-control-lg form-control-solid"
+          formControlName="participantsNumber"
+        />
+        <div
+          class="fv-plugins-message-container invalid-feedback"
+          *ngIf="
+            form.get('participantsNumber')?.hasError('required') &&
+            form.get('participantsNumber')?.touched
+          "
+        >
+          Prize Title is required
+        </div>
+      </div>
+    <div class="d-flex gap-2 align-items-center mt-5">
+        <label class="form-check form-switch form-check-custom form-check-solid"
+        ><input
+          (change)="checkPublicity()"
+          formControlName="isPublic"
+          class="form-check-input"
+          type="checkbox"
+          value="true"
+        /><span class="form-check-label fw-bold  text-primary"
+          > Make this prize public (worldwide)</span
+        ></label
+      >
+
+      </div>
+  </form>
+  <ng-container *ngIf="form.get('isPublic')?.value === false">
+    <div class="fv-row my-10 d-flex flex-column w-250px">
+      <label class="form-label required text-primary">Select Continent</label>
+      <p-multiSelect
+      [options]="continents"
+      [showToggleAll]="true"
+      [selectAll]="selectAll"
+      [(ngModel)]="selectedItems"
+      optionLabel="label"
+      [virtualScroll]="true"
+      [filter]="true"
+      [virtualScrollItemSize]="43"
+      class="multiselect-custom-virtual-scroll"
+      placeholder="Select Continent"
+      (onSelectAllChange)="onSelectAllChange($event)"
+      (onChange)="onChange($event)"
+       >
+    
+      </p-multiSelect>
+      <!-- <ng-multiselect-dropdown
+        [placeholder]="'Select Continents'"
+        [data]="dropdownList"
+        [settings]="dropdownSettings"
+        [formControl]="continentsSelected"
+        (ngModelChange)="onContinentSelectionChange()"
+      ></ng-multiselect-dropdown> -->
+    </div>
+    <div class="fv-row my-10 d-flex flex-column w-250px">
+      <label class="form-label required text-primary">Select Country</label>
+      <p-multiSelect
+      [options]="countriesList"
+      [showToggleAll]="true"
+      [selectAll]="selectAllCountries"
+      [(ngModel)]="selectedCountries"
+      optionLabel="name"
+      [virtualScroll]="true"
+      [filter]="true"
+      [virtualScrollItemSize]="43"
+      class="multiselect-custom-virtual-scroll"
+      placeholder="Select Country"
+      
+      (onSelectAllChange)="onSelectAllChangeCountries($event)"
+      (onChange)="onChangeCountries($event)"
+       >
+       <ng-template let-value pTemplate="selectedCountries">
+        <div class="inline-flex align-items-center gap-2 px-1" *ngFor="let option of value">
+            <img [src]="option.file_url" style="width: 18px" />
+            <div>{{ option.name }},</div>
+        </div>
+        <div *ngIf="!value || value.length === 0">Select Countries</div>
+    </ng-template>
+    <ng-template let-country pTemplate="item">
+        <div class="flex align-items-center gap-2">
+            <img [src]="country.file_url" style="width: 18px" />
+            <div>{{ country.name }}</div>
+        </div>
+    </ng-template>
+      </p-multiSelect>
+      <!-- <ng-multiselect-dropdown
+      [placeholder]="'Select Countries'"
+      [data]="filteredCountries"
+      [settings]="dropdownSettings"
+      (onSelectAll)="selectAllCountries(true)"
+      (onDeSelectAll)="selectAllCountries(false)"
+      [formControl]="countriesSelected"
+    >
+      <ng-template let-item="item" let-i="index">
+        <img [src]="item.flagUrl" alt="Flag" class="flag-icon" />
+        {{ item.name }}
+      </ng-template>
+    </ng-multiselect-dropdown> -->
+    </div>
+    <!-- <div class="fv-row my-10">
+      <label class="form-label required text-primary">Select Continent</label>
+      <div class="multi-select-conatiner position-relative">
+        <mat-select formControlName="continents" multiple class="multi-domains position-relative form-select country-select form-select-solid" (ngModelChange)="updateFilteredCountries()">
+          <mat-option *ngFor="let continent of continents" [value]="continent">{{ continent }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="fv-row my-10">
+      <label class="form-label required text-primary">Select Country</label>
+      <mat-select formControlName="countries" multiple class="multi-domains position-relative form-select country-select form-select-solid">
+        <mat-option [value]="'addAll'" *ngIf="addAllCountries">Add All</mat-option>
+        <mat-option *ngFor="let country of filteredCountries" [value]="country.country">{{ country.country }}</mat-option>
+      </mat-select>
+    </div> -->
+  </ng-container>

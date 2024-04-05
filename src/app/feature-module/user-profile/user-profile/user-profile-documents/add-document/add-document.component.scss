@@ -1,0 +1,37 @@
+.dropzone {
+  min-height: auto;
+  padding: 1.5rem 1.75rem;
+  text-align: center;
+  cursor: pointer;
+  border: 1px dashed #0778b9;
+  background-color: #F1FAFF;
+  border-radius: 0.475rem !important;
+}
+.dropzone .dz-message {
+width: 50%;
+margin: auto;
+height: 200px;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.certficate-gorup{
+  margin: auto;
+    width: 50%;
+
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+::ng-deep .mat-datepicker-toggle {
+  position: absolute !important;
+  top: 50% !important;
+  right: 12px !important;
+  transform: translateY(-50%) !important;
+}
+.expiry-input{
+  min-width: 200px
+}

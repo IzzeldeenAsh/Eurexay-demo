@@ -1,0 +1,350 @@
+<ng-container *ngIf="loading">
+  <app-wait-spinner class="m-auto"></app-wait-spinner>
+</ng-container>
+<ng-container *ngIf="!loading">
+  <div class="row g-5 gx-xxl-8 mt-1 m-auto">
+    <div class="col-xxl-12">
+      <div class="card mb-5 mb-xl-10" >
+        <!--begin::Card header-->
+        <div class="card-header cursor-pointer">
+          <!--begin::Card title-->
+          <div class="card-title m-0">
+            <h3 class="fw-bolder m-0 fs-5 text-primary">Profile Details</h3>
+          </div>
+          <!--end::Card title-->
+
+        </div>
+        <!--begin::Card header-->
+        <!--begin::Card body-->
+        <div class="card-body p-9">
+          <!--begin::Row-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Full Name</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bolder fs-6 text-gray-800">
+                {{userdata.fullName}}
+              </span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Row-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Account Type</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bolder fs-6 text-gray-800">{{userdata.participantType}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Sector</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 fv-row">
+              <span class="fw-bold text-gray-800 fs-6">{{userdata.sector}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Institute</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 fv-row">
+              <span class="fw-bold text-gray-800 fs-6">{{userdata.instituteName}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Contact Phone
+            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active"></i></label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 d-flex align-items-center">
+              <span class="fw-bolder fs-6 text-gray-800 me-2">{{userdata.phoneNumber}}</span>
+              <span class="badge badge-success">Verified</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Company Site</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <a  class="fw-bold fs-6 text-gray-800 text-hover-primary">{{userdata.websiteUrl}}</a>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Input group-->
+          <!--begin::Input group-->
+
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Email</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bolder fs-6 text-gray-800">{{userdata.username}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Registration Number</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bolder fs-6 text-gray-800">{{userdata.registrationNumber}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="row mb-7" *ngIf="userdata.participantType ==='RESEARCHER'">
+            <label class="col-lg-4 fw-medium text-muted">Academic Number</label>
+            <div class="col-lg-8">
+              <span class="fw-bolder fs-6 text-gray-800">{{userdata.academicNumber}}</span>
+            </div>
+          </div>
+          <!--end::Input group-->
+          <!--begin::Notice-->
+          <div class="notice d-flex bg-light-warning rounded border-warning  border-dashed p-6" *ngIf="false">
+            <!--begin::Icon-->
+            <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+            <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black" />
+                <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black" />
+                <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black" />
+              </svg>
+            </span>
+            <!--end::Svg Icon-->
+            <!--end::Icon-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-stack flex-grow-1" >
+              <!--begin::Content-->
+              <div class="fw-bold" >
+                <h4 class="text-gray-900 fw-bold fs-4">Your profile is not complete!</h4>
+                <div class="fs-6 text-gray-700 fw-medium">Address, website and more need to be added,
+                <a class="fw-bolder" >Add info</a>.</div>
+              </div>
+              <!--end::Content-->
+            </div>
+            <!--end::Wrapper-->
+          </div>
+          <!--end::Notice-->
+        </div>
+        <!--end::Card body-->
+      </div>
+    </div>
+  </div>
+  <div class="row gy-5  gx-xxl-8 px-4 ">
+    <!--begin::Col-->
+    <div class="col-xl-7 mb-xl-10  ">
+      <div class="card mb-5 mb-xl-10 h-100" >
+        <!--begin::Card header-->
+        <div class="card-header cursor-pointer ">
+          <!--begin::Card title-->
+          <div class="card-title m-0">
+            <h3 class="fw-bolder m-0 fs-5 text-primary">Address Details</h3>
+          </div>
+          <!--end::Card title-->
+          <!--begin::Action-->
+          <!--end::Action-->
+        </div>
+        <!--begin::Card header-->
+        <!--begin::Card body-->
+        <div class="card-body p-9">
+          <!--begin::Row-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Country</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bolder fs-6 text-gray-800">{{userdata.country}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Row-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">City/State</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 fv-row">
+              <span class="fw-bold text-gray-800 fs-6">{{userdata.city}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">P.O Box
+            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active"></i></label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 d-flex align-items-center">
+              <span class="fw-bolder fs-6 text-gray-800 me-2">{{userdata.poBox}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Zip Code</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bold fs-6 text-gray-800">{{userdata.zipCode}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Fax</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bold fs-6 text-gray-800">{{userdata.faxNumber}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+
+          <!--end::Input group-->
+          <!--begin::Input group-->
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Address Line</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bold fs-6 text-gray-800">{{userdata.addressLine}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+
+          <!--end::Input group-->
+        </div>
+        <!--end::Card body-->
+      </div>
+    </div>
+
+    <!--end::Col-->
+    <!--begin::Col-->
+    <div class="col-xl-5 mb-5 mb-xl-10">
+      <!--begin::Engage widget 1-->
+      <div class="card h-md-100">
+        <div class="card-header cursor-pointer">
+          <!--begin::Card title-->
+          <div class="card-title m-0">
+            <h3 class="fw-bolder m-0 fs-5 text-primary">Bank Info</h3>
+          </div>
+          <!--end::Card title-->
+
+        </div>
+        <!--begin::Body-->
+        <div class="card-body d-flex flex-column flex-center" >
+          <!--begin::Heading-->
+          <img src="https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/eurekxay-videos%2Fcard.png?alt=media&token=19ec10b4-3718-440f-b217-18a3a903dd3b" class="bank-card" alt="bank-card">
+          <!--end::Heading-->
+          <!--begin::Links-->
+
+          <!--end::Links-->
+        </div>
+        <ng-container *ngIf="userdata.iban">
+         <div class="d-flex justify-content-center flex-lg-column flex-column pl-20 flex-sm-row">
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">IBAN</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bold fs-6 text-gray-800">{{userdata.iban}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Bank Name</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bold fs-6 text-gray-800">{{userdata.bankName}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+          <div class="row mb-7">
+            <!--begin::Label-->
+            <label class="col-lg-4 fw-medium text-muted">Bank Country</label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8">
+              <span class="fw-bold fs-6 text-gray-800">{{userdata.bankCountry}}</span>
+            </div>
+            <!--end::Col-->
+          </div>
+
+         </div>
+        </ng-container>
+        <div *ngIf="showForm && canEdit">
+          <div class="ibanform">
+            <div class="fv-row mb-0">
+              <label for="Iban" class="form-label fs-6 fw-bolder mb-3">IBAN</label>
+              <input
+                type="number"
+                class="form-control form-control-lg form-control-solid"
+                name="Iban"
+                id="Iban"
+                [(ngModel)]="Iban"
+              />
+            </div>
+            <div class="fv-row mb-0 pt-4">
+              <label for="IbanCountry" class="form-label fs-6 fw-bolder mb-3">Bank Country</label>
+              <input
+                type="text"
+                class="form-control form-control-lg form-control-solid"
+                name="IbanCountry"
+                id="IbanCountry"
+                [(ngModel)]="IbanCountry"
+              />
+            </div>
+            <button class="btn btn-primary mt-4" (click)="onSave()">Save</button>
+          </div>
+
+        </div>
+
+        <!--end::Body-->
+      </div>
+      <!--end::Engage widget 1-->
+    </div>
+    <!--end::Col-->
+  </div>
+
+
+</ng-container>

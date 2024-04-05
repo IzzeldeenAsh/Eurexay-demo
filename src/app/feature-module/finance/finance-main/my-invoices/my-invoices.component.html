@@ -1,0 +1,12 @@
+<div class="row g-5 gx-xxl-12 mt-1 m-auto  pb-50">
+    <div class="col-xxl-12">
+      <app-my-invoices-table *ngIf="invoicesList.length>0 else noData" [invoicesList]="invoicesList"  [invoicesList]="invoicesList" [loading]="loaderSubject.getValue()"></app-my-invoices-table>
+      <ng-template #noData>
+     <div class="text-center pt-70">
+      <span class=" text-gray-400 fw-bold fs-4">No Availbale Invoices</span>
+     </div>
+      </ng-template>
+      <div class="text-danger text-center pt-20 fs-6" *ngIf="errorMessage">Unexpected Error</div>
+        </div>
+  </div>
+  

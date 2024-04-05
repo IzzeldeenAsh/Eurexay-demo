@@ -1,0 +1,20 @@
+<div class="row gy-5 g-xl-8">
+    <div class="page-header mt-4">
+      <div class="text-container-header">
+        <h1 class="  animate-text fs-2">
+          <span>Hello, </span>
+          <span *ngIf="userData">{{userData.fullName}}</span>
+        </h1>
+        <h1 class=" animate-text pb-50 fs-6 fw-light">
+          <span>Welcome to </span>
+          <span>Eurekxay</span>
+        </h1>
+      </div>
+      <video #backgroundVideo muted autoplay loop playsinline class="video-bg">
+
+        <source src="assets/video/network.webm" type="video/mp4">
+      </video>
+      <div class="filter">.</div>
+      <span class="mask bg-gradient-primary opacity-3"></span>
+    </div>
+</div>

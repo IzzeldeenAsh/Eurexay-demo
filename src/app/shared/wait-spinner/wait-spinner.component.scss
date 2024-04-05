@@ -1,0 +1,21 @@
+.page-loading *,[data-kt-app-page-loading=on] * {
+  transition: none!important
+}
+
+.page-loader {
+  background-color: #0778b9;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  display: none;
+}
+
+.page-loading .page-loader,[data-kt-app-page-loading=on] .page-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+

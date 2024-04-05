@@ -1,0 +1,127 @@
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.dialog-header h2 {
+  margin: 0;
+}
+button[mat-icon-button] {
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.14);
+  padding: 5px 8px;
+  background-color: #ffffff;
+}
+::ng-deep mat-dialog-container {
+  border-radius: 20px !important;
+}
+.create-case-warpper {
+  width: 90%;
+  margin: auto;
+}
+.form-control {
+  background-color: #ffffff !important;
+  border-color: #e2e2e2 !important;
+}
+label {
+  color: #0778b9 !important;
+  text-transform: uppercase;
+}
+.text-muted {
+  color: #0778b9 !important;
+  text-transform: uppercase;
+}
+.input-group-text {
+  border: none;
+  i {
+    color: #f9b035;
+  }
+}
+.mr-auto {
+  margin-right: auto;
+}
+.btn-back {
+  background-color: #f1faff !important ;
+  color: #0778b9 !important;
+}
+.wrap {
+  width: 70%;
+
+  margin: auto;
+  height: 100%;
+  @media (max-width:500px) {
+    width: 100%;
+  }
+}
+::ng-deep .mat-step-header .mat-step-icon {
+  background: none !important;
+}
+::ng-deep .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background: none !important;
+}
+::ng-deep .mat-step-text-label {
+  text-transform: uppercase !important;
+  font-weight: 700;
+}
+::ng-deep .mat-step-label-selected {
+  color: #0778b9 !important;
+  font-weight: 500 !important;
+  background-color: #e7edfa !important ;
+  padding: 10px 30px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom: 2px solid #0778b9;
+  text-transform: uppercase !important;
+}
+::ng-deep .mat-step-header:hover {
+  background: none !important;
+}
+::ng-deep .mat-step-header .mat-step-label,
+.mat-step-header .mat-step-optional {
+  font-weight: 600 !important;
+}
+/* Use media queries to make matStepLabel responsive */
+@media screen and (max-width: 768px) {
+  ::ng-deep .mat-step-header-label {
+    font-size: 12px; /* Adjust the font size for small screens */
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  ::ng-deep .mat-step-header-label {
+    font-size: 16px; /* Adjust the font size for medium screens */
+  }
+}
+::ng-deep .mat-horizontal-stepper-header-container {
+  justify-content: space-between !important;
+  @media screen and (max-width: 768px) {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+  }
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    flex-wrap: wrap !important;
+  }
+}
+.custom-check-icon {
+  color: green;
+
+
+}
+::ng-deep .mat-stepper-horizontal-line {
+  display: none !important;
+}
+::ng-deep .mat-step-icon-state-number {
+  display: none !important;
+}
+.mat-stepper-header {
+  pointer-events: none;
+}
+::ng-deep .mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
+#kt_create_account_stepper{
+  width: 90%;
+  margin: 50px auto;
+}

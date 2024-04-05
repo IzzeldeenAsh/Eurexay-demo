@@ -1,0 +1,112 @@
+
+.payment-duration{
+    border: 1px solid #E7E7E7;
+    border-radius: 15px;
+    padding: 20px;
+  }
+  .percentage-input{
+    width: 55px;
+  height: 40px;
+  border: none;
+  margin: 10px 0;
+  text-align: center;
+  background-color: #f5f8fa;
+  border-radius: 10px;
+  @media (max-width:501px) {
+    width: 42px;
+    height: 30px;
+  }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .form-control.form-control-solid {
+    background-color: #fff !important;
+  }
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  .popup {
+
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    right: 50%;
+    top: 30%;
+    z-index: 10;
+    transition: opacity 250ms, visibility 250ms;
+    transform: translateX(-50%);
+    opacity: 0; /* Initially invisible */
+    visibility: hidden; /* Make it hidden initially */
+  }
+
+  @keyframes fadeInOutMoveUp {
+    0% {
+      opacity: 0;
+      transform: translateY(0) translateX(-50%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-20px) translateX(-50%); /* Adjust the -10px as needed */
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-40px) translateX(-50%); /* This will make it move a bit further up as it fades out */
+    }
+  }
+
+  .popup.show {
+    visibility: visible;
+    animation: fadeInOutMoveUp 2s forwards; /* "forwards" makes sure the final state of animation stays until the animation is removed or reset */
+  }
+  th,td{
+    text-align: center;
+  }
+  th{
+    color:#0778b9;
+    @media (max-width:501px) {
+      font-size: 10px;
+    }
+  }
+  .table-container{
+    width: 500px;
+    max-height: 500px;
+    margin: auto;
+    @media (max-width:501px) {
+      width: 100%;
+    }
+  }
+  .notice{
+    width: 50%;
+    margin: auto;
+    @media (max-width:500px) {
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .svg-icon{
+        margin: auto  !important;
+      }
+    }
+  }
+
+  .badge{
+  padding: 10px;
+  border-radius: 7px;
+  }
+.loader{
+  position: absolute;
+  background-color: white;
+  padding: 36px 28px;
+  top: 0;
+  width: 100%;
+  color: #0778b9;
+  bottom: 0;
+  text-align: center;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}

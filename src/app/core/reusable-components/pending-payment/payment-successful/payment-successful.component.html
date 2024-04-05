@@ -1,0 +1,35 @@
+<div class="main-container">
+	<div class="check-container">
+		<div class="check-background">
+			<svg viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M7 25L27.3077 44L58.5 7" stroke="white" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+			</svg>
+		</div>
+		<div class="check-shadow"></div>
+	</div>
+  <div class="text-center" style="min-height: 170px;">
+    <div *ngIf="showDatails" >
+      <h1 class="success my-5">Thank You! Your Payment Was  Sucessful.</h1>
+    <span class="fs-6 text-gray-600"><strong>Transaction Id:</strong>
+    <ng-container *ngIf="paymentId">{{paymentId}}</ng-container>
+    </span>
+    <div class="text-center mb-1">
+      <!--begin::Link-->
+      <div class="btns mt-15 d-flex gap-6 m-auto justify-content-between ">
+        <a class="btn btn-sm btn-primary me-2" (click)="navigate('INVOICE')"  >
+          Get Invoice           </a>
+      <!--end::Link-->
+
+      <!--begin::Link-->
+      <ng-container *ngIf="paymentType === 'CASE_PUBLISHING'">
+        <a class="btn btn-sm btn-secondary" (click)="navigate('CASE_PUBLISHING')">View Case</a>
+      </ng-container>
+      <ng-container *ngIf="paymentType === 'CONTRACT_FINALIZING'">
+        <a class="btn btn-sm btn-secondary"  (click)="navigate('CONTRACT_FINALIZING')">View Contract</a>
+      </ng-container>
+      </div>
+  </div>
+</div>
+
+  </div>
+</div>

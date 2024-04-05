@@ -1,0 +1,787 @@
+<div class="main-bg regiform-container p-relative overflow-y-scroll">
+  <div class="container p-relative z-1">
+    <h1 class="title">Register Form</h1>
+    <div class="p-relative z-3">
+      <mat-stepper
+        orientation="vertical"
+        [linear]="!isLinear"
+        #stepper
+        class="custom-stepper"
+      >
+        <ng-template matStepperIcon="edit">
+          <div class="check-box">
+            <mat-icon class="check-icon">check</mat-icon>
+          </div>
+        </ng-template>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>
+              <div class="step-title">Step 1</div>
+              <div class="step-subtitle">Basic information</div>
+            </ng-template>
+            <div class="fields form-grid">
+              <div class="fv-row mb-10 grid-item">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5">Full Name</span>
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input
+                  type="text"
+                  formControlName="fullName"
+                  class="form-control form-control-lg form-control-solid"
+                  name="name"
+                  placeholder=""
+                  value=""
+                />
+                <!--end::Input-->
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="fullName?.hasError('required') && fullName?.touched"
+                >
+                  Full Name is required
+                </div>
+              </div>
+
+              <div class="fv-row mb-10 grid-item">
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5">Country</span>
+                </label>
+      
+            <app-custom-dropdown-countries   (countrySelected)="onCountrySelected($event)"  ></app-custom-dropdown-countries>
+            <!-- <div class="fv-plugins-message-container invalid-feedback" *ngIf="countryName?.hasError('required')">
+              Country is required
+            </div> -->
+              </div>
+              <div class="fv-row mb-10 grid-item">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5">Continent</span>
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+              <div class="continent-drop">
+                <input
+                type="text"  readonly
+                formControlName="continent"
+                class="form-control form-control-lg form-control-solid"
+                name="name"
+                placeholder="Continent"
+
+              />
+
+              </div>
+                <!--end::Input-->
+                <div class="fv-plugins-message-container invalid-feedback"
+                     *ngIf="continent?.hasError('required') && continent?.touched">
+                  Continent is required
+                </div>
+              </div>
+
+                <div class="fv-row mb-10  grid-item">
+                  <!--begin::Label-->
+                  <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                    <span class="text-muted fs-6 fw-medium pl-5"
+                      >Phone Number</span
+                    >
+                  </label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+               <div class="position-relative">
+                <span class="c-code">{{countryCode}}</span>
+                <input type="text" formControlName="phoneNumber" class="form-control form-control-lg form-control-solid ps-15"
+                  required mask="000-0000-000" name="phoneNumber" placeholder="000-0000-000" minlength="10" />
+               </div>
+                  <!--end::Input-->
+                  <div
+                    class="fv-plugins-message-container invalid-feedback"
+                    *ngIf="
+                      phoneNumber?.hasError('required') && phoneNumber?.touched
+                    "
+                  >
+                    Phone Number is required
+                  </div>
+                  <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="
+                    phoneNumber?.hasError('minlength') &&
+                    phoneNumber?.touched
+                  "
+                >
+                  Phone Number must have at least 10 digits
+                </div>
+                </div>
+
+              <div class="fv-row mb-10 grid-item">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5"
+                    >Registration Number</span
+                  >
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input
+                  type="number"
+                  formControlName="registrationNumber"
+                  class="form-control form-control-lg form-control-solid"
+                  name="name"
+                  placeholder=""
+                  value=""
+                />
+                <!--end::Input-->
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="
+                    registrationNumber?.hasError('required') &&
+                    registrationNumber?.touched
+                  "
+                >
+                  Registration Number is required
+                </div>
+              </div>
+
+              <div class="fv-row mb-10 grid-item" *ngIf="accountType ==='RESEARCHER'">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5"
+                    >Academic Number</span
+                  >
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input
+                  type="number"
+                  formControlName="academicNumber"
+                  class="form-control form-control-lg form-control-solid"
+                  name="name"
+                  placeholder=""
+                  value=""
+                />
+                <!--end::Input-->
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="
+                    academicNumber?.hasError('required') &&
+                    academicNumber?.touched
+                  "
+                >
+                  Academic Number is required
+                </div>
+              </div>
+
+              <!-- Add another hidden input field for the wholeNumber -->
+              <input type="hidden" formControlName="wholeNumber" />
+            </div>
+            <div>
+
+                <button matStepperNext  class="primary-btn" [disabled]="firstFormGroup.invalid || !selectedCountry" [ngClass]="{
+                                  'primary-btn-disabled': firstFormGroup.invalid  || !selectedCountry,
+                                  'primary-btn': firstFormGroup.valid
+                                }">
+                  Next
+                </button>
+
+
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" class="mt-100">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>
+              <div class="step-title">Step 2</div>
+              <div class="step-subtitle">Login Information</div>
+            </ng-template>
+
+            <!-- Step-2 -->
+            <div class="fields form-grid">
+              <!-- profile-picture -->
+              <div class="fv-row mb-10 grid-item">
+
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5" *ngIf="accountType !=='INDIVIDUAL'">Upload Institute Logo</span>
+                  <span class="text-muted fs-6 fw-medium pl-5" *ngIf="accountType ==='INDIVIDUAL'" >Upload profile picture</span>
+                </label>
+
+                <!-- profile -->
+              <div class="fv-row mb-10">
+                <!--begin::Image input-->
+                <div  class="image-input image-input-empty image-input-outline" data-kt-image-input="true" [style.background-image]="imgURL ? 'url(' + imgURL + ')' : 'url(assets/media/svg/files/blank-image.svg)'">
+                  <!--begin::Preview existing avatar-->
+                  <div class="image-input-wrapper w-125px h-125px"></div>
+                  <!--end::Preview existing avatar-->
+                  <!--begin::Label-->
+                  <label for="profilePicture" class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+                    <i class="bi bi-pencil-fill fs-7"></i>
+                    <!--begin::Inputs-->
+                    <input type="file"  required id="profilePicture" name="profilePicture"
+                    (change)="profilePicSelected($event)"  accept=".png, .jpg, .jpeg" />
+                    <input type="hidden" name="avatar_remove" />
+                    <!--end::Inputs-->
+                  </label>
+                  <!--end::Label-->
+                  <!--begin::Cancel-->
+                  <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+                    <i class="bi bi-x fs-2"></i>
+                  </span>
+                  <!--end::Cancel-->
+                  <!--begin::Remove-->
+                  <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+                    <i class="bi bi-x fs-2"></i>
+                  </span>
+                  <!--end::Remove-->
+                </div>
+
+                <!--end::Image input-->
+                <!--begin::Hint-->
+                <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                <!--end::Hint-->
+              </div>
+
+              </div>
+              <!-- Email Address -->
+              <div class="fv-row mb-10 grid-item">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5">Email</span>
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input
+                  type="email"
+                  formControlName="emailAddress"
+                  class="form-control form-control-lg form-control-solid"
+                  name="name"
+                  placeholder=""
+                  value=""
+                />
+                <!--end::Input-->
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="
+                    emailAddress?.hasError('email') && emailAddress?.touched
+                  "
+                >
+                  You must enter a valid email
+                </div>
+                <div class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="emailAddress?.hasError('emailNotAvailable')">
+                  This email is already in use or not valid.
+                </div>
+              </div>
+              <!-- Password -->
+              <div class="fv-row mb-10 position-relative grid-item">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5">Password</span>
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input
+                  [type]="hide ? 'password' : 'text'"
+                  required
+                  formControlName="password"
+                  class="form-control form-control-lg form-control-solid"
+                  name="name"
+                  placeholder=""
+                  value="password"
+                />
+                <button
+                  class="eye-icon"
+                  mat-icon-button
+                  matSuffix
+                  (click)="togglePasswordVisibility($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <!--end::Input-->
+                <div *ngIf="password.touched || password.dirty" class="pt-2">
+                  <p
+                    [ngClass]="
+                      secondFormGroup.controls['password'].hasError(
+                        'required'
+                      ) ||
+                      secondFormGroup.controls['password'].hasError('minlength')
+                        ? 'text-danger'
+                        : 'text-success'
+                    "
+                  >
+                    <i
+                      class="material-icons"
+                      style="vertical-align: middle; font-size: 20px"
+                    >
+                      {{
+                        secondFormGroup.controls["password"].hasError(
+                          "required"
+                        ) ||
+                        secondFormGroup.controls["password"].hasError(
+                          "minlength"
+                        )
+                          ? "cancel"
+                          : "check_circle"
+                      }}
+                    </i>
+                   At least 8 characters!
+                  </p>
+
+                  <p
+                    class="col"
+                    [ngClass]="
+                      secondFormGroup.controls['password'].hasError(
+                        'required'
+                      ) ||
+                      secondFormGroup.controls['password'].hasError('hasNumber')
+                        ? 'text-danger'
+                        : 'text-success'
+                    "
+                  >
+                    <i
+                      class="material-icons"
+                      style="vertical-align: middle; font-size: 20px"
+                    >
+                      {{
+                        secondFormGroup.controls["password"].hasError(
+                          "required"
+                        ) ||
+                        secondFormGroup.controls["password"].hasError(
+                          "hasNumber"
+                        )
+                          ? "cancel"
+                          : "check_circle"
+                      }}
+                    </i>
+                    At least 1 number!
+                  </p>
+
+                  <p
+                    class="col"
+                    [ngClass]="
+                      secondFormGroup.controls['password'].hasError(
+                        'required'
+                      ) ||
+                      secondFormGroup.controls['password'].hasError(
+                        'hasCapitalCase'
+                      )
+                        ? 'text-danger'
+                        : 'text-success'
+                    "
+                  >
+                    <i
+                      class="material-icons"
+                      style="vertical-align: middle; font-size: 20px"
+                    >
+                      {{
+                        secondFormGroup.controls["password"].hasError(
+                          "required"
+                        ) ||
+                        secondFormGroup.controls["password"].hasError(
+                          "hasCapitalCase"
+                        )
+                          ? "cancel"
+                          : "check_circle"
+                      }}
+                    </i>
+                    At least 1 in Capital Case!
+                  </p>
+
+                  <p
+                    class="col"
+                    [ngClass]="
+                      secondFormGroup.controls['password'].hasError(
+                        'required'
+                      ) ||
+                      secondFormGroup.controls['password'].hasError(
+                        'hasSmallCase'
+                      )
+                        ? 'text-danger'
+                        : 'text-success'
+                    "
+                  >
+                    <i
+                      class="material-icons"
+                      style="vertical-align: middle; font-size: 20px"
+                    >
+                      {{
+                        secondFormGroup.controls["password"].hasError(
+                          "required"
+                        ) ||
+                        secondFormGroup.controls["password"].hasError(
+                          "hasSmallCase"
+                        )
+                          ? "cancel"
+                          : "check_circle"
+                      }}
+                    </i>
+                   At least 1 Letter in Small Case!
+                  </p>
+
+                  <p
+                    class="col"
+                    [ngClass]="
+                      secondFormGroup.controls['password'].hasError(
+                        'required'
+                      ) ||
+                      secondFormGroup.controls['password'].hasError(
+                        'hasSpecialCharacters'
+                      )
+                        ? 'text-danger'
+                        : 'text-success'
+                    "
+                  >
+                    <i
+                      class="material-icons"
+                      style="vertical-align: middle; font-size: 20px"
+                    >
+                      {{
+                        secondFormGroup.controls["password"].hasError(
+                          "required"
+                        ) ||
+                        secondFormGroup.controls["password"].hasError(
+                          "hasSpecialCharacters"
+                        )
+                          ? "cancel"
+                          : "check_circle"
+                      }}
+                    </i>
+                 At least 1 Special Character!
+                  </p>
+                </div>
+              </div>
+              <!-- Re-password -->
+              <div class="fv-row mb-10 position-relative grid-item">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5"
+                    >Re-Password</span
+                  >
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input
+                  [type]="hide ? 'password' : 'text'"
+                  required
+                  formControlName="repassword"
+                  class="form-control form-control-lg form-control-solid"
+                  name="name"
+                  placeholder=""
+                  value="repassword"
+                />
+                <button
+                  class="eye-icon"
+                  mat-icon-button
+                  matSuffix
+                  (click)="togglePasswordVisibility($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <!--end::Input-->
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="repassword.errors?.['confirmedValidator']"
+                >
+                  Passwords do not match.
+                </div>
+              </div>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious class="secondary-btn">
+                Back
+              </button>
+
+              <button matStepperNext  class="primary-btn" [disabled]="secondFormGroup.invalid || !this.profilePicture" [ngClass]="{
+                'primary-btn-disabled': secondFormGroup.invalid || !this.profilePicture,
+                'primary-btn': secondFormGroup.valid
+              }">
+Next
+</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>
+              <div class="step-title">Step 3</div>
+              <div class="step-subtitle">Institute information</div>
+            </ng-template>
+            <div class="fields form-grid">
+              <div class="fv-row mb-10 grid-item">
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5">Sector</span>
+                </label>
+                <!--begin::Label-->
+                <select
+                  formControlName="sector"
+                  name="sector"
+                  class="form-select country-select form-select-solid"
+                  data-control="select2"
+                  data-hide-search="true"
+                  data-placeholder="sector"
+                >
+                  <option></option>
+                  <option *ngFor="let sector of sectors" [value]="sector">
+                    {{ sector }}
+                  </option>
+                </select>
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="sector?.hasError('required') && sector?.touched"
+                >
+                  Sector is required
+                </div>
+              </div>
+
+              <div class="fv-row mb-10 grid-item">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5"
+                    >Institute Name</span
+                  >
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input
+                  type="text"
+                  formControlName="instituteName"
+                  class="form-control form-control-lg form-control-solid"
+                  name="name"
+                  placeholder=""
+                  value="instituteName"
+                />
+                <!--end::Input-->
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="
+                    instituteName?.hasError('required') &&
+                    instituteName?.touched
+                  "
+                >
+                  Institute Name is required
+                </div>
+              </div>
+
+              <div class="fv-row mb-10 grid-item">
+                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                  <span class="text-muted fs-6 fw-medium pl-5"
+                    >Institute Domains</span
+                  >
+                </label>
+                <!--begin::Label-->
+          <div class="multi-select-conatiner position-relative">
+
+                  <svg  *ngIf="!instituteDomains.value || instituteDomains.value.length===0 " class="material-icons drop-arrow z-index-1"  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M12 14.975q-.2 0-.375-.062T11.3 14.7l-4.6-4.6q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l3.9 3.9l3.9-3.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7l-4.6 4.6q-.15.15-.325.213t-.375.062Z"/></svg>
+                  <mat-select [formControl]="instituteDomains" multiple
+                    class="multi-domains  position-relative form-select country-select form-select-solid">
+                    <mat-select-trigger>
+                      {{instituteDomains.value?.[0] || ''}}
+                      <span *ngIf="(instituteDomains.value?.length || 0) > 1" class="example-additional-selection">
+                        (+{{(instituteDomains.value?.length || 0) - 1}} {{instituteDomains.value?.length === 2 ? 'other' : 'others'}})
+                      </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let domain of domains" [value]="domain">{{domain}}</mat-option>
+                  </mat-select>
+          </div>
+
+
+                <div
+                  class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="
+                    instituteDomains?.hasError('required') &&
+                    instituteDomains?.touched
+                  "
+                >
+                  Institute Domains is required
+                </div>
+              </div>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious class="secondary-btn">
+                Back
+              </button>
+              <button
+                matStepperNext
+                class="primary-btn"
+                [disabled]="thirdFormGroup.invalid"
+                [ngClass]="{
+                  'primary-btn-disabled': thirdFormGroup.invalid,
+                  'primary-btn': thirdFormGroup.valid
+                }"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <!-- <mat-step [stepControl]="forthFormGroup">
+          <form [formGroup]="forthFormGroup">
+            <ng-template matStepLabel>
+              <div class="step-title">Step 4</div>
+              <div class="step-subtitle">Files and documents</div>
+            </ng-template>
+            <div class="fields d-flex flex-column gap-10 mt-20">
+
+              <div formArrayName="certificate" class="certificate-form">
+                <div
+                  *ngFor="
+                    let certificateGroup of certificate.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                  class="certficiate-form-array"
+                >
+                  <div class="certficate-gorup">
+                    <div class="d-flex flex-column">
+                      <div class="control">
+                        <div class="upload-btn-control d-flex flex-column">
+                          <label [for]="'certificate' + i">
+                            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                              <div
+                                class="card card-plain border new-certificate-card"
+                              >
+                                <div
+                                  class="card-body d-flex flex-column justify-content-center text-center"
+                                >
+                              <i class="fa fa-plus text-secondary mb-3" [hidden]="certificateGroup.get('fileUploaded')?.value"></i>
+                              <i class="fa fa-file text-secondary mb-3" [hidden]="!certificateGroup.get('fileUploaded')?.value"></i>
+                              <h5 class="text-secondary" [hidden]="certificateGroup.get('fileUploaded')?.value">Add Certificate</h5>
+                              <span [hidden]="!certificateGroup.get('fileUploaded')?.value" id="fileName">{{
+                                certificateGroup.get('uploadedFileName')?.value }}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+
+                          <input
+                            (change)="handleFileUpload($event, i)"
+                            [hidden]="true"
+                            type="file"
+                            accept=".pdf, .doc, .docx, .jpg, .jpeg, .png"
+                            [id]="'certificate' + i"
+                            formControlName="file"
+                          />
+                        </div>
+                      </div>
+                      <div class="control">
+                        <div class="fv-row mb-8 pt-10">
+
+                          <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                            <span class="required">Expiry Date</span>
+                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify project name"></i>
+                          </label>
+
+
+                          <div class="position-relative">
+                            <input matInput [matDatepicker]="picker" formControlName="expirayDate" class="form-control expiry-input form-control-solid"
+                              placeholder="Enter Project Name" value="StockPro Mobile App" name="settings_name" />
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          </div>
+
+                          <mat-datepicker #picker></mat-datepicker>
+                        </div>
+                              <div class="fv-row mb-10 grid-item w-100">
+
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                  <span class="text-muted fs-6 fw-medium pl-5">Certificate Name</span>
+                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify project name"></i>
+                                </label>
+
+                                <input type="text" formControlName="certificateName" class="form-control expiry-input form-control-solid"
+                                  name="name" placeholder="" value="" />
+
+                                <div class="fv-plugins-message-container invalid-feedback" *ngIf="
+                                                                              certificateName?.hasError('required') &&
+                                                                              certificateName?.touched
+                                                                            ">
+                                  Certificate Name is required
+                                </div>
+                              </div>
+                            <div class="fv-row mb-10 grid-item w-100">
+
+                              <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                <span class="text-muted fs-6 fw-medium pl-5">Certificate Number</span>
+                              </label>
+
+                              <input type="number" formControlName="certificateNumber"  class="form-control expiry-input form-control-solid"
+                                name="name" placeholder="" value="" />
+
+                              <div class="fv-plugins-message-container invalid-feedback" *ngIf="
+                                                certificateNumber?.hasError('required') &&
+                                                certificateNumber?.touched
+                                              ">
+                                Certificate Number Number is required
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="removeCertificate(i)"
+                      class="remove-btn"
+                    >
+                    <i class="material-icons">do_disturb_on</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <a
+                (click)="addCertificate()"
+                class="pb-50 add-dynamic d-flex flex-row align-items-center text-decoration-none cursor-pointer"
+              >
+                <i class="material-icons pr-10">add_circle_outline</i>
+                <span>Add More Certificate</span></a
+              >
+            </div>
+            <div>
+              <button mat-button matStepperPrevious class="secondary-btn">
+                Back
+              </button>
+              <button
+                matStepperNext
+                class="primary-btn"
+                [disabled]="forthFormGroup.invalid"
+                [ngClass]="{
+                  'primary-btn-disabled': forthFormGroup.invalid,
+                  'primary-btn': forthFormGroup.valid
+                }"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </mat-step> -->
+        <mat-step>
+          <ng-template matStepLabel
+            ><span class="fw-bold">Done</span></ng-template
+          >
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button
+              matStepperNext
+              class="primary-btn"
+              (click)="sumbitForm()"
+              [disabled]="thirdFormGroup.invalid"
+              [ngClass]="{
+                'primary-btn-disabled': thirdFormGroup.invalid,
+                'primary-btn': thirdFormGroup.valid
+              }"
+            >
+              Submit
+            </button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+  </div>
+</div>
+<div class="circles">
+  <img src="assets/img/elements/circles.svg" alt="circles" loading="lazy" />
+</div>

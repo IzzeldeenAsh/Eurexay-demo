@@ -1,0 +1,58 @@
+<div class="row gy-5 g-xl-8 ">
+
+    <div class="page-header min-height-500  mt-0" >
+      <div class="text-container-header ">
+       
+  
+        <div class="page-title d-flex align-items-center me-3 mb-4 pt-9 pt-lg-5 mb-lg-15">
+          <div class="btn btn-icon btn-custom h-65px w-65px me-6">
+          <span *ngIf="icon" [inlineSVG]="icon" class="svg-icon  svg-icon-1 svg-icon-white"></span>
+          <span *ngIf="img"><img [src]=" 'data:image/jpeg;base64,' +img" alt="owner-img"  class="w-100 rounded"></span>
+          </div>
+          <!--begin::Title-->
+          <h1 class=" d-flex  fw-bolder fs-2 flex-column justify-content-center my-0"><span class="text-white">
+            {{featureName}}
+          </span>
+          <!--begin::Description-->
+          <span class="page-desc fs-6 fw-bold pt-4" *ngIf="creartLinkText">
+            <span class="d-flex align-items-center lh-0 fs-7 d-flex  fw-medium cursor-pointer" (click)="openCreateCaseDialog($event)">
+              <span class="svg-icon svg-icon-2 svg-icon-white pe-2" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M14.99 12H16" stroke="#dea851" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 12H11.81" stroke="#dea851" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 16V8" stroke="#dea851" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 13.04V15C2 20 4 22 9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9" stroke="#dea851" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+               <span class="text-hover-warning" style="color: #dea851;" >
+                 {{creartLinkText}}
+                </span>
+              </span>
+          </span>
+          <span class="page-desc fs-6 fw-bold pt-4" *ngIf="subtitle">
+            <span class="d-flex align-items-center lh-0 fs-7 d-flex  fw-medium cursor-pointer" >
+               <span class="text-hover-warning" style="color: #dea851;" >
+                 {{subtitle}}
+                </span>
+              </span>
+          </span>
+  </h1>
+        </div>
+      </div>
+  
+  <div class="overlay-bg">
+    <div class="overlay-layered">
+      <div #backgroundVideo muted autoplay loop playsinline class="video-bg ">
+      </div>
+      
+    </div>
+  
+  </div>
+   
+    <div class="filter">.</div>
+      <span class=" bg-gradient-primary"></span>
+  
+    </div>
+  
+  </div>
+  

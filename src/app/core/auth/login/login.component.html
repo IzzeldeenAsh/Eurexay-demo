@@ -1,0 +1,88 @@
+<div class="globe d-none d-md-block">
+  <!-- <img src="../../../../assets/img/globe.png" alt="globe"> -->
+</div>
+<div class="background-img-fully">
+</div>
+<div class=" center-wrapper ">
+
+  <div class=" login-wrap" >
+
+    <div class="main-wrapper pl-50 pr-50 bg-gr ">
+      <div class="row d-flex gap-10 pt-30 ">
+        <div class="col-xl-4 col-lg-5 col-md-6 d-none d-lg-flex flex-column ms-auto mt-20 " style="width: 30%;">
+          <div class="card plain ">
+            <div class=" pb-0 text-left bg-transparent head-auth">
+              <h3 class="font-weight-bolder text-info text-gradient position-relative welcome-text">
+                <img src="../../../../assets/media/logos/logo-2.svg" alt="logo">
+                Welcome To Eurekxay
+              </h3>
+
+              <p class="text-gray-800 mt-2 fs-5 pt-5">Unlock opportunities for Business Owners, Individuals, and Researchers to collaborate and innovate on Eurekxay.</p>
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column me-lg-auto login-form ">
+          <div class="card plain ">
+            <div class=" pb-0 text-left bg-transparent head-auth d-block d-lg-none">
+              <h3 class="font-weight-bolder text-info text-gradient ">Welcome back</h3>
+
+              <p class="text-gray-800 mt-1 fs-7">Enter your email and password to sign in</p>
+            </div>
+            <div class="card-body">
+              <form role="form" [formGroup]="loginForm" (ngSubmit)="submit()">
+            <label class="form-label fs-6 fw-bolder text-dark">Email</label>
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Email" formControlName="email" aria-label="Email"
+                    aria-describedby="email-addon">
+                    <p class="text-red-400" *ngIf="email.errors?.['email']">You must enter a valid email</p>
+                </div>
+                <label class="form-label fw-bolder text-dark fs-6 mb-0" >Password</label>
+                <div class="mb-3">
+                  <input formControlName="password" type="password" class="form-control" placeholder="Password" aria-label="Password"
+                    aria-describedby="password-addon">
+                    <p class="text-red-400" *ngIf="password.errors?.['password']">You must enter a valid email</p>
+                </div>
+                <div >
+                  <span class="text-gray-800 mt-1 fs-7">Forgot your password? <span class="text-info text-gradient fw-bold"><a [routerLink]="['/auth/forgot-password']">Click Here</a></span></span>
+                </div>
+                <div class="text-center">
+
+                  <button type="button" class="btn-eure-primary w-100 mt-4 mb-0" [ngClass]="{'btn-eure-primary ':!loginForm.invalid || loginForm.invalid}"  class="w-100 mt-20 " type="submit" [disabled]="this.loginForm.invalid || loading" >
+
+                    <ng-container *ngIf="loading">
+                      <span class="indicator-progress" [style.display]="'block'">
+                        Please wait...
+                        <span
+                          class="spinner-border spinner-border-sm align-middle ms-2"
+                        ></span>
+                      </span>
+                    </ng-container>
+                    <ng-container *ngIf="!loading" >
+                      Sign in
+                    </ng-container>
+                  
+                  </button>
+                  <div class="fv-plugins-message-container invalid-feedback"
+                  *ngIf="loginError">
+               Authentication failed.
+               <br>
+               <ng-container *ngIf="badLogin">{{badLogin}}.</ng-container>
+             </div>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer text-center pt-0 px-lg-2 px-1">
+
+              <p class="text-gray-800 mt-1 fs-7">
+                Don't have an account?
+                <a [routerLink]="['/auth/register']" class="text-info text-gradient fw-bold">Sign up</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

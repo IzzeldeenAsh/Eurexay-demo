@@ -1,0 +1,171 @@
+.form-control.form-control-solid {
+    background-color:#fff  !important;
+  }
+  ::ng-deep .mat-step-icon-selected {
+      display: none !important;
+    }
+    .table {
+      overflow-x: scroll;
+    }
+  
+    ::ng-deep .mat-elevation-z8 {
+      overflow: scroll !important;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 3.8202598094940186px 21.665771484375px 27px 0px
+        rgba(95, 117, 151, 0.1);
+    }
+    ::ng-deep .mat-mdc-paginator {
+      border-bottom-left-radius: 10px !important;
+      border-bottom-right-radius: 10px !important;
+    }
+  
+    ::ng-deep .mdc-line-ripple {
+      display: none !important;
+    }
+    .search-label {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      font-size: 15px;
+      padding-bottom: 13px;
+      gap: 10px;
+      justify-content: center;
+      mat-icon {
+        font-size: 20px;
+        color: #000;
+      }
+    }
+    .search-filter {
+      width: 240px;
+      input {
+        padding-left: 46px;
+      }
+    }
+    ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+      background: none !important;
+    }
+    ::ng-deep .mdc-text-field .mdc-text-field__input {
+      caret-color: #000000 !important;
+      color: #000 !important;
+    }
+  
+    ::ng-deep .mdc-line-ripple--active {
+      background: none !important;
+    }
+    ::ng-deep .mdc-checkbox__background {
+      width: 20px !important;
+      height: 19.97px !important;
+      flex-shrink: 0 !important;
+      border-radius: 6px !important;
+      border: 1px solid #c0bdcc !important;
+    }
+  
+    ::ng-deep .mat-checkbox-checked.mat-accent {
+      .mat-checkbox-ripple .mat-ripple-element {
+        background-color: #0778b9 !important;
+      }
+  
+      .mat-checkbox-background,
+      .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color: #0778b9 !important;
+      }
+    }
+  
+    ::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__ripple {
+      background-color: #0778b9 !important;
+    }
+    ::ng-deep .mdc-checkbox__checkmark {
+      width: 14px !important;
+      height: 14px !important;
+      top: 2px !important;
+      left: 2px !important;
+    }
+  
+  
+    ::ng-deep  .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+      background-color: #0778b9 !important;
+    }
+    ::ng-deep  .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background{
+      background-color: #0778b9 !important;
+    }
+    .profile-pic{
+      width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+    .status{
+      border-radius: 10px;
+      padding: 5px 17px;
+      font-weight: 500;
+    }
+    .view-profile{
+      border-radius: 22px;
+      padding: 7px 15px;
+      background: #E7EDFA;
+      color: #0778b9;
+      font-weight: 400;
+      width: 107px;
+    }
+    .country-filter{
+      margin: 0 10px;
+      margin-bottom: 10px;
+      display: flex;
+     min-width: fit-content;
+     width: fit-content;
+      gap: 12px;
+      background: #FFF;
+      box-shadow: 3.8202598094940186px 21.665771484375px 27px 0px rgba(95, 117, 151, 0.10);
+      padding: 10px 24px;
+      align-items: center;
+      border-radius: 10px;
+      border: 1px solid #EBEBEB;
+    }
+  
+    ::ng-deep .mat-mdc-select{
+      color: #0778b9 !important;
+    }
+    ::ng-deep .mat-mdc-select-value{
+      padding-right: 12px !important;
+    }
+  
+  
+    .filter-btns{
+      display: flex;
+      height: fit-content;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      @media (max-width:400px) {
+        justify-content: center;
+  
+      }
+    }
+    ::ng-deep .mdc-data-table__cell,.mdc-data-table__header-cell{
+      padding: 0 !important;
+      padding-left: 10px  !important;
+    }
+    ::ng-deep .cdk-overlay-pane{
+      width: auto !important;
+    }
+  
+    .pre-space{
+      white-space: inherit;
+      min-width: max-content;
+    }
+    td {
+  
+      word-break: break-all;
+    }
+  
+    th {
+      color: #0778b9;
+    }
+  .flag-svg{
+    width: 24px;
+    border-radius: 2px;
+  }

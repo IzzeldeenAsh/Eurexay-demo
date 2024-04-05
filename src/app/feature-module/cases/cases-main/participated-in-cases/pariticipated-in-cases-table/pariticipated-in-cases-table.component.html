@@ -1,0 +1,113 @@
+
+    <div class="table-responsive w-100">
+      <table class="table align-middle gs-0 gy-4">
+        <thead>
+          <tr class="fw-bolder text-muted bg-light">
+            <th class="ps-4 min-w-325px rounded-start text-uppercase fs-7">
+              Owner
+            </th>
+            <th class="min-w-125px text-uppercase fs-7">
+              Contract to Case
+            </th>
+            <th class="min-w-125px text-uppercase fs-7">Generation Date</th>
+            <th class="min-w-150px text-uppercase fs-7">Status</th>
+            <th
+              class="min-w-70px text-center rounded-end text-uppercase fs-7"
+            >
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let case of availableContracts; let i = index">
+            <td>
+              <div class="d-flex align-items-center pl-10">
+                <div class="symbol symbol-60px me-5">
+                  <ng-container
+                    *ngIf="case.owner?.profilePicBase64; else noImage"
+                  >
+                    <img
+                      [src]="
+                        'data:image/jpeg;base64,' +
+                        case.owner.profilePicBase64
+                      "
+                      class=""
+                      alt=""
+                    />
+                  </ng-container>
+                  <ng-template #noImage>
+                    <img
+                      src="https://firebasestorage.googleapis.com/v0/b/webartpath.appspot.com/o/image%20project.png?alt=media&token=19555bcf-e269-47b4-a33a-2df0b6f9e8f6"
+                      class=""
+                      alt=""
+                    />
+                  </ng-template>
+                </div>
+                <div class="d-flex justify-content-start flex-column">
+                  <a
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    {{ case.owner.instituteName }}
+                  </a>
+                  <span class="text-muted fw-bold text-muted d-block fs-7">
+                    {{ case.owner.participantType }}
+                  </span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <a
+                class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+              >
+                <span class="text-primary">
+                  {{ case.businessCase.name }}</span
+                >
+              </a>
+            </td>
+            <td>
+              <a
+                class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+              >
+                {{ case.generationDate | date : "dd MMM yyyy" }}
+              </a>
+            </td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+        ' badge-light-primary': case.status === 'FINALIZED',
+        ' badge-light-warning text-gold bg-light-warning': case.status === 'DRAFT' || case.status === 'PENDING_OWNER_PAYMENT',
+        ' badge-light-info text-info bg-light-info':  case.status === 'OWNER_ACCEPTANCE' ,
+        
+      }"
+              >
+                <ng-container>{{
+                  case.status === "OWNER_ACCEPTANCE"
+                    ? "Owner Acceptance"
+                    : case.status === "PENDING_OWNER_PAYMENT"
+                    ? "Pending Owner Payment"
+                    : case.status
+                }}</ng-container>
+              </span>
+            </td>
+
+            <td class="text-center">
+              <ng-container *ngIf="case.status !=='FINALIZED' else finalizedButton">
+                  <a 
+                  (click)="summary(case.uuid)"
+                  class="btn bg-light-primary btn-color-muted btn-active-color-primary btn-sm px-4 me-2">
+                  View Contract
+                </a>
+              </ng-container>
+              <ng-template #finalizedButton>
+                  <a 
+                  (click)="caseManangementNavigate()"
+                  class="btn bg-light-primary btn-color-muted btn-active-color-primary btn-sm px-4 me-2">
+                  Case Management
+                </a>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

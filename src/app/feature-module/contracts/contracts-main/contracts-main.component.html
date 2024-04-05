@@ -1,0 +1,145 @@
+<ng-container *ngIf="this.loading">
+  <app-x-spinner></app-x-spinner>
+</ng-container>
+
+<div class="position-relative" *ngIf="currentContract">
+  <app-feature-header class="summary-header"
+  [icon]="'./assets/media/icons/duotune/abstract/abs022.svg'"
+  [featureName]="'Contracts'"
+  ></app-feature-header>
+  <div class="d-flex flex-column flex-lg-row">
+    <div class="content flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
+      <div class="act-btns d-flex flex-column flex-sm-row justify-content-between">
+        <div class="d-flex justify-content-between">
+        <div>
+          <ng-container
+          *ngIf="
+            this.uasername === this.currentContract.owner.userDto.username &&
+            currentContract.status !== 'PENDING_OWNER_PAYMENT'
+          "
+        >
+          <a
+            class="btn btn-sm me-2"
+            [ngClass]="{ 'cursor-na': ownerSigned === true }"
+            [class.btn-light]="!isSignedOwner"
+            [class.btn-success]="isSignedOwner"
+            (click)="signContractOwner($event)"
+          >
+            <span *ngIf="isSignedOwner" clas s="svg-icon svg-icon-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                class="me-2"
+              >
+                <path
+                  opacity="0.3"
+                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                  fill="white"
+                />
+                <path
+                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                  fill="white"
+                />
+              </svg>
+            </span>
+
+            <span *ngIf="!isProcessing">{{ ownerSignButtonText }}</span>
+            <span *ngIf="isProcessing"
+              >Please wait...
+              <span
+                class="spinner-border spinner-border-sm align-middle ms-2"
+              ></span>
+            </span>
+          </a>
+        </ng-container>
+        <ng-container
+          *ngIf="
+            this.uasername ===
+              this.currentContract.participant.userDto.username &&
+            currentContract.status !== 'FINALIZED'
+          "
+        >
+          <a
+            class="btn btn-sm me-2"
+            [ngClass]="{ 'cursor-na': participangSigned === true }"
+            [class.btn-light]="!isSignedParticipant"
+            [class.btn-success]="isSignedParticipant"
+            (click)="signContractParticipant($event)"
+          >
+            <span *ngIf="isSignedParticipant" clas s="svg-icon svg-icon-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                class="me-2"
+              >
+                <path
+                  opacity="0.3"
+                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                  fill="white"
+                />
+                <path
+                  d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z"
+                  fill="white"
+                />
+              </svg>
+            </span>
+
+            <span *ngIf="!isProcessing">{{ ParticipantSignButtonText }}</span>
+            <span *ngIf="isProcessing"
+              >Please wait...
+              <span
+                class="spinner-border spinner-border-sm align-middle ms-2"
+              ></span>
+            </span>
+          </a>
+        </ng-container>
+        <span *ngIf="currentContract.status === 'PENDING_OWNER_PAYMENT'"
+        class="btn btn-sm bg-light-warning text-gold cursor-na"
+        >Pending Owner Payment</span>
+        <a
+          (click)="printPage()"
+          class="btn btn-sm btn-primary ms-2 me-2"
+          >Print</a
+        >
+      
+        </div>
+        
+        </div>
+      </div>
+    <!--begin::Row-->
+      <app-payment-step [budget]="currentContract.businessCase.budget" [loggenInUser]="uasername" [owner]="currentContract.owner.userDto.username"  [uuid]="currentContract.uuid" *ngIf="currentContract.status === 'PENDING_OWNER_PAYMENT' && currentContract.owner.userDto.username === uasername"></app-payment-step>
+      <!-- validate / username inside the Ts no the HTML only -->
+  <!--end::Row-->
+      <div
+        class="d-flex flex-md-row  gap-10 flex-column justify-content-center container-contract"
+      >
+        <div class="page w-100 w-md-530px w-lg-630px w-xl-800px">
+         <app-contract-body [currentContract]="currentContract"></app-contract-body>
+        </div>
+        <ng-container *ngIf="currentContract">
+          <ng-container
+            *ngIf="
+              this.uasername === this.currentContract.owner?.userDto?.username
+            "
+          >
+          <app-owner-card [currentContract]="currentContract"></app-owner-card>
+          </ng-container>
+          <ng-container
+            *ngIf="
+              this.uasername ===
+              this.currentContract.participant.userDto.username
+            "
+          >
+          <app-participant-card [currentContract]="currentContract"></app-participant-card>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
