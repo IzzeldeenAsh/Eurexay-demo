@@ -18,7 +18,7 @@
   <div class="row pt-10">
     <div class="col-12">
       <label class="required fs-6 fw-bold form-label mb-2 text-primary">Requirement Description</label>
-      <quill-editor class="content-editor w-100" [placeholder]="''" [modules]="quillConfiguration" [formControl]="description"></quill-editor>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
       <div class="fv-plugins-message-container invalid-feedback" *ngIf="requirementsForm.get('description')?.hasError('required') && form.get('description')?.touched">
         Requirement Description is required
       </div>

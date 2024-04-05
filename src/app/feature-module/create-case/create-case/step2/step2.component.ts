@@ -5,17 +5,7 @@ import { Subscription, take } from 'rxjs';
 import { ICreateCase } from 'src/app/core/models/createCase.interface';
 import { AlertsService } from 'src/app/core/services/alert/alerts.service';
 import { CreateCaseService } from 'src/app/core/services/cases/create-case.service';
-export const QuillConfiguration = {
-  toolbar: [
-    ['bold', 'italic', 'underline', 'strike'],
-    ['blockquote', 'code-block'],
-    [{ list: 'ordered' }, { list: 'bullet' }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    [{ color: [] }, { background: [] }],
-    ['link'],
-    ['clean'],
-  ],
-}
+
 
 @Component({
   selector: 'app-step2',
@@ -29,7 +19,6 @@ export class Step2Component implements OnInit {
   <path d="M13.5 13.75H7.5C7.09 13.75 6.75 13.41 6.75 13C6.75 12.59 7.09 12.25 7.5 12.25H13.5C13.91 12.25 14.25 12.59 14.25 13C14.25 13.41 13.91 13.75 13.5 13.75Z" fill="white"/>
   <path d="M11.5 17.75H7.5C7.09 17.75 6.75 17.41 6.75 17C6.75 16.59 7.09 16.25 7.5 16.25H11.5C11.91 16.25 12.25 16.59 12.25 17C12.25 17.41 11.91 17.75 11.5 17.75Z" fill="white"/>
   </svg>`
-  quillConfiguration = QuillConfiguration
   @Input() caseUUID!:string;
   @Input('updateParentModel') updateParentModel!: (
     part: Partial<ICreateCase>,

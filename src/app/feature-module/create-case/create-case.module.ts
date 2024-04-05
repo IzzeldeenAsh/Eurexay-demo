@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuillModule } from 'ngx-quill'
 import { CreateCaseRoutingModule } from './create-case-routing.module';
 import { CreateCaseComponent } from './create-case/create-case.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -71,7 +70,6 @@ const MatModuels =[
     ...MatModuels,
     SharedModule,
     InlineSVGModule,
-    QuillModule.forRoot()
   ]
 })
 export class CreateCaseModule { }

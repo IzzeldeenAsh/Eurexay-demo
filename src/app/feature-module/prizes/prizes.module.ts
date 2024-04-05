@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuillModule } from 'ngx-quill'
 import { PrizesRoutingModule } from './prizes-routing.module';
 import { PrizesComponent } from './prizes/prizes.component';
 import { PrizesMainComponent } from './prizes-main/prizes-main.component';
@@ -48,7 +47,6 @@ import { MultiSelectModule } from 'primeng/multiselect';
     TruncateWordsModule,
     SafeHtmlModule,
     NgbTooltipModule,
-    QuillModule.forRoot(),
     MultiSelectModule,
   ]
 })

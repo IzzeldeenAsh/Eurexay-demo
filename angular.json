@@ -25,10 +25,6 @@
               "apexcharts",
               "sweetalert2",
               "crypto-js",
-              "quill",
-              "vis-data",
-              "vis-network",
-              "vis-util",
               "object-path",
               "file-saver"
             ],

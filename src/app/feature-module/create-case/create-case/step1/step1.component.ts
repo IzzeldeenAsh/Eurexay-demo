@@ -2,23 +2,12 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ICreateCase } from 'src/app/core/models/createCase.interface';
-export const QuillConfiguration = {
-  toolbar: [
-    ['bold', 'italic', 'underline', 'strike'],
-    ['blockquote', 'code-block'],
-    [{ list: 'ordered' }, { list: 'bullet' }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    [{ color: [] }, { background: [] }],
-    ['link'],
-    ['clean'],
-  ],
-}
+
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
 })
 export class Step1Component implements OnInit, OnDestroy {
-  quillConfiguration = QuillConfiguration
   @Input('updateParentModel') updateParentModel!: (
     part: Partial<ICreateCase>,
     isFormValid: boolean
@@ -65,7 +54,7 @@ export class Step1Component implements OnInit, OnDestroy {
       caseAbstract: [this.defaultValues.caseAbstract, [Validators.required,this.minAbstractLength(20)]],
     },  { validators: this.dateValidator });
 
-    const formChangesSubscr = this.form.valueChanges.subscribe((val) => {
+    const formChangesSubscr = this.form.valueChanges.subscribe((val:any) => {
       this.updateParentModel(val, this.checkForm());
     });
     this.unsubscribe.push(formChangesSubscr);
